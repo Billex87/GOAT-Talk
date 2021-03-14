@@ -4,8 +4,9 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
 import './Player.css';
+import Chart from 'react-apexcharts'
 
-export default function PlayerTwo(props) {
+export default function Player(props) {
 
   const [state, setState] = useState({
     playerName: null,
@@ -15,6 +16,30 @@ export default function PlayerTwo(props) {
     lastName: null,
     position: null,
   });
+  const example = {
+    series: [{
+    data: [state.playerStats["pts"], state.playerStats["reb"], state.playerStats["ast"], state.playerStats["stl"], state.playerStats["blk"], state.playerStats["fg_pct"], state.playerStats["fg3_pct"], state.playerStats["ft_pct"]]
+  }],
+  options: {
+    chart: {
+      type: 'bar',
+      height: 350
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    xaxis: {
+      categories: ['PPG', 'RPG', 'APG', 'SPG', 'BPG', 'FG%',
+        '3PT%', 'FT%'
+      ],
+    }
+  },
+};
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,10 +55,9 @@ export default function PlayerTwo(props) {
         playerName: replace
       }));
     } else {
-      alert("Please type players name!");
+      alert("Please Type Players Name!");
     }
   };
-
   const handleChangeSeason = (event) => {
     const replace = event.target.value.split(" ").join("_");
     if (replace.length > 0) {
@@ -42,7 +66,7 @@ export default function PlayerTwo(props) {
         season: replace
       }));
     } else {
-      alert("Please type players name!");
+      alert("Please Type Players Name!");
     }
   };
 
@@ -107,23 +131,7 @@ export default function PlayerTwo(props) {
       <br />
       Position: {state.position}
       <br />
-    Games Played: {state.playerStats["games_played"]}
-      <br />
-    Points Averaged: {state.playerStats["pts"]}
-      <br />
-    Rebounds Averaged: {state.playerStats["reb"]}
-      <br />
-    Assists Averaged: {state.playerStats["ast"]}
-      <br />
-    Steals Averaged: {state.playerStats["stl"]}
-      <br />
-    Blocks Averaged: {state.playerStats["blk"]}
-      <br />
-    FG% Averaged: {state.playerStats["fg_pct"]}
-      <br />
-    3P% Averaged: {state.playerStats["fg3_pct"]}
-      <br />
-    FT% Averaged: {state.playerStats["ft_pct"]}
-    </div>
-  );
+    { state.playerStats["games_played"] && <Chart options={example.options} series={example.series} type="bar" height={350} />}
+</div>
+);
 }
