@@ -19,7 +19,7 @@ export default function Player(props) {
 
   const [state, setState] = useState({
     playerName: null,
-    playerStats: {"pts":0,"reb":0,"ast":0,"stl":0,"blk":0},
+    playerStats: {"pts":0,"reb":0,"ast":0,"stl":0,"blk":0,"fg_pct":0,"fg3_pct":0,"ft_pct":0},
     season: null,
     firstName: null,
     lastName: null,
@@ -44,9 +44,20 @@ export default function Player(props) {
       enabled: false
     },
     xaxis: {
-      categories: ['', '', '', '', '', '','',
-        '', ''
-      ],
+      categories: ['', '', '', '', '', '','','', ''],    
+    },
+    dataLabels: {
+      enabled: true,
+      offsetX: -6,
+      style: {
+        fontSize: '12px',
+        colors: ['#000']
+      }
+    },
+    stroke: {
+      show: true,
+      width: 1,
+      colors: ['#fff']
     },
     yaxis: {
       reversed: true,
