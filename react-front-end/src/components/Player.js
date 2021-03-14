@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import axios from "axios";
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 export default function Player(props) {
 
@@ -57,26 +59,35 @@ const handleChange = (event) => {
   }
 
   return (
-<div className="Player">
-<form onSubmit={handleSubmit}>
-  <label>
-    Name
-    <input 
-     type="text"
-     value={state.value}
-     onChange={handleChange}
-     placeholder="please enter players name"
-    />
-  </label>
-  <input type="submit" value="Submit"/>
-</form>
-Games Played: {state.playerStats["games_played"]}
-<br />
-Points Averaged: {state.playerStats["pts"]}
-<br />
-Rebounds Averaged: {state.playerStats["reb"]}
-<br />
-Assists Averaged: {state.playerStats["ast"]}
-</div>
-  )
-}
+    <div className="Player">
+    <form onSubmit={handleSubmit}>
+      <label>
+        <TextField 
+        id="standard-basic"
+        type="text"
+        value={state.value}
+        onChange={handleChange}
+        placeholder="Enter Player Name" />
+      </label>
+      <Button type="submit" value="Submit" variant="contained" color="primary">Submit</Button>
+    </form>
+    Games Played: {state.playerStats["games_played"]}
+    <br />
+    Points Averaged: {state.playerStats["pts"]}
+    <br />
+    Rebounds Averaged: {state.playerStats["reb"]}
+    <br />
+    Assists Averaged: {state.playerStats["ast"]}
+    <br />
+    Steals Averaged: {state.playerStats["stl"]}
+    <br />
+    Blocks Averaged: {state.playerStats["blk"]} 
+    <br />
+    FG% Averaged: {state.playerStats["fg_pct"]}
+    <br />
+    3P% Averaged: {state.playerStats["fg3_pct"]}
+    <br />
+    FT% Averaged: {state.playerStats["ft_pct"]}
+    </div>
+      )
+    }
