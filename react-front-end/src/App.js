@@ -1,40 +1,42 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import axios from "axios";
 
-class App extends Component {
-  constructor(props){
-    super(props)
-    this.state={
-      playerName: null,
-      playerStats: {}
-    }
-  }
+export default function Application(props) {
 
-handleSubmit = (e) => {
+  const [state, setState] = useState({
+    playerName: null,
+    playerStats: {}
+  });
+
+const handleSubmit = (e) => {
+  console.log("me dumb!")
   e.preventDefault();
-  this.getPlayerId()
-  console.log(this.state.playerName)
+  getPlayerId()
+  console.log(state.playerName)
 }
 
-handleChange = (event) => {
+const handleChange = (event) => {
   const replace = event.target.value.split(" ").join("_");
   if(replace.length > 0){
-    this.setState({playerName: replace})
+    setState((prev) => ({
+      ...prev,
+      playerName: replace
+    }));
   } else {
     alert("Please type players name!")
   }
 }
 
-  getPlayerId = () => {
-    axios.get(`https://www.balldontlie.io/api/v1/players?search=${this.state.playerName}`)
+  const getPlayerId = () => {
+    axios.get(`https://www.balldontlie.io/api/v1/players?search=${state.playerName}`)
     .then(async res => {
       // console.log(res.data.data)
-      if(res.data.data[0] === undefined){
+      if(typeof res.data.data[0] === "undefined"){
         alert("This player is either injured or hasn't played yet!")
       } else if(res.data.data.length > 1){
         alert("Pleases specify the name more!")
       } else{
-        await this.getPlayerStats(res.data.data[0].id)
+        await getPlayerStats(res.data.data[0].id)
 
       }
     }).catch(err => {
@@ -42,40 +44,47 @@ handleChange = (event) => {
     })
   }
 
-  getPlayerStats = (playerId) => {
+  const getPlayerStats = (playerId) => {
     axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=2006&player_ids[]=${playerId}`)
     .then(async res => {
       console.log(res.data.data)
-      this.setState({ playerStats: res.data.data[0]})
+      setState((prev) => ({
+        ...prev,
+        playerStats: res.data.data[0]
+      }));
     }).catch(err => {
       console.log(err)
     })
   }
+
+  // useEffect(() => {
+
+  //   }, []);
+
+
   
-  render(){
   return (
     <div className="App">
-     <form onSubmit={this.handleSubmit}>
+     <form onSubmit={handleSubmit}>
        <label>
          Name
          <input 
           type="text"
-          value={this.state.value}
-          onChange={this.handleChange}
+          value={state.value}
+          onChange={handleChange}
           placeholder="please enter players name"
          />
        </label>
        <input type="submit" value="Submit"/>
      </form>
-     games played: {this.state.playerStats["games_played"]}
+     games played: {state.playerStats["games_played"]}
      <br />
-     points averaged: {this.state.playerStats["pts"]}
+     points averaged: {state.playerStats["pts"]}
      <br />
-     rebounds averaged: {this.state.playerStats["reb"]}
+     rebounds averaged: {state.playerStats["reb"]}
      <br />
-     assists averaged: {this.state.playerStats["ast"]}
+     assists averaged: {state.playerStats["ast"]}
     </div>
   );
 }
-}
-export default App;
+
