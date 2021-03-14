@@ -9,7 +9,11 @@ export default function PlayerTwo(props) {
 
   const [state, setState] = useState({
     playerName: null,
-    playerStats: {}
+    playerStats: {},
+    season: null,
+    firstName: null,
+    lastName: null,
+    position: null,
   });
 
   const handleSubmit = (e) => {
@@ -52,6 +56,12 @@ export default function PlayerTwo(props) {
           alert("Pleases specify the name more!");
         } else {
           await getPlayerStats(res.data.data[0].id, state.season);
+          setState((prev) => ({
+            ...prev,
+            firstName: res.data.data[0].first_name,
+            lastName: res.data.data[0].last_name,
+            position: res.data.data[0].position,
+          }));
 
         }
       }).catch(err => {
@@ -84,7 +94,7 @@ export default function PlayerTwo(props) {
             value={state.value}
             onChange={handleChange}
             placeholder="Enter Player Name" />
-            <TextField
+          <TextField
             id="standard-basic"
             type="text"
             value={state.value}
@@ -93,6 +103,10 @@ export default function PlayerTwo(props) {
         </label>
         <Button type="submit" value="Submit" variant="contained" color="primary">Submit</Button>
       </form>
+      Player: {state.firstName} {state.lastName}
+      <br />
+      Position: {state.position}
+      <br />
     Games Played: {state.playerStats["games_played"]}
       <br />
     Points Averaged: {state.playerStats["pts"]}
