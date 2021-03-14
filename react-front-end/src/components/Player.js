@@ -125,7 +125,7 @@ export default function Player(props) {
 
   return (
     <div className="Player">
-      <img src="images/curry.png" alt="Curry" />
+      <img className="playerImage1" src="images/curry.png" alt="Curry" />
       <form onSubmit={handleSubmit}>
         <SportsBasketballIcon />
         <label>
