@@ -7,8 +7,11 @@
   border: dashed red 2px;
 }
 
-
-
+.Versus {
+  max-width: 200px;
+  max-height: 200px;
+  align-self: center;
+}
 
 /* .App {
   text-align: center;
