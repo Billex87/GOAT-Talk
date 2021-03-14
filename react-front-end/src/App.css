@@ -1,4 +1,16 @@
-.App {
+.Vs {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+  margin: auto;
+  justify-content: space-between;
+  border: dashed red 2px;
+}
+
+
+
+
+/* .App {
   text-align: center;
 }
 
@@ -30,4 +42,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
