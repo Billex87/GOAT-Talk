@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import axios from "axios";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
 
 export default function PlayerTwo(props) {
 
@@ -61,6 +62,7 @@ const handleChange = (event) => {
   return (
     <div className="Player">
     <form onSubmit={handleSubmit}>
+    <SportsBasketballIcon/>
       <label>
         <TextField 
         id="standard-basic"
