@@ -1,18 +1,28 @@
 .Vs {
   display: flex;
   flex-wrap: wrap;
-  width: 70%;
+  width: 90%;
   margin: auto;
   justify-content: space-between;
-  border: dashed red 2px;
+  border: dashed rgb(124, 124, 252) 2px;
 }
 
-.Versus {
-  max-width: 200px;
-  max-height: 200px;
-  align-self: center;
+.Tetris {
+  display: flex;
+  flex-direction: column;
+  font-size: larger;
+  font-weight: 600;
+  width: 100px;
+  height: 335px;
+  align-self: flex-end;
+  background-color: rgb(6, 77, 143);
+  align-items: center;
+  
 }
-
+.Tetris > p {
+  margin: 6.5px;
+padding: 0;
+}
 
 /* .App {
   text-align: center;

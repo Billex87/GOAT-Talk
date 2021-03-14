@@ -6,11 +6,20 @@ import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
 import './Player.css';
 import Chart from 'react-apexcharts'
 
+const styles = {
+  root: {
+    background: "black"
+  },
+  input: {
+    color: "white"
+  }
+};
+
 export default function Player(props) {
 
   const [state, setState] = useState({
     playerName: null,
-    playerStats: {},
+    playerStats: {"pts":0,"reb":0,"ast":0,"stl":0,"blk":0},
     season: null,
     firstName: null,
     lastName: null,
@@ -34,13 +43,13 @@ export default function Player(props) {
       enabled: false
     },
     xaxis: {
-      categories: ['PPG', 'RPG', 'APG', 'SPG', 'BPG', 'FG%',
-        '3PT%', 'FT%'
-      ],
+      categories: ['', '', '', '', '', '','',
+      '', ''
+    ],
     }
   },
 };
-
+ // Line 37 ----- PPG', 'RPG', 'APG', 'SPG', 'BPG', 'FG%','3PT%', 'FT%' - Graph Order
   const handleSubmit = (e) => {
     e.preventDefault();
     getPlayerId();
@@ -127,11 +136,9 @@ export default function Player(props) {
         </label>
         <Button type="submit" value="Submit" variant="contained" color="primary">Submit</Button>
       </form>
-      Player: {state.firstName} {state.lastName}
+      {state.firstName} {state.lastName} {state.position}
       <br />
-      Position: {state.position}
-      <br />
-    { state.playerStats["games_played"] && <Chart options={example.options} series={example.series} type="bar" height={350} />}
+    {<Chart options={example.options} series={example.series} type="bar" height={350} />}
 </div>
 );
 }

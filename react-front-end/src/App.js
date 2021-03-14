@@ -10,7 +10,16 @@ export default function Application(props) {
     <div className="App">
       <div className="Vs">
       <Player/>
-      <img className="Versus" src="images/versus.png" alt="Versus" />
+    <section className="Tetris">
+    <p>PPG</p>
+    <p>RPG</p>
+    <p>APG</p>
+    <p>SPG</p>
+    <p>BPG</p>
+    <p>FG%</p>
+    <p>3PT%</p>
+    <p>FT%</p>
+    </section>
       <PlayerTwo/>
       </div>
     </div>
