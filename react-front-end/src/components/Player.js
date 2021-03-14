@@ -5,8 +5,6 @@ import TextField from '@material-ui/core/TextField';
 import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
 import './Player.css';
 
-
-
 export default function Player(props) {
 
   const [state, setState] = useState({

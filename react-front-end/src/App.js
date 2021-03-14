@@ -10,7 +10,7 @@ export default function Application(props) {
     <div className="App">
       <div className="Vs">
       <Player/>
-      <img className="Versus" src="images/versus2.png" alt="Versus" />
+      <img className="Versus" src="images/versus.png" alt="Versus" />
       <PlayerTwo/>
       </div>
     </div>
