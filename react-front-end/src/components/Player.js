@@ -9,7 +9,8 @@ export default function Player(props) {
 
   const [state, setState] = useState({
     playerName: null,
-    playerStats: {}
+    playerStats: {},
+    season: null,
   });
 
   const handleSubmit = (e) => {
@@ -29,6 +30,17 @@ export default function Player(props) {
       alert("Please type players name!");
     }
   };
+  const handleChangeSeason = (event) => {
+    const replace = event.target.value.split(" ").join("_");
+    if (replace.length > 0) {
+      setState((prev) => ({
+        ...prev,
+        season: replace
+      }));
+    } else {
+      alert("Please type players name!");
+    }
+  };
 
   const getPlayerId = () => {
     axios.get(`https://www.balldontlie.io/api/v1/players?search=${state.playerName}`)
@@ -39,7 +51,7 @@ export default function Player(props) {
         } else if (res.data.data.length > 1) {
           alert("Pleases specify the name more!");
         } else {
-          await getPlayerStats(res.data.data[0].id);
+          await getPlayerStats(res.data.data[0].id, state.season);
 
         }
       }).catch(err => {
@@ -47,8 +59,8 @@ export default function Player(props) {
       });
   };
 
-  const getPlayerStats = (playerId) => {
-    axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=2017&player_ids[]=${playerId}`)
+  const getPlayerStats = (playerId, season) => {
+    axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=${season}&player_ids[]=${playerId}`)
       .then(async res => {
         console.log(res.data.data);
         setState((prev) => ({
@@ -72,9 +84,17 @@ export default function Player(props) {
             value={state.value}
             onChange={handleChange}
             placeholder="Enter Player Name" />
+          <TextField
+            id="standard-basic"
+            type="text"
+            value={state.value}
+            onChange={handleChangeSeason}
+            placeholder="Enter Season" />
         </label>
         <Button type="submit" value="Submit" variant="contained" color="primary">Submit</Button>
       </form>
+      Player: {state.playerStats["first_name"]}
+      <br />
     Games Played: {state.playerStats["games_played"]}
       <br />
     Points Averaged: {state.playerStats["pts"]}
