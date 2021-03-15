@@ -256,7 +256,7 @@ decimalsInFloat: undefined,
 
   return (
     <div className="Player">
-      <img className="playerImage2" src="images/lebron.png" alt="Lebron" />
+      <img className="playerImage2" src={`images/${state.playerName}.png`} alt={state.firstName} />
       <form onSubmit={handleSubmit}>
         <SportsBasketballIcon className="ball2"/>
         <label>
@@ -281,6 +281,6 @@ decimalsInFloat: undefined,
       <br />
     {<Chart options={stats.options} series={stats.series} type="bar" height={350} />}
     {<Chart options={efficiency.options} series={efficiency.series} type="bar" height={210} />}
-</div>
-);
+    </div>
+  );
 }

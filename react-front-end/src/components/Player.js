@@ -254,7 +254,8 @@ decimalsInFloat: undefined,
 
   return (
     <div className="Player">
-      <img className="playerImage2" src="images/curry.png" alt="curry" />
+      <img className="playerImage2" src={`images/${state.playerName}.png`}
+ alt={state.firstName} />
       <form onSubmit={handleSubmit}>
         <SportsBasketballIcon className="ball"/>
         <label>
