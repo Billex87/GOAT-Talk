@@ -19,7 +19,7 @@ export default function Player(props) {
     options: {
       yaxis: {
         max: 28,
-        reversed: true,
+        reversed: false,
         forceNiceScale: true,
         floating: false,
         decimalsInFloat: undefined,
@@ -112,7 +112,7 @@ export default function Player(props) {
       yaxis: {
         min: 0,
         max: 1,
-        reversed: true,
+        reversed: false,
         forceNiceScale: true,
         floating: false,
         tickAmount: 5,
