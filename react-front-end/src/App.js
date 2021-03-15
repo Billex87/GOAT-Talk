@@ -16,6 +16,8 @@ export default function Application(props) {
     <p>APG</p>
     <p>SPG</p>
     <p>BPG</p>
+    <p>   </p>
+    <p>   </p>
     <p>FG%</p>
     <p>3PT%</p>
     <p>FT%</p>

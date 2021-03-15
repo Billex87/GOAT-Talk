@@ -6,15 +6,6 @@ import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
 import './Player.css';
 import Chart from 'react-apexcharts'
 
-const styles = {
-  root: {
-    background: "black"
-  },
-  input: {
-    color: "white"
-  }
-};
-
 export default function Player(props) {
 
   const [state, setState] = useState({
@@ -25,13 +16,14 @@ export default function Player(props) {
     lastName: null,
     position: null,
   });
-  const example = {
+  const stats = {
     series: [{
-    data: [state.playerStats["pts"], state.playerStats["reb"], state.playerStats["ast"], state.playerStats["stl"], state.playerStats["blk"], state.playerStats["fg_pct"], state.playerStats["fg3_pct"], state.playerStats["ft_pct"]]
+    data: [state.playerStats["pts"], state.playerStats["reb"], state.playerStats["ast"], state.playerStats["stl"], state.playerStats["blk"]]
   }],
   options: {
     yaxis: {
   max: 28,
+  reversed: true,
   forceNiceScale: true,
   floating: false,
   decimalsInFloat: undefined,
@@ -54,7 +46,7 @@ export default function Player(props) {
       offsetX: 0,
       offsetY: 0
   }
-},
+  },
     plotOptions: {
       bar: {
         horizontal: true,
@@ -64,7 +56,7 @@ export default function Player(props) {
       enabled: false
     },
     xaxis: {
-      categories: ['', '', '', '', '', '','','', ''],    
+      categories: ['', '', '', '', '', ''],    
     },
     dataLabels: {
       enabled: true,
@@ -113,13 +105,85 @@ export default function Player(props) {
       width: 1,
       colors: ['#fff']
     },
-    yaxis: {
-      reversed: true
-    }
+    
   },
 };
-// Line 37 ----- PPG', 'RPG', 'APG', 'SPG', 'BPG', 'FG%','3PT%', 'FT%' - Graph Order
+const efficiency = {
+  series: [{
+  data: [state.playerStats["fg_pct"], state.playerStats["fg3_pct"], state.playerStats["ft_pct"]]
+}],
+options: {
+  yaxis: {
+min: 0,
+max: 1,
+reversed: true,
+forceNiceScale: true,
+floating: false,
+tickAmount: 5,
+decimalsInFloat: undefined,
+},
+  plotOptions: {
+    bar: {
+      horizontal: true,
+    }
+  },
+  dataLabels: {
+    enabled: false
+  },
+  xaxis: {
+    categories: ['', '', ''],    
+  },
+  dataLabels: {
+    enabled: true,
+    enabledOnSeries: undefined,
+    formatter: function (val, opts) {
+        return val
+    },
+    textAnchor: 'middle',
+    distributed: false,
+    offsetX: 0,
+    offsetY: 0,
+    style: {
+        fontSize: '14px',
+        fontFamily: 'Helvetica, Arial, sans-serif',
+        fontWeight: 'bold',
+        colors: undefined
+    },
+    background: {
+      enabled: true,
+      foreColor: '#fff',
+      padding: 4,
+      borderRadius: 2,
+      borderWidth: 1,
+      borderColor: '#fff',
+      opacity: 0.9,
+      dropShadow: {
+        enabled: false,
+        top: 1,
+        left: 1,
+        blur: 1,
+        color: '#000',
+        opacity: 0.45
+      }
+    },
+    dropShadow: {
+        enabled: false,
+        top: 1,
+        left: 1,
+        blur: 1,
+        color: '#000',
+        opacity: 0.45
+    }
+  },
+  stroke: {
+    show: true,
+    width: 1,
+    colors: ['#fff']
+  }, 
+},
+};
 
+ // Line 37 ----- PPG', 'RPG', 'APG', 'SPG', 'BPG', 'FG%','3PT%', 'FT%' - Graph Order
   const handleSubmit = (e) => {
     e.preventDefault();
     getPlayerId();
@@ -187,7 +251,7 @@ export default function Player(props) {
 
   return (
     <div className="Player">
-      <img className="playerImage1" src="images/curry.png" alt="Curry" />
+      <img className="playerImage2" src="images/curry.png" alt="curry" />
       <form onSubmit={handleSubmit}>
         <SportsBasketballIcon />
         <label>
@@ -208,7 +272,8 @@ export default function Player(props) {
       </form>
       {state.firstName} {state.lastName} {state.position}
       <br />
-    {<Chart options={example.options} series={example.series} type="bar" height={350} />}
+    {<Chart options={stats.options} series={stats.series} type="bar" height={350} />}
+    {<Chart options={efficiency.options} series={efficiency.series} type="bar" height={210} />}
 </div>
 );
 }
