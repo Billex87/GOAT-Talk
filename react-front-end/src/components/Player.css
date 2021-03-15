@@ -6,6 +6,12 @@
 .name{
   color: red;
 }
+.pos{
+color: blue;
+}
+.teamYear {
+  color: yellow;
+}
 .playerImage1 {
 width: 100%;
   
