@@ -15,6 +15,7 @@ export default function Player(props) {
     firstName: null,
     lastName: null,
     position: null,
+    team: null,
   });
   const stats = {
     series: [{
@@ -228,6 +229,7 @@ decimalsInFloat: undefined,
             firstName: res.data.data[0].first_name,
             lastName: res.data.data[0].last_name,
             position: res.data.data[0].position,
+            team: res.data.data[0].team.abbreviation,
           }));
 
         }
@@ -270,7 +272,7 @@ decimalsInFloat: undefined,
         </label>
         <Button type="submit" value="Submit" variant="contained" color="primary">Submit</Button>
       </form>
-      {state.firstName} {state.lastName} {state.position}
+      {state.firstName} {state.lastName} {state.position} {state.team}
       <br />
     {<Chart options={stats.options} series={stats.series} type="bar" height={350} />}
     {<Chart options={efficiency.options} series={efficiency.series} type="bar" height={210} />}
