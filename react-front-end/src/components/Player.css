@@ -4,12 +4,14 @@
   color: aqua;
 }
 .name{
-  color: red;
+  color: rgb(96, 154, 254);
+  font-size: 45px;
+  justify-content: flex-end;
 }
-.pos{
+.year{
 color: blue;
 }
-.teamYear {
+.team{
   color: yellow;
 }
 .playerImage1 {
