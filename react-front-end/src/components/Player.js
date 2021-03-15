@@ -30,53 +30,7 @@ export default function Player(props) {
     data: [state.playerStats["pts"], state.playerStats["reb"], state.playerStats["ast"], state.playerStats["stl"], state.playerStats["blk"], state.playerStats["fg_pct"], state.playerStats["fg3_pct"], state.playerStats["ft_pct"]]
   }],
   options: {
-    chart: {
-      type: 'bar',
-      height: 350,
-      animations: {
-        enabled: true,
-        easing: 'easeinout',
-        speed: 800,
-        animateGradually: {
-            enabled: true,
-            delay: 150
-        },
-        dynamicAnimation: {
-            enabled: true,
-            speed: 350
-        }
-    }
-    },
-//     theme: {
-//       mode: 'light', 
-//       palette: 'palette1', 
-//       monochrome: {
-//           enabled: false,
-//           color: '#255aee',
-//           shadeTo: 'light',
-//           shadeIntensity: 0.65
-//       },
-//   },
-//   theme: {
-//     mode: 'dark', 
-//     palette: 'palette1', 
-//     monochrome: {
-//         enabled: false,
-//         color: '#2983FF',
-//         shadeTo: 'dark',
-//         shadeIntensity: 0.65
-//     },
-// },
-yaxis: {
-  show: true,
-  showAlways: true,
-  showForNullSeries: true,
-  seriesName: undefined,
-  opposite: false,
-  reversed: false,
-  logarithmic: false,
-  tickAmount: 10,
-  min: 0,
+    yaxis: {
   max: 28,
   forceNiceScale: true,
   floating: false,
@@ -99,42 +53,7 @@ yaxis: {
       color: '#78909C',
       offsetX: 0,
       offsetY: 0
-  },
-  axisTicks: {
-      show: true,
-      borderType: 'solid',
-      color: '#78909C',
-      width: 6,
-      offsetX: 0,
-      offsetY: 0
-  },
-  title: {
-      text: undefined,
-      rotate: -90,
-      offsetX: 0,
-      offsetY: 0,
-      style: {
-          color: undefined,
-          fontSize: '12px',
-          fontFamily: 'Helvetica, Arial, sans-serif',
-          fontWeight: 600,
-          cssClass: 'apexcharts-yaxis-title',
-      },
-  },
-  crosshairs: {
-      show: true,
-      position: 'back',
-      stroke: {
-          color: '#b6b6b6',
-          width: 1,
-          dashArray: 0,
-      },
-  },
-  tooltip: {
-      enabled: true,
-      offsetX: 0,
-  },
-  
+  }
 },
     plotOptions: {
       bar: {
