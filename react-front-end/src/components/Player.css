@@ -3,7 +3,9 @@
   font-size: 20px;
   color: aqua;
 }
-
+.name{
+  color: red;
+}
 .playerImage1 {
 width: 100%;
   

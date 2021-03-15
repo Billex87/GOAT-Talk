@@ -213,9 +213,25 @@ decimalsInFloat: undefined,
       alert("Please Type Players Name!");
     }
   };
-
+  const getPlayerStats = (playerId, season) => {
+    const seasonAPIUrl = `https://www.balldontlie.io/api/v1/season_averages?season=${season}&player_ids[]=${playerId}`;
+    console.log("SeasonAPIUrl:", seasonAPIUrl);
+    axios.get(seasonAPIUrl)
+      .then(async res => {
+        console.log(res.data.data);
+        setState((prev) => ({
+          ...prev,
+          playerStats: res.data.data[0],
+          year: res.data.data[0].season
+        }));
+      }).catch(err => {
+        console.log(err);
+      });
+  };
   const getPlayerId = () => {
-    axios.get(`https://www.balldontlie.io/api/v1/players?search=${state.playerName}`)
+    const apiUrl = `https://www.balldontlie.io/api/v1/players?search=${state.playerName}`;
+    console.log("API URL:", apiUrl);
+    axios.get(apiUrl)
       .then(async res => {
         // console.log(res.data.data)
         if (typeof res.data.data[0] === "undefined") {
@@ -229,24 +245,10 @@ decimalsInFloat: undefined,
             firstName: res.data.data[0].first_name,
             lastName: res.data.data[0].last_name,
             position: res.data.data[0].position,
-            team: res.data.data[0].team.abbreviation,
+            city: res.data.data[0].team.city,
           }));
 
         }
-      }).catch(err => {
-        console.log(err);
-      });
-  };
-
-  const getPlayerStats = (playerId, season) => {
-    axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=${season}&player_ids[]=${playerId}`)
-      .then(async res => {
-        console.log(res.data.data);
-        setState((prev) => ({
-          ...prev,
-          playerStats: res.data.data[0],
-          year: res.data.data[0].season
-        }));
       }).catch(err => {
         console.log(err);
       });
@@ -273,8 +275,9 @@ decimalsInFloat: undefined,
         </label>
         <Button type="submit" value="Submit" variant="contained" color="primary">Submit</Button>
       </form>
-      {state.firstName} {state.lastName} {state.position} <br />
-      {state.team} {state.year} 
+      <div className="name">{state.firstName} {state.lastName}</div>
+       <div className="pos">{state.position}</div>
+      <div className="teamYear">{state.team} {state.year}</div> 
       <br />
     {<Chart options={stats.options} series={stats.series} type="bar" height={350} />}
     {<Chart options={efficiency.options} series={efficiency.series} type="bar" height={210} />}
