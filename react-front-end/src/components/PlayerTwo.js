@@ -255,7 +255,7 @@ decimalsInFloat: undefined,
     <div className="Player">
       <img className="playerImage2" src="images/lebron.png" alt="Lebron" />
       <form onSubmit={handleSubmit}>
-        <SportsBasketballIcon />
+        <SportsBasketballIcon className="ball2"/>
         <label>
           <TextField
             id="standard-basic"
