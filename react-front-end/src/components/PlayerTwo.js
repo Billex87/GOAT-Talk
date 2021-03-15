@@ -276,9 +276,8 @@ decimalsInFloat: undefined,
         <Button type="submit" value="Submit" variant="contained" color="primary">Submit</Button>
       </form>
       <div className="name">{state.firstName} {state.lastName}</div>
-       <div className="year">{state.year}</div>
-      <div className="team">{state.city}</div> 
-      <br />
+       <div className="year2">{state.year}</div>
+      <div className="team2">{state.city}</div> 
     {<Chart options={stats.options} series={stats.series} type="bar" height={350} />}
     {<Chart options={efficiency.options} series={efficiency.series} type="bar" height={210} />}
 </div>
