@@ -12,7 +12,6 @@
 .ball {
   color: orange;
 }
-
 .Tetris {
   display: flex;
   flex-direction: column;

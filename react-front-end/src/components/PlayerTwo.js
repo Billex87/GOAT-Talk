@@ -244,7 +244,8 @@ decimalsInFloat: undefined,
         console.log(res.data.data);
         setState((prev) => ({
           ...prev,
-          playerStats: res.data.data[0]
+          playerStats: res.data.data[0],
+          year: res.data.data[0].season
         }));
       }).catch(err => {
         console.log(err);
@@ -272,7 +273,8 @@ decimalsInFloat: undefined,
         </label>
         <Button type="submit" value="Submit" variant="contained" color="primary">Submit</Button>
       </form>
-      {state.firstName} {state.lastName} {state.position} {state.team}
+      {state.firstName} {state.lastName} {state.position} <br />
+      {state.team} {state.year} 
       <br />
     {<Chart options={stats.options} series={stats.series} type="bar" height={350} />}
     {<Chart options={efficiency.options} series={efficiency.series} type="bar" height={210} />}
