@@ -53,7 +53,7 @@ export default function Application(props) {
             firstName: res.data.data[0].first_name,
             lastName: res.data.data[0].last_name,
             position: res.data.data[0].position,
-            team: res.data.data[0].team.abbreviation,
+            team: res.data.data[0].team.city,
 
           }));
 
@@ -88,7 +88,7 @@ export default function Application(props) {
             firstName: res.data.data[0].first_name,
             lastName: res.data.data[0].last_name,
             position: res.data.data[0].position,
-            team: res.data.data[0].team.abbreviation,
+            team: res.data.data[0].team.city,
 
           }));
 

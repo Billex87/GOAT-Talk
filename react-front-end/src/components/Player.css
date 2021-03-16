@@ -11,13 +11,13 @@
 }
 .year{
   display: flex;
-  justify-content: flex-end;
+  align-content: flex-start;
   font-size: 30px;
 color: blue;
 }
 .year2{
   display: flex;
-  justify-content: flex-start;
+  justify-content: left;
   font-size: 30px;
 color: blue;
 }
