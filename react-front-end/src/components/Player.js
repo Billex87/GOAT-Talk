@@ -209,7 +209,7 @@ export default function Player(props) {
   return (
     <div className="Player">
       <img className={props.playerImage} src={`images/${state.playerName}.png`}
- alt={state.firstName} />
+ alt="" />
       <form onSubmit={handleSubmit}>
         <SportsBasketballIcon className="ball" />
         <label>
@@ -234,6 +234,7 @@ export default function Player(props) {
       <br />
       {<Chart options={stats.options} series={stats.series} type="bar" height={350} />}
       {<Chart options={efficiency.options} series={efficiency.series} type="bar" height={210} />}
+      <img className={props.playerAwards} src={`images/${state.playerName}_awards.png`} alt="" />
     </div>
   );
 }
