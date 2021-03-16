@@ -21,10 +21,10 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
 // CSS
-import './navbar.css'
+import './navbar.css';
 // Game Scores Dashboard
 import GameScores from './gameScores.js';
-import Search from './search'
+import Search from './search';
 import {
   Link
 } from "react-router-dom";
@@ -35,7 +35,7 @@ const drawerWidth = 208;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    fontFamily:'Roboto, sans-serif'
+    fontFamily: 'Roboto, sans-serif'
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -119,7 +119,7 @@ const useStyles = makeStyles((theme) => ({
   home: {
     textDecoration: 'none',
     color: 'white',
-    fontFamily:'Roboto, sans-serif'
+    fontFamily: 'Roboto, sans-serif'
   },
   paperAlt: {
     maxWidth: 200,
@@ -143,11 +143,11 @@ export default function Navbar() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
-  const d = new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
-  const months = {'1': "Jan", '2': "Feb", '3': "Mar", '4': "Apr", '5': "May", '6': "Jun", '7': "Jul", '8': "Aug", '9': "Sep", '10': "Oct", '11': "Nov", '12': "Dec",}
-  const currentDay = d.substring(2,4);
+  const d = new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" });
+  const months = { '1': "Jan", '2': "Feb", '3': "Mar", '4': "Apr", '5': "May", '6': "Jun", '7': "Jul", '8': "Aug", '9': "Sep", '10': "Oct", '11': "Nov", '12': "Dec", };
+  const currentDay = d.substring(2, 4);
   const currentYear = d.substring(5, 9);
-  const monthString = d.substring(0,1);
+  const monthString = d.substring(0, 1);
   const currentMonth = months[monthString];
 
   const handleDrawerOpen = () => {
@@ -170,8 +170,11 @@ export default function Navbar() {
         <Toolbar>
           <a href={"http://localhost:3000/"}><img src={"/images/logo.png"} alt="logo" /></a>
           <a href={"http://localhost:3000/"} className={classes.home}><h2></h2></a>
+          <Link to='/players'>Players</Link>
+          <Link to='/standings'>Standings</Link>
+          <Link to='/leaders'>Leaders</Link>
           <Typography variant="h6" noWrap className={classes.title}>
-            
+
           </Typography>
           <Search />
           <Paper className={classes.paperAlt}> {currentMonth} {currentDay}, {currentYear}</Paper>
@@ -218,14 +221,14 @@ export default function Navbar() {
           <Link to='/players'>
             <ListItem button key={'Players'}>
               <ListItemIcon><AccountBoxIcon /></ListItemIcon>
-              <ListItemText className={classes.link}  primary={'Players'} />
+              <ListItemText className={classes.link} primary={'Players'} />
             </ListItem>
           </Link>
           <Link to='/standings'>
             <ListItem button key={'Standings'}>
               <ListItemIcon><SportsBasketballIcon /></ListItemIcon>
-            <ListItemText className={classes.link}  primary={'Standings'} />
-          </ListItem>
+              <ListItemText className={classes.link} primary={'Standings'} />
+            </ListItem>
           </Link>
         </List>
         <Divider />
@@ -233,7 +236,7 @@ export default function Navbar() {
           <Link to='/leaders'>
             <ListItem button key={'Leaders'}>
               <ListItemIcon><EqualizerIcon /></ListItemIcon>
-              <ListItemText className={classes.link}  primary={'Leaders'} />
+              <ListItemText className={classes.link} primary={'Leaders'} />
             </ListItem>
           </Link>
           {/* <ListItem button key={'Compare'}>
