@@ -5,11 +5,11 @@ img {
   padding: 0.5em 0.1em;
 }
 h2 {
-  padding-left: 1em;
+  padding-left: 5em;
   font-family: 'Roboto', sans-serif;
 }
 svg {
-  color: rgb(0, 60, 255);
+  color: pink;
 }
 span {
   color: white;
@@ -17,6 +17,7 @@ span {
 
 .navBarLink {
   margin: 5px;
-  color: white;
+  color: red;
   font-size: 20px;
+  font-weight: bolder;
 }

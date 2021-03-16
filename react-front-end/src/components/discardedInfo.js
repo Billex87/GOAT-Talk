@@ -12,3 +12,29 @@
   <div style={{opacity: 0.4}}>{nextView}</div>
 </CSSTransition>
 </div>
+
+//Zone Chart From Player Overview
+<div 
+          className='bar-button' 
+          style={ (selected === 5) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '13px' } }>
+          <Link
+            onClick={()=>setSelected(5)}     
+            style={{
+              textDecoration: 'none',
+              color: 'black'
+            }}  
+            to={`${url}/zonechart`}>Zone Chart</Link>
+        </div>
+
+        // Game Logs From player.js
+        <div 
+        className='bar-button' 
+        style={ (selected === 2) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '15px' } }>
+        <Link 
+          onClick={()=>setSelected(2)}
+          style={{
+            textDecoration: 'none',
+            color: 'black'
+          }}
+         to={`${url}/gamelog`}>Game Log</Link>
+      </div>

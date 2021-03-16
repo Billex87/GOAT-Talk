@@ -88,7 +88,7 @@ export default function Player(props) {
   return(
     <div>
       <div className="player-header">
-        <img src={`${state.player_overview_all.athlete.headshot.href}`} alt={"Player Headshot"} style={{ width: '20em' }} />
+        <img src={`${state.player_overview_all.athlete.headshot.href}`} alt={"Player Headshot"} style={{ width: '30em' }} />
         <table className="player-info">
           <tbody>
             <tr>
@@ -125,7 +125,7 @@ export default function Player(props) {
       <div className="link-row">
         <div 
           className='bar-button' 
-          style={ (selected === 0) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '15px' } }>
+          style={ (selected === 0) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '20px', fontWeight: 'bold'} : { fontSize: '18px' } }>
           <Link 
             onClick={()=>setSelected(0)}
             style={{
@@ -147,23 +147,13 @@ export default function Player(props) {
         </div>
         <div 
           className='bar-button' 
-          style={ (selected === 2) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '15px' } }>
-          <Link 
-            onClick={()=>setSelected(2)}
-            style={{
-              textDecoration: 'none',
-              color: 'black'
-            }}
-           to={`${url}/gamelog`}>Game Log</Link>
-        </div>
-        <div 
-          className='bar-button' 
           style={ (selected === 3) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '15px' } }>
           <Link 
             onClick={()=>setSelected(3)}
             style={{
               textDecoration: 'none',
-              color: 'black'
+              color: 'black',
+              size: '18px'
             }} 
             to={`${url}/news`}>News</Link>
         </div>
@@ -178,17 +168,7 @@ export default function Player(props) {
             }} 
             to={`${url}/shotchart`}>Shot Chart</Link>
         </div>
-        <div 
-          className='bar-button' 
-          style={ (selected === 5) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '13px' } }>
-          <Link
-            onClick={()=>setSelected(5)}     
-            style={{
-              textDecoration: 'none',
-              color: 'black'
-            }}  
-            to={`${url}/zonechart`}>Zone Chart</Link>
-        </div>
+        
       </div>
       <hr />
 

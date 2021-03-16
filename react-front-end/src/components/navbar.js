@@ -121,16 +121,16 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     fontFamily: 'Roboto, sans-serif'
   },
-  paperAlt: {
-    maxWidth: 200,
-    margin: `${theme.spacing(1)}px auto`,
-    padding: theme.spacing(2),
-    background: 'transparent',
-    textEmphasis: 'bold',
-    fontSize: 18,
-    marginRight: '18px',
-    color: 'gold'
-  },
+  // paperAlt: {
+  //   maxWidth: 200,
+  //   margin: `${theme.spacing(1)}px auto`,
+  //   padding: theme.spacing(2),
+  //   background: 'transparent',
+  //   textEmphasis: 'bold',
+  //   fontSize: 18,
+  //   marginRight: '18px',
+  //   color: 'teal'
+  // },
   link: {
     textDecoration: 'none',
     color: 'black',

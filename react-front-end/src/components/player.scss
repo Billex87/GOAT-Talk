@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   .player-name {
-    font-size: 4em;
+    font-size: 6em;
   }
 }
 .link-row {
@@ -26,10 +26,13 @@
   padding-left: 30px;
   padding-right: 30px;
   img {
-    width: 5em;
+    width: 15em;
+    height: 15em;
   }
   h1 {
     font-weight: bold;
+    size: 30px;
+    color: red;
   }
 }
 .game-display {
@@ -58,7 +61,7 @@
 }
 .bottom-left {
   position: absolute;
-  bottom: 8px;
+  bottom: 10px;
   left: 16px;
 }
 
@@ -68,13 +71,13 @@
   padding-top: 50px;
 }
 
-.shot-chart {
-  margin-left: 25%;
-}
+// .shot-chart {
+//   margin-left: 25%;
+// }
 
-.zone-chart {
-  margin-left: 25%;
-}
+// .zone-chart {
+//   margin-left: 25%;
+// }
 .bar-button {
   display: flex;
   align-items: center;
