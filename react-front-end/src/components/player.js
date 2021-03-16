@@ -15,6 +15,7 @@ import {
 import './player.scss'
 import PlayerOverview from './player-overview'
 
+
 export default function Player(props) {
 
   const [loading, setLoading] = useState(true);
