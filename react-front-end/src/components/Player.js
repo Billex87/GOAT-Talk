@@ -1,254 +1,234 @@
-import React, { useState } from 'react';
-import axios from "axios";
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
-import './Player.css';
-import Chart from 'react-apexcharts';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import ShotChart from './ShotChart'
+import Heatmap from './Heatmap'
+import PlayerStats from './player-stats'
+import PlayerNews from './player-news'
+import PlayerGameLog from './player-game-log'
+import {
+  Switch,
+  Route,
+  Link,
+  useParams,
+  useRouteMatch
+} from "react-router-dom";
+import './player.scss'
+import PlayerOverview from './player-overview'
 
 export default function Player(props) {
 
+  const [loading, setLoading] = useState(true);
+  let { path, url } = useRouteMatch();
+  let playerID = useParams();
   const [state, setState] = useState({
-    playerName: null,
-    season: null,
+    player_overview_stats: [],
+    player_overview_all: [],
+    player_stats: [],
+    player_game_log: [],
+    player_playoff_stats: [],
+    player_news: [],
+    player_shots: [],
+    player_videos: []
   });
-  const stats = {
-    series: [{
-      data: [props.playerStats["pts"], props.playerStats["reb"], props.playerStats["ast"], props.playerStats["stl"], props.playerStats["blk"]]
-    }],
-    options: {
-      yaxis: {
-        max: 28,
-        reversed: props.reversed,
-        forceNiceScale: true,
-        floating: false,
-        decimalsInFloat: undefined,
-        labels: {
-          show: true,
-          align: 'right',
-          minWidth: 0,
-          maxWidth: 160,
-          style: {
-            colors: [],
-            fontSize: '12px',
-            fontFamily: 'Helvetica, Arial, sans-serif',
-            fontWeight: 400,
-            cssClass: 'apexcharts-yaxis-label',
-          },
-        },
-        axisBorder: {
-          show: true,
-          color: '#78909C',
-          offsetX: 0,
-          offsetY: 0
-        }
-      },
-      plotOptions: {
-        bar: {
-          horizontal: true,
-        }
-      },
-      dataLabels: {
-        enabled: false
-      },
-      xaxis: {
-        categories: ['', '', '', '', '', ''],
-      },
-      dataLabels: {
-        enabled: true,
-        enabledOnSeries: undefined,
-        formatter: function (val, opts) {
-          return val;
-        },
-        textAnchor: 'middle',
-        distributed: false,
-        offsetX: 0,
-        offsetY: 0,
-        style: {
-          fontSize: '14px',
-          fontFamily: 'Helvetica, Arial, sans-serif',
-          fontWeight: 'bold',
-          colors: undefined
-        },
-        background: {
-          enabled: true,
-          foreColor: '#fff',
-          padding: 4,
-          borderRadius: 2,
-          borderWidth: 1,
-          borderColor: '#fff',
-          opacity: 0.9,
-          dropShadow: {
-            enabled: false,
-            top: 1,
-            left: 1,
-            blur: 1,
-            color: '#000',
-            opacity: 0.45
-          }
-        },
-        dropShadow: {
-          enabled: false,
-          top: 1,
-          left: 1,
-          blur: 1,
-          color: '#000',
-          opacity: 0.45
-        }
-      },
-      stroke: {
-        show: true,
-        width: 1,
-        colors: ['#fff']
-      },
-    },
-  };
-  const efficiency = {
-    series: [{
-      data: [props.playerStats["fg_pct"], props.playerStats["fg3_pct"], props.playerStats["ft_pct"]]
-    }],
-    options: {
-      yaxis: {
-        min: 0,
-        max: 1,
-        reversed: props.reversed,
-        forceNiceScale: true,
-        floating: false,
-        tickAmount: 5,
-        decimalsInFloat: undefined,
-      },
-      plotOptions: {
-        bar: {
-          horizontal: true,
-        }
-      },
-      xaxis: {
-        categories: ['', '', ''],
-      },
-      dataLabels: {
-        enabled: true,
-        enabledOnSeries: undefined,
-        formatter: function (val, opts) {
-          return val;
-        },
-        textAnchor: 'middle',
-        distributed: false,
-        offsetX: 0,
-        offsetY: 0,
-        style: {
-          fontSize: '14px',
-          fontFamily: 'Helvetica, Arial, sans-serif',
-          fontWeight: 'bold',
-          colors: undefined
-        },
-        background: {
-          enabled: true,
-          foreColor: '#fff',
-          padding: 4,
-          borderRadius: 2,
-          borderWidth: 1,
-          borderColor: '#fff',
-          opacity: 0.9,
-          dropShadow: {
-            enabled: false,
-            top: 1,
-            left: 1,
-            blur: 1,
-            color: '#000',
-            opacity: 0.45
-          }
-        },
-        dropShadow: {
-          enabled: false,
-          top: 1,
-          left: 1,
-          blur: 1,
-          color: '#000',
-          opacity: 0.45
-        }
-      },
-      stroke: {
-        show: true,
-        width: 1,
-        colors: ['#fff']
-      },
-    },
-  };
+  const [selected, setSelected] = useState(0)
+  
 
-  // Line 37 ----- PPG', 'RPG', 'APG', 'SPG', 'BPG', 'FG%','3PT%', 'FT%' - Graph Order
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    props.getPlayer(state.playerName, state.season);
-    // getPlayerId();
-    // console.log(state.playerName);
-  };
+  useEffect(() => {
+    const url0 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/overview?region=us&lang=en&contentorigin=espn`);
+    const url1 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/?region=us&lang=en&contentorigin=espn`);
+    const url2 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/stats?region=us&lang=en&contentorigin=espn`);
+    const url3 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/gamelog?region=us&lang=en&contentorigin=espn`);
+    const url4 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/stats?region=us&lang=en&contentorigin=espn&seasontype=3`);
+    let url5 = axios.get('/api/dummy');
+    let url6 = axios.get('/api/dummy');
 
-  const handleChange = (event) => {
-    const replace = event.target.value.split(" ").join("_");
-    if (replace.length > 0) {
-      setState((prev) => ({
-        ...prev,
-        playerName: replace
-      }));
-    } else {
-      alert("Please Type Players Name!");
+
+    if (playerID.id == '1966') {
+      console.log("HERE!")
+      url5 = axios.get('/api/shots?name=lebron');
+      url6 = axios.get('/api/videos?name=lebron');//1966
     }
-  };
-  const handleChangeSeason = (event) => {
-    const replace = event.target.value.split(" ").join("_");
-    if (replace.length > 0) {
-      setState((prev) => ({
-        ...prev,
-        season: replace
-      }));
-    } else {
-      alert("Please Type Players Name!");
+    if (playerID.id == 3975) {
+      url5 = axios.get('/api/shots?name=curry');
+      url6 = axios.get('/api/videos?name=curry');//3975
+      console.log('HERE')
     }
-  };
+    
+    
 
-  return (
-    <div className="Player">
-      <img className={props.playerImage} src={`images/${state.playerName}.png`}
- alt={state.firstName} />
-      <form onSubmit={handleSubmit}>
-        <SportsBasketballIcon className="ball" />
-        <label>
-          <TextField
-            id="standard-basic"
-            type="text"
-            value={state.value}
-            onChange={handleChange}
-            placeholder="Enter Player Name" />
-          <TextField
-            id="standard-basic"
-            type="text"
-            value={state.value}
-            onChange={handleChangeSeason}
-            placeholder="Enter Season" />
-        </label>
-        <Button type="submit" value="Submit" variant="contained" color="primary">Submit</Button>
-      </form>
-      <div className={props.nameStyle}>{props.firstName} {props.lastName}</div>
-      <div className={props.yearStyle}>{props.year}</div>
-      <div className={props.teamStyle}>{props.team} {props.position}</div>
-      <br />
-      {<Chart options={stats.options} series={stats.series} type="bar" height={350} />}
-      {<Chart options={efficiency.options} series={efficiency.series} type="bar" height={210} />}
+    Promise.all([
+      Promise.resolve(url0),
+      Promise.resolve(url1),
+      Promise.resolve(url2),
+      Promise.resolve(url3),
+      Promise.resolve(url4),
+      Promise.resolve(url5),
+      Promise.resolve(url6)
+    ])
+      .then((all) => {
+        setState(prev => ({
+          ...prev,
+          player_overview_stats: all[0].data,
+          player_overview_all: all[1].data,
+          player_stats: all[2].data,
+          player_game_log: all[3].data,
+          player_playoff_stats: all[4].data,
+          player_shots: all[5].data,
+          player_videos: all[6].data
+        }))
+        setLoading(false)
+      })
+  }, [])
+
+  if (loading) {
+    return (null)
+  }
+
+  return(
+    <div>
+      <div className="player-header">
+        <img src={`${state.player_overview_all.athlete.headshot.href}`} alt={"Player Headshot"} style={{ width: '20em' }} />
+        <table className="player-info">
+          <tbody>
+            <tr>
+              <th colSpan="2" className="player-name">{state.player_overview_all.athlete.displayName}</th>
+            </tr>
+            <tr>
+              <th>Team:</th>
+              <td>{state.player_overview_all.athlete.team.displayName}</td>
+            </tr>
+            <tr>
+              <th>Number:</th>
+              <td>{state.player_overview_all.athlete.displayJersey}</td>
+            </tr>
+            <tr>
+              <th>Position:</th>
+              <td>{state.player_overview_all.athlete.position.displayName}</td>
+            </tr>
+            <tr>
+              <th>Height/Weight:</th>
+              <td>{state.player_overview_all.athlete.displayHeight}/ {state.player_overview_all.athlete.displayWeight}</td>
+            </tr>
+            <tr>
+              <th>DOB (age):</th>
+              <td>{state.player_overview_all.athlete.displayDOB} ({state.player_overview_all.athlete.age})</td>
+            </tr>
+            <tr>
+              <th>Draft Info</th>
+              <td>{state.player_overview_all.athlete.displayDraft}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <hr />
+      <div className="link-row">
+        <div 
+          className='bar-button' 
+          style={ (selected === 0) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '15px' } }>
+          <Link 
+            onClick={()=>setSelected(0)}
+            style={{
+              textDecoration: 'none',
+              color: 'black'
+            }}
+            to={`${url}`}>Overview</Link>
+        </div>
+        <div 
+          className='bar-button'
+          style={ (selected === 1) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '15px' } }>
+          <Link 
+            onClick={()=>setSelected(1)}
+            style={{
+              textDecoration: 'none',
+              color: 'black'
+            }}
+            to={`${url}/stats`}>Stats</Link>
+        </div>
+        <div 
+          className='bar-button' 
+          style={ (selected === 2) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '15px' } }>
+          <Link 
+            onClick={()=>setSelected(2)}
+            style={{
+              textDecoration: 'none',
+              color: 'black'
+            }}
+           to={`${url}/gamelog`}>Game Log</Link>
+        </div>
+        <div 
+          className='bar-button' 
+          style={ (selected === 3) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '15px' } }>
+          <Link 
+            onClick={()=>setSelected(3)}
+            style={{
+              textDecoration: 'none',
+              color: 'black'
+            }} 
+            to={`${url}/news`}>News</Link>
+        </div>
+        <div 
+          className='bar-button' 
+          style={ (selected === 4) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '15px' } }>
+          <Link 
+            onClick={()=>setSelected(4)}
+            style={{
+              textDecoration: 'none',
+              color: 'black'
+            }} 
+            to={`${url}/shotchart`}>Shot Chart</Link>
+        </div>
+        <div 
+          className='bar-button' 
+          style={ (selected === 5) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '13px' } }>
+          <Link
+            onClick={()=>setSelected(5)}     
+            style={{
+              textDecoration: 'none',
+              color: 'black'
+            }}  
+            to={`${url}/zonechart`}>Zone Chart</Link>
+        </div>
+      </div>
+      <hr />
+
+
+
+      <Switch>
+        <Route exact path={path}>
+          <PlayerOverview
+            stats={state.player_overview_stats.statistics}
+            nextGame={state.player_overview_stats.nextGame}
+          />
+        </Route>
+        <Route path={`${path}/stats`}>
+          <PlayerStats
+            stats={state.player_stats}
+            playoff_stats={state.player_playoff_stats}
+          />
+        </Route>
+        <Route path={`${path}/gamelog`}>
+          <PlayerGameLog
+            gameLog={state.player_game_log}
+          />
+        </Route>
+        <Route path={`${path}/news`}>
+          <PlayerNews
+            news={state.player_overview_stats.news}
+          />
+        </Route>
+        <Route path={`${path}/shotchart`}>
+          <ShotChart
+           shots={state.player_shots} 
+           videos={state.player_videos}/>
+          
+        </Route>
+          <Route path={`${path}/zonechart`}>
+          <Heatmap shots={state.player_shots} />
+        </Route>
+
+      </Switch>
+
     </div>
-  );
+  )
+
 }
-
-//style= color: PlayerOnestats > PlayerTwostats ? yellow : auto
-//look at api of chart for how you change the color
-
-//{style= color: props.PlayerOnestats > props.PlayerTwostats ? yellow : auto}
-
-//1.    If the two states are in the parent, then they can be compared. You can pass this value in as a prop.
-//<Player higherPPG={playerOne.ppg > playerTwo.ppg} />
-//2. Inside the Player component, you now have a boolean value to play with. Perfect for a ternary operator.
-//color: props.higherPPG ? 'red' : 'green'
-
-
-//higherPPG={state.playerOneStats.ppg > state.playerTwoStats.ppg}
-
- // colors: ['#F44336', '#E91E63', '#9C27B0'], can put this into the option object to make it work

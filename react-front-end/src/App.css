@@ -1,36 +1,14 @@
-.Vs {
-  display: flex;
-  flex-wrap: wrap;
-  width: 90%;
-  margin: auto;
-  justify-content: space-between;
-  border: dashed rgb(124, 124, 252) 2px;
-}
-.ball2 {
-  color: orange;
-}
-.ball {
-  color: orange;
-}
-.Tetris {
-  display: flex;
-  flex-direction: column;
-  font-size: larger;
-  font-weight: 600;
-  width: 100px;
-  height: 560px;
-  align-self: flex-end;
-  background-color: rgb(6, 77, 143);
-  align-items: center;
-  
-}
-.Tetris > p {
-  margin: 12px;
-padding: 5px;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.App {
+  text-align: center;
+  background-color: white;
+  font-family: 'Quicksand', sans-serif;
 }
 
-/* .App {
-  text-align: center;
+html {
+  background-color: white;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .App-logo {
@@ -61,5 +39,13 @@ padding: 5px;
   to {
     transform: rotate(360deg);
   }
-} */
+}
 
+.search {
+  display: flex;
+  justify-content: center;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: 'orange';
+}

@@ -1,127 +1,115 @@
-import React, { useState } from 'react';
-import axios from "axios";
-import Player from "./components/Player.js";
-import PlayerTwo from "./components/PlayerTwo.js";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './App.css';
+import Navbar from './components/navbar'
+import Search from './components/search'
+import Leaders from './components/leaders'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
-export default function Application(props) {
+import ShotChart from './components/ShotChart'
+import Heatmap from './components/Heatmap'
+import Player from './components/player'
+import Standings from './components/standings'
+import Players from './components/players'
+import Home from './components/home'
 
-  const [playerOneState, setPlayerOneState] = useState({
-    playerName: null,
-    playerStats: { "pts": 0, "reb": 0, "ast": 0, "stl": 0, "blk": 0, "fg_pct": 0, "fg3_pct": 0, "ft_pct": 0 },
-    season: null,
-    firstName: null,
-    lastName: null,
-    position: null,
-    team: null,
-    year: null,
+
+export default function App(props) {
+
+  const [loading, setLoading] = useState(true)
+
+  const [state, setState] = useState({
+    lebron_shots: [],
+    curry_shots: [],
+    lebron_stats: [],
+    curry_stats: [],
+    leaders: [],
+    players: [],
+    news : []
   })
 
-  const [playerTwoState, setPlayerTwoState] = useState({
-    playerName: null,
-    playerStats: { "pts": 0, "reb": 0, "ast": 0, "stl": 0, "blk": 0, "fg_pct": 0, "fg3_pct": 0, "ft_pct": 0 },
-    season: null,
-    firstName: null,
-    lastName: null,
-    position: null,
-    team: null,
-    year: null,
-  })
+  useEffect(() => {
+    const url0 = axios.get('/api/shots?name=lebron')
+    const url1 = axios.get('/api/shots?name=curry')
+    const url2 = axios.get('/api/dummy')
+    const url3 = axios.get('/api/dummy')
+    const url4 = axios.get('/api/leaders')
+    const url5 = axios.get(`https://onefeed.fan.api.espn.com/apis/v3/cached/contentEngine/oneFeed/leagues/nba?source=ESPN.com`)
+  
+    Promise.all([
+      Promise.resolve(url0),
+      Promise.resolve(url1),
+      Promise.resolve(url2),
+      Promise.resolve(url3),
+      Promise.resolve(url4),
+      Promise.resolve(url5)
+    ])
+    .then((all) => {
+      setState(prev => ({
+        ...prev,
+        lebron_shots: all[0].data,
+        curry_shots: all[1].data,
+        lebron_stats: all[2].data,
+        curry_stats: all[3].data,
+        leaders: all[4].data,
+        news: all[5].data
+      }))
+      setLoading(false)
+    })
+  }, [])
 
-  const getPlayerOne = (name, season) => {
-    axios.get(`https://www.balldontlie.io/api/v1/players?search=${name}`)
-      .then(async res => {
-        // console.log(res.data.data)
-        if (typeof res.data.data[0] === "undefined") {
-          alert("This player is either injured or hasn't played yet!");
-        } else if (res.data.data.length > 1) {
-          alert("Please specify the name more!");
-        } else {
-          axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=${season}&player_ids[]=${res.data.data[0].id}`)
-            .then(async res => {
-              console.log(res.data.data);
-              setPlayerOneState((prev) => ({
-                ...prev,
-                playerStats: res.data.data[0],
-                year: res.data.data[0].season
-              }));
-            }).catch(err => {
-              console.log(err);
-            });
-          setPlayerOneState((prev) => ({
-            ...prev,
-            firstName: res.data.data[0].first_name,
-            lastName: res.data.data[0].last_name,
-            position: res.data.data[0].position,
-            team: res.data.data[0].team.city,
+  let curry_shots_object = state.curry_shots.shots;
+  let curry_shots_array = [];
 
-          }));
-
-        }
-      }).catch(err => {
-        console.log(err);
-      });
-
-  };
-  const getPlayerTwo = (name, season) => {
-    axios.get(`https://www.balldontlie.io/api/v1/players?search=${name}`)
-      .then(async res => {
-        // console.log(res.data.data)
-        if (typeof res.data.data[0] === "undefined") {
-          alert("This player is either injured or hasn't played yet!");
-        } else if (res.data.data.length > 1) {
-          alert("Pleases specify the name more!");
-        } else {
-          axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=${season}&player_ids[]=${res.data.data[0].id}`)
-            .then(async res => {
-              console.log(res.data.data);
-              setPlayerTwoState((prev) => ({
-                ...prev,
-                playerStats: res.data.data[0],
-                year: res.data.data[0].season
-              }));
-            }).catch(err => {
-              console.log(err);
-            });
-          setPlayerTwoState((prev) => ({
-            ...prev,
-            firstName: res.data.data[0].first_name,
-            lastName: res.data.data[0].last_name,
-            position: res.data.data[0].position,
-            team: res.data.data[0].team.city,
-
-          }));
-
-        }
-      }).catch(err => {
-        console.log(err);
-      });
-
-  };
-
-
-
-
+  for (let s in curry_shots_object) {
+    curry_shots_array.push(curry_shots_object[s])
+  }
+  
+  if (loading){
+    return (null)
+  }
   return (
-    <div className="App">
-      <div className="Vs">
-      <Player reversed={true} playerImage={"playerImage1"} nameStyle={"name"} yearStyle={"year"} teamStyle={"team"} getPlayer={getPlayerOne} {...playerOneState}/>
-        <section className="Tetris">
-          <p>PPG</p>
-          <p>RPG</p>
-          <p>APG</p>
-          <p>SPG</p>
-          <p>BPG</p>
-          <p>   </p>
-          <p>   </p>
-          <p>FG%</p>
-          <p>3PT%</p>
-          <p>FT%</p>
-        </section>
-        <Player reversed={false} playerImage={"playerImage2"} nameStyle={"name2"} yearStyle={"year2"} teamStyle={"team2"} getPlayer={getPlayerTwo} {...playerTwoState} />
+    <Router>
+      <div>
+        <div className="App">
+          <Navbar />
+        </div>
+        <Switch>
+          <Route exact path="/">
+            <Home
+              news={state.news}
+            />
+          </Route>
+          <Route path="/leaders">
+            <Leaders 
+              leaders={state.leaders}
+            />
+          </Route>
+          <Route path="/shotchart">
+            <ShotChart shots={state["lebron_shots"]} />
+            <Heatmap shots={state["lebron_shots"]}/>
+          </Route>
+          <Route path='/player/:id'>
+            <Player />
+          </Route>
+          <Route path='/standings'>
+            <Standings
+              standings={state.standings}
+            />
+          </Route>
+          <Route path='/players/:term'>
+            <Players />
+          </Route>
+          <Route path='/players'>
+            <Players />
+          </Route>
+        </Switch>
       </div>
-    </div>
+    </Router>
   );
 }
-
 
