@@ -109,7 +109,7 @@ export default function Home(props) {
       </div>
 
       <footer>
-        <p style={{color: 'black', textShadow: 'none'}}>@ 2020 NBA Dashboard</p>
+        <p style={{color: 'black', textShadow: 'none'}}>@ 2021 Tale Of The Tape</p>
       </footer>
 
     </div>

@@ -169,7 +169,7 @@ export default function Navbar() {
       >
         <Toolbar>
           <a href={"http://localhost:3000/"}><img src={"/images/logo.png"} alt="logo" /></a>
-          <a href={"http://localhost:3000/"} className={classes.home}><h2>NBA Dashboard</h2></a>
+          <a href={"http://localhost:3000/"} className={classes.home}><h2></h2></a>
           <Typography variant="h6" noWrap className={classes.title}>
             
           </Typography>
