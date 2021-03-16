@@ -170,9 +170,9 @@ export default function Navbar() {
         <Toolbar>
           <a href={"http://localhost:3000/"}><img src={"/images/logo.png"} alt="logo" /></a>
           <a href={"http://localhost:3000/"} className={classes.home}><h2></h2></a>
-          <Link to='/players'>Players</Link>
-          <Link to='/standings'>Standings</Link>
-          <Link to='/leaders'>Leaders</Link>
+          <Link to='/players' className="navBarLink" style= {{ textDecoration: 'none' }}>Players</Link>
+          <Link to='/standings' className="navBarLink" style={{ textDecoration: 'none' }}>Standings</Link>
+          <Link to='/leaders' className="navBarLink" style={{ textDecoration: 'none' }}>Leaders</Link>
           <Typography variant="h6" noWrap className={classes.title}>
 
           </Typography>

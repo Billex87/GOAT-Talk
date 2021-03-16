@@ -14,3 +14,9 @@ svg {
 span {
   color: white;
 }
+
+.navBarLink {
+  margin: 5px;
+  color: white;
+  font-size: 20px;
+}
