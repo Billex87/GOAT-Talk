@@ -232,9 +232,9 @@ export default function Player(props) {
         </label>
         <Button type="submit" value="Submit" variant="contained" color="primary">Submit</Button>
       </form>
-      <div className="name">{props.firstNameOne} {props.lastNameOne} {props.positionOne}</div>
+      <div className="name">{props.firstNameOne} {props.lastNameOne}</div>
       <div className="year">{props.yearOne}</div>
-      <div className="team">{props.teamOne}</div>
+      <div className="team">{props.teamOne} {props.positionOne}</div>
       <br />
       {<Chart options={stats.options} series={stats.series} type="bar" height={350} />}
       {<Chart options={efficiency.options} series={efficiency.series} type="bar" height={210} />}
