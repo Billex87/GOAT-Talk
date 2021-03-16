@@ -56,33 +56,38 @@ export default function Player(props) {
     
     
 
-    Promise.all([
-      Promise.resolve(url0),
-      Promise.resolve(url1),
-      Promise.resolve(url2),
-      Promise.resolve(url3),
-      Promise.resolve(url4),
-      Promise.resolve(url5),
-      Promise.resolve(url6)
-    ])
-      .then((all) => {
-        setState(prev => ({
-          ...prev,
-          player_overview_stats: all[0].data,
-          player_overview_all: all[1].data,
-          player_stats: all[2].data,
-          player_game_log: all[3].data,
-          player_playoff_stats: all[4].data,
-          player_shots: all[5].data,
-          player_videos: all[6].data
-        }))
-        setLoading(false)
-      })
-  }, [])
-
-  if (loading) {
-    return (null)
-  }
+  return (
+    <div className="Player">
+      <img className={props.playerImage} src={`images/${state.playerName}.png`}
+ alt="" />
+      <form onSubmit={handleSubmit}>
+        <SportsBasketballIcon className="ball" />
+        <label>
+          <TextField
+            id="standard-basic"
+            type="text"
+            value={state.value}
+            onChange={handleChange}
+            placeholder="Enter Player Name" />
+          <TextField
+            id="standard-basic"
+            type="text"
+            value={state.value}
+            onChange={handleChangeSeason}
+            placeholder="Enter Season" />
+        </label>
+        <Button type="submit" value="Submit" variant="contained" color="primary">Submit</Button>
+      </form>
+      <div className={props.nameStyle}>{props.firstName} {props.lastName}</div>
+      <div className={props.yearStyle}>{props.year}</div>
+      <div className={props.teamStyle}>{props.team} {props.position}</div>
+      <br />
+      {<Chart options={stats.options} series={stats.series} type="bar" height={350} />}
+      {<Chart options={efficiency.options} series={efficiency.series} type="bar" height={210} />}
+      <img className={props.playerAwards} src={`images/${state.playerName}_awards.png`} alt="" />
+    </div>
+  );
+}
 
   return(
     <div>

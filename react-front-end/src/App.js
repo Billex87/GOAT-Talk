@@ -73,41 +73,22 @@ export default function App(props) {
     return (null)
   }
   return (
-    <Router>
-      <div>
-        <div className="App">
-          <Navbar />
-        </div>
-        <Switch>
-          <Route exact path="/">
-            <Home
-              news={state.news}
-            />
-          </Route>
-          <Route path="/leaders">
-            <Leaders 
-              leaders={state.leaders}
-            />
-          </Route>
-          <Route path="/shotchart">
-            <ShotChart shots={state["lebron_shots"]} />
-            <Heatmap shots={state["lebron_shots"]}/>
-          </Route>
-          <Route path='/player/:id'>
-            <Player />
-          </Route>
-          <Route path='/standings'>
-            <Standings
-              standings={state.standings}
-            />
-          </Route>
-          <Route path='/players/:term'>
-            <Players />
-          </Route>
-          <Route path='/players'>
-            <Players />
-          </Route>
-        </Switch>
+    <div className="App">
+      <div className="Vs">
+      <Player reversed={true} playerAwards={"steph"} playerAwardsImage={"curry_awards"} playerImage={"playerImage1"} nameStyle={"name"} yearStyle={"year"} teamStyle={"team"} getPlayer={getPlayerOne} {...playerOneState}/>
+        <section className="Tetris">
+          <p>PPG</p>
+          <p>RPG</p>
+          <p>APG</p>
+          <p>SPG</p>
+          <p>BPG</p>
+          <p>   </p>
+          <p>   </p>
+          <p>FG%</p>
+          <p>3PT%</p>
+          <p>FT%</p>
+        </section>
+        <Player reversed={false} playerAwards={"lebron"} playerAwardsImage={"lebron_awards"} playerImage={"playerImage2"} nameStyle={"name2"} yearStyle={"year2"} teamStyle={"team2"} getPlayer={getPlayerTwo} {...playerTwoState} />
       </div>
     </Router>
   );
