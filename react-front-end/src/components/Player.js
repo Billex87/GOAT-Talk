@@ -14,12 +14,12 @@ export default function Player(props) {
   });
   const stats = {
     series: [{
-      data: [props.playerOneStats["pts"], props.playerOneStats["reb"], props.playerOneStats["ast"], props.playerOneStats["stl"], props.playerOneStats["blk"]]
+      data: [props.playerStats["pts"], props.playerStats["reb"], props.playerStats["ast"], props.playerStats["stl"], props.playerStats["blk"]]
     }],
     options: {
       yaxis: {
         max: 28,
-        reversed: true,
+        reversed: props.reversed,
         forceNiceScale: true,
         floating: false,
         decimalsInFloat: undefined,
@@ -101,18 +101,17 @@ export default function Player(props) {
         width: 1,
         colors: ['#fff']
       },
-
     },
   };
   const efficiency = {
     series: [{
-      data: [props.playerOneStats["fg_pct"], props.playerOneStats["fg3_pct"], props.playerOneStats["ft_pct"]]
+      data: [props.playerStats["fg_pct"], props.playerStats["fg3_pct"], props.playerStats["ft_pct"]]
     }],
     options: {
       yaxis: {
         min: 0,
         max: 1,
-        reversed: true,
+        reversed: props.reversed,
         forceNiceScale: true,
         floating: false,
         tickAmount: 5,
@@ -122,9 +121,6 @@ export default function Player(props) {
         bar: {
           horizontal: true,
         }
-      },
-      dataLabels: {
-        enabled: false
       },
       xaxis: {
         categories: ['', '', ''],
@@ -182,7 +178,7 @@ export default function Player(props) {
   // Line 37 ----- PPG', 'RPG', 'APG', 'SPG', 'BPG', 'FG%','3PT%', 'FT%' - Graph Order
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.getPlayerOne(state.playerName, state.season);
+    props.getPlayer(state.playerName, state.season);
     // getPlayerId();
     // console.log(state.playerName);
   };
@@ -212,7 +208,7 @@ export default function Player(props) {
 
   return (
     <div className="Player">
-      <img className="playerImage2" src={`images/${state.playerName}.png`}
+      <img className="playerImage1" src={`images/${state.playerName}.png`}
  alt={state.firstName} />
       <form onSubmit={handleSubmit}>
         <SportsBasketballIcon className="ball" />
@@ -232,9 +228,9 @@ export default function Player(props) {
         </label>
         <Button type="submit" value="Submit" variant="contained" color="primary">Submit</Button>
       </form>
-      <div className="name">{props.firstNameOne} {props.lastNameOne}</div>
-      <div className="year">{props.yearOne}</div>
-      <div className="team">{props.teamOne} {props.positionOne}</div>
+      <div className="name">{props.firstName} {props.lastName}</div>
+      <div className="year">{props.year}</div>
+      <div className="team">{props.team} {props.position}</div>
       <br />
       {<Chart options={stats.options} series={stats.series} type="bar" height={350} />}
       {<Chart options={efficiency.options} series={efficiency.series} type="bar" height={210} />}
@@ -244,3 +240,15 @@ export default function Player(props) {
 
 //style= color: PlayerOnestats > PlayerTwostats ? yellow : auto
 //look at api of chart for how you change the color
+
+//{style= color: props.PlayerOnestats > props.PlayerTwostats ? yellow : auto}
+
+//1.    If the two states are in the parent, then they can be compared. You can pass this value in as a prop.
+//<Player higherPPG={playerOne.ppg > playerTwo.ppg} />
+//2. Inside the Player component, you now have a boolean value to play with. Perfect for a ternary operator.
+//color: props.higherPPG ? 'red' : 'green'
+
+
+//higherPPG={state.playerOneStats.ppg > state.playerTwoStats.ppg}
+
+ // colors: ['#F44336', '#E91E63', '#9C27B0'], can put this into the option object to make it work

@@ -6,24 +6,27 @@ import './App.css';
 
 export default function Application(props) {
 
-  const [state, setState] = useState({
-    playerOneName: null,
-    playerOneStats: { "pts": 0, "reb": 0, "ast": 0, "stl": 0, "blk": 0, "fg_pct": 0, "fg3_pct": 0, "ft_pct": 0 },
-    seasonOne: null,
-    firstNameOne: null,
-    lastNameOne: null,
-    positionOne: null,
-    teamOne: null,
-    yearOne: null,
-    playerTwoName: null,
-    playerTwoStats: { "pts": 0, "reb": 0, "ast": 0, "stl": 0, "blk": 0, "fg_pct": 0, "fg3_pct": 0, "ft_pct": 0 },
-    seasonTwo: null,
-    firstNameTwo: null,
-    lastNameTwo: null,
-    positionTwo: null,
-    teamTwo: null,
-    yearTwo: null
-  });
+  const [playerOneState, setPlayerOneState] = useState({
+    playerName: null,
+    playerStats: { "pts": 0, "reb": 0, "ast": 0, "stl": 0, "blk": 0, "fg_pct": 0, "fg3_pct": 0, "ft_pct": 0 },
+    season: null,
+    firstName: null,
+    lastName: null,
+    position: null,
+    team: null,
+    year: null,
+  })
+
+  const [playerTwoState, setPlayerTwoState] = useState({
+    playerName: null,
+    playerStats: { "pts": 0, "reb": 0, "ast": 0, "stl": 0, "blk": 0, "fg_pct": 0, "fg3_pct": 0, "ft_pct": 0 },
+    season: null,
+    firstName: null,
+    lastName: null,
+    position: null,
+    team: null,
+    year: null,
+  })
 
   const getPlayerOne = (name, season) => {
     axios.get(`https://www.balldontlie.io/api/v1/players?search=${name}`)
@@ -32,25 +35,25 @@ export default function Application(props) {
         if (typeof res.data.data[0] === "undefined") {
           alert("This player is either injured or hasn't played yet!");
         } else if (res.data.data.length > 1) {
-          alert("Pleases specify the name more!");
+          alert("Please specify the name more!");
         } else {
           axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=${season}&player_ids[]=${res.data.data[0].id}`)
             .then(async res => {
               console.log(res.data.data);
-              setState((prev) => ({
+              setPlayerOneState((prev) => ({
                 ...prev,
-                playerOneStats: res.data.data[0],
-                yearOne: res.data.data[0].season
+                playerStats: res.data.data[0],
+                year: res.data.data[0].season
               }));
             }).catch(err => {
               console.log(err);
             });
-          setState((prev) => ({
+          setPlayerOneState((prev) => ({
             ...prev,
-            firstNameOne: res.data.data[0].first_name,
-            lastNameOne: res.data.data[0].last_name,
-            positionOne: res.data.data[0].position,
-            teamOne: res.data.data[0].team.abbreviation,
+            firstName: res.data.data[0].first_name,
+            lastName: res.data.data[0].last_name,
+            position: res.data.data[0].position,
+            team: res.data.data[0].team.abbreviation,
 
           }));
 
@@ -72,20 +75,20 @@ export default function Application(props) {
           axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=${season}&player_ids[]=${res.data.data[0].id}`)
             .then(async res => {
               console.log(res.data.data);
-              setState((prev) => ({
+              setPlayerTwoState((prev) => ({
                 ...prev,
-                playerTwoStats: res.data.data[0],
-                yearTwo: res.data.data[0].season
+                playerStats: res.data.data[0],
+                year: res.data.data[0].season
               }));
             }).catch(err => {
               console.log(err);
             });
-          setState((prev) => ({
+          setPlayerTwoState((prev) => ({
             ...prev,
-            firstNameTwo: res.data.data[0].first_name,
-            lastNameTwo: res.data.data[0].last_name,
-            positionTwo: res.data.data[0].position,
-            teamTwo: res.data.data[0].team.abbreviation,
+            firstName: res.data.data[0].first_name,
+            lastName: res.data.data[0].last_name,
+            position: res.data.data[0].position,
+            team: res.data.data[0].team.abbreviation,
 
           }));
 
@@ -102,7 +105,7 @@ export default function Application(props) {
   return (
     <div className="App">
       <div className="Vs">
-        <Player getPlayerOne = {getPlayerOne} {...state}/>
+        <Player reversed={true} getPlayer={getPlayerOne} {...playerOneState}/>
         <section className="Tetris">
           <p>PPG</p>
           <p>RPG</p>
@@ -115,7 +118,7 @@ export default function Application(props) {
           <p>3PT%</p>
           <p>FT%</p>
         </section>
-        <PlayerTwo getPlayerTwo = {getPlayerTwo} {...state} />
+        <Player reversed={false} getPlayer={getPlayerTwo} {...playerTwoState} />
       </div>
     </div>
   );
