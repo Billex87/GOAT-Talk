@@ -118,7 +118,7 @@ export default function Application(props) {
           <p>3PT%</p>
           <p>FT%</p>
         </section>
-        <Player reversed={false} playerImage={"playerImage2"} nameStyle={"name"} yearStyle={"year"} teamStyle={"team"} getPlayer={getPlayerTwo} {...playerTwoState} />
+        <Player reversed={false} playerImage={"playerImage2"} nameStyle={"name2"} yearStyle={"year2"} teamStyle={"team2"} getPlayer={getPlayerTwo} {...playerTwoState} />
       </div>
     </div>
   );
