@@ -208,7 +208,7 @@ export default function Player(props) {
 
   return (
     <div className="Player">
-      <img className="playerImage1" src={`images/${state.playerName}.png`}
+      <img className={props.playerImage} src={`images/${state.playerName}.png`}
  alt={state.firstName} />
       <form onSubmit={handleSubmit}>
         <SportsBasketballIcon className="ball" />
@@ -228,9 +228,9 @@ export default function Player(props) {
         </label>
         <Button type="submit" value="Submit" variant="contained" color="primary">Submit</Button>
       </form>
-      <div className="name">{props.firstName} {props.lastName}</div>
-      <div className="year">{props.year}</div>
-      <div className="team">{props.team} {props.position}</div>
+      <div className={props.nameStyle}>{props.firstName} {props.lastName}</div>
+      <div className={props.yearStyle}>{props.year}</div>
+      <div className={props.teamStyle}>{props.team} {props.position}</div>
       <br />
       {<Chart options={stats.options} series={stats.series} type="bar" height={350} />}
       {<Chart options={efficiency.options} series={efficiency.series} type="bar" height={210} />}

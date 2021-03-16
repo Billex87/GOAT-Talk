@@ -105,7 +105,7 @@ export default function Application(props) {
   return (
     <div className="App">
       <div className="Vs">
-        <Player reversed={true} getPlayer={getPlayerOne} {...playerOneState}/>
+      <Player reversed={true} playerImage={"playerImage1"} nameStyle={"name"} yearStyle={"year"} teamStyle={"team"} getPlayer={getPlayerOne} {...playerOneState}/>
         <section className="Tetris">
           <p>PPG</p>
           <p>RPG</p>
@@ -118,7 +118,7 @@ export default function Application(props) {
           <p>3PT%</p>
           <p>FT%</p>
         </section>
-        <Player reversed={false} getPlayer={getPlayerTwo} {...playerTwoState} />
+        <Player reversed={false} playerImage={"playerImage2"} nameStyle={"name"} yearStyle={"year"} teamStyle={"team"} getPlayer={getPlayerTwo} {...playerTwoState} />
       </div>
     </div>
   );
