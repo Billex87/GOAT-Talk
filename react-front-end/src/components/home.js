@@ -21,7 +21,7 @@ export default function Home(props) {
               <div style={{height: '100%', color: 'white', display: 'flex', flexDirection: 'column'}}>
                 <p style={{position: "relative", left: "6%", top: "35%", textEmphasis: 'bold', fontSize: '15px', textShadow:
   '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'}}>Player Stats</p>
-                <img src={""} style={{height: '320px', width: '250px', position: 'relative', transition: '0.5s', zIndex: 11, transformStyle: 'preserve-3d', transform: 'translate3d(2%,-30%,0px)'}} />
+                <img src={""} style={{height: '320px', width: '250px', position: 'relative', transition: '0.5s', zIndex: 11, transformStyle: 'preserve-3d', transform: 'translate3d(2%,-30%,0px)'}} alt="players" />
               </div>
           </Paper>
         </Tilt>
@@ -33,7 +33,7 @@ export default function Home(props) {
               <div style={{height: '100%', color: 'purple', display: 'flex', flexDirection: 'column'}}>
                 <p style={{position: "relative", left: "20%", top: "55%", textEmphasis: 'bold', fontSize: '14px', textShadow:
   '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'}}> League Standings</p>
-                <img src={"/images/bronbron.png"} style={{height: '390px', width: '240px', position: 'relative', transition: '0.5s', zIndex: 11, transformStyle: 'preserve-3d', transform: 'translate3d(20%,-30%,0px)'}} />
+                <img src={"/images/bronbron.png"} style={{height: '390px', width: '240px', position: 'relative', transition: '0.5s', zIndex: 11, transformStyle: 'preserve-3d', transform: 'translate3d(20%,-30%,0px)'}} alt="standings" />
               </div>
           </Paper>
         </Tilt>
@@ -45,7 +45,7 @@ export default function Home(props) {
               <div style={{height: '100%', color: 'black', display: 'flex', flexDirection: 'column'}}>
                 <p style={{position: "relative", left: "7%", top: "25%", textShadow:
   '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'}}>League Leaders</p>
-                <img  style={{height: '320px', width: '250px', position: 'relative', transition: '0.5s', zIndex: 11, transformStyle: 'preserve-3d', transform: 'translate3d(0%,-25%,0px)'}} />
+                <img  style={{height: '320px', width: '250px', position: 'relative', transition: '0.5s', zIndex: 11, transformStyle: 'preserve-3d', transform: 'translate3d(0%,-25%,0px)'}} alt="leaders" />
               </div>
           </Paper>
         </Tilt>
@@ -54,7 +54,7 @@ export default function Home(props) {
       <div>
       </div>
       <footer>
-        // <p style={{color: 'black', textShadow: 'none'}}>@ 2021 Tale Of The Tape</p>
+        <p style={{color: 'black', textShadow: 'none'}}>@ 2021 Tale Of The Tape</p>
       </footer>
 
 
