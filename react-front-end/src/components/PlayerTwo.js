@@ -235,13 +235,8 @@ export default function Player(props) {
       <div className="year2">{props.yearTwo}</div>
       <div className="team2">{props.teamTwo}</div>
       <br />
-<<<<<<< HEAD
       {<Chart options={stats.options} series={stats.series} type="bar" height={350} />}
       {<Chart options={efficiency.options} series={efficiency.series} type="bar" height={210} />}
-=======
-    {<Chart options={stats.options} series={stats.series} type="bar" height={350} />}
-    {<Chart options={efficiency.options} series={efficiency.series} type="bar" height={210} />}
->>>>>>> dynamic_images
     </div>
   );
 }
