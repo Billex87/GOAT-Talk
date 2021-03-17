@@ -16,7 +16,6 @@ import {
 } from "react-router-dom";
 import { getColDef } from '@material-ui/data-grid';
 
-
 const drawerWidth = 208;
 
 const useStyles = makeStyles((theme) => ({
@@ -31,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     zIndex: theme.zIndex.drawer + 1,
-    backgroundColor: '#311b92',
+    backgroundColor: 'rgb(43, 107, 177)'
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -50,40 +49,6 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-  },
-  drawerOpen: {
-    backgroundColor: '#131313',
-    width: drawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(26) + 1,
-    },
-  },
-  drawerClose: {
-    backgroundColor: '#131313',
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    overflowX: 'hidden',
-    width: theme.spacing(7) + 1,
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(7) + 1,
-    },
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-start',
   },
   content: {
     flexGrow: 1,
@@ -119,9 +84,6 @@ const useStyles = makeStyles((theme) => ({
   extendedIcon: {
     marginRight: theme.spacing(1),
   },
-  searchIcon: {
-    color: 'gold',
-  },
 }));
 
 export default function Navbar() {
@@ -145,7 +107,8 @@ export default function Navbar() {
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
-        // style={{ background: '#2E3B55' }}
+        style={{ background: 'rgb(43, 107, 177)' }}
+        //nav bar header color
       >
         <Toolbar>
           <a href={"http://localhost:3000/"}><img className="goatPhoto" src={"/images/goat.png"} alt="logo" /></a>
