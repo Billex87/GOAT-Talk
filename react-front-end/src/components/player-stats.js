@@ -23,7 +23,22 @@ export default function PlayerStats(props) {
 
       rowObj[avgColumns[index + 2].field] = stat;
     })
+
+    rowObj.FTA = Math.round(((rowObj.FT.split('-')[1])*(rowObj.GP))* 100) / 100;
+
+    rowObj["3PTA"] = Math.round(((rowObj["3PT"].split('-')[1])*(rowObj.GP))* 100) / 100;
+
+    rowObj.FGA = Math.round(((rowObj.FG.split('-')[1])*(rowObj.GP))* 100) / 100;
+
+    rowObj.TFGA = Math.round(rowObj.FGA + rowObj["3PTA"]);
+
+    rowObj.TSA = rowObj.TFGA + 0.44 * rowObj.FTA;
+    
+    rowObj["TS%"] = Math.round(((rowObj.PTS * rowObj.GP)/(rowObj.TSA * 2))*100* 100) / 100;
+    console.log("TS% ", rowObj["TS%"]);
+    
     avgRows.push(rowObj);
+  
   })
 
   const totalsColumns = [
