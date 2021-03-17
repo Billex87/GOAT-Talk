@@ -13,7 +13,7 @@ export default function PlayerGameLog(props) {
     gamesArray.push(props.gameLog.events[game])
   }
   const reversedArray = gamesArray.reverse();
-  console.log(typeof reversedArray[1].gameDate, reversedArray[1].gameDate)
+  console.log(reversedArray[1].gameDate, reversedArray[1].gameDate)
   
 
 
