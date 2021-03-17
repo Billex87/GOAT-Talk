@@ -9,7 +9,7 @@ h2 {
   font-family: 'Roboto', sans-serif;
 }
 svg {
-  color: gold;
+  color: rgb(153, 152, 152);
 }
 span {
   color: white;
@@ -17,7 +17,7 @@ span {
 
 .navBarLink {
   margin: 20px;
-  color: gold;
+  color: rgb(153, 152, 152);
   font-size: 20px;
   font-weight: bolder;
 }
@@ -28,7 +28,7 @@ span {
 }
 
 .MuiOutlinedInput-input {
-  background-color: rgb(191, 191, 191) !important;
+  background-color: rgb(153, 152, 152) !important;
 }
 ..MuiSvgIcon-root{
   color: black !important;

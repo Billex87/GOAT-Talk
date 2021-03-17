@@ -112,7 +112,7 @@ export default function Navbar() {
       >
         <Toolbar>
           <a href={"http://localhost:3000/"}><img className="goatPhoto" src={"/images/goat.png"} alt="logo" /></a>
-          <h1 style={{color: 'gold'}}>Goat Talk</h1>
+          <h1 style={{color: 'rgb(153, 152, 152)'}}>Goat Talk</h1>
           <a href={"http://localhost:3000/"} className={classes.home}><h2></h2></a>
           <Button variant="outlined" size="small"><Link to='/players' className="navBarLink" style= {{ textDecoration: 'none',  margin: theme.spacing(.5)}}>Players</Link></Button>&emsp;
           <Button variant="outlined" size="small"><Link to='/standings' className="navBarLink" style={{ textDecoration: 'none',  margin: theme.spacing(.5)}}>Standings</Link></Button>&emsp;

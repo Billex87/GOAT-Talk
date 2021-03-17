@@ -12,6 +12,7 @@
 .MuiDataGrid-root .MuiDataGrid-colCellTitle {
   color: white;
   font-weight: bolder;
+  align-items: center;
 }
 
 .Mui-even, .Mui-even:hover {

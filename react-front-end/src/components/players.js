@@ -64,20 +64,20 @@ export default function Player(props) {
 
   const theme = createMuiTheme({
     typography: {
-      fontSize: 20,
+      fontSize: 35,
       color: 'white'
     },
   })
 
   const columns = [
     { field: 'id', hide: true},
-    {field: 'displayName', headerName: 'Active NBA Players', width: 350, renderCell: (params) => {
+    {field: 'displayName', headerName: 'Active NBA Players', width: 450, renderCell: (params) => {
       return(<a style={{textDecoration: 'none', color: 'black'}} href={`/player/${params.row.id}`}><img style={{verticalAlign: 'middle', width: '88px'}} src={params.row.img}/>{params.row.displayName}</a>)
     }},
-    {field: 'position', headerName: 'Position', width: 120},
-    {field: 'teamShortName', headerName: 'Teams', width: 100,},
-    {field: 'age', headerName: 'Age'},
-    {field: 'debutYear', headerName: 'Drafted', width: 150}
+    {field: 'position', headerName: 'Position', width: 180},
+    {field: 'teamShortName', headerName: 'Teams', width: 150},
+    {field: 'age', headerName: 'Age', width: 120},
+    {field: 'debutYear', headerName: 'Drafted', width: 180}
   ]
   const rows = [
   ]
