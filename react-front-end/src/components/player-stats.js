@@ -70,6 +70,9 @@ export default function PlayerStats(props) {
   const theme = createMuiTheme({
     typography: {
       fontSize: 12
+    },
+    palette: {
+      type: "dark",
     }})
 
   const gloss1 = props.stats.glossary.slice(0, 9);

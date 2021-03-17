@@ -16,7 +16,6 @@ import Standings from './components/standings';
 import Players from './components/players';
 import Home from './components/home';
 
-
 export default function App(props) {
 
   const [loading, setLoading] = useState(true);
@@ -73,11 +72,11 @@ export default function App(props) {
   }
   return (
     <Router>
-      <div>
+      <div className="rightColor">
         <div className="App">
           <Navbar />
         </div>
-        <div className="rightColor">
+        <div>
           <Switch>
             <Route exact path="/">
               <Home

@@ -108,6 +108,9 @@ export default function PlayerGameLog(props) {
   const theme = createMuiTheme({
     typography: {
       fontSize: 12
+    },
+    palette: {
+      type: "dark",
     }})
 
   return(

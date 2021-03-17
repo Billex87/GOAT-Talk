@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
 import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
 import './navbar.css';
@@ -110,7 +111,13 @@ const useStyles = makeStyles((theme) => ({
   link: {
     color: 'black',
     textDecoration: 'underline'
-  }
+  },
+  margin: {
+    margin: theme.spacing(1),
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(1),
+  },
 }));
 
 export default function Navbar() {
@@ -134,18 +141,18 @@ export default function Navbar() {
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
+        // style={{ background: '#2E3B55' }}
       >
         <Toolbar>
           <a href={"http://localhost:3000/"}><img className="goatPhoto" src={"/images/goat.png"} alt="logo" /></a>
           <SportsBasketballIcon />
           <a href={"http://localhost:3000/"} className={classes.home}><h2></h2></a>
-          <Link to='/players' className="navBarLink" style= {{ textDecoration: 'none' }}>Players</Link>
-          <Link to='/standings' className="navBarLink" style={{ textDecoration: 'none' }}>Standings</Link>
-          <Link to='/leaders' className="navBarLink" style={{ textDecoration: 'none' }}>Leaders</Link>
+          <Button variant="outlined" size="small"><Link to='/players' className="navBarLink" style= {{ textDecoration: 'none',  margin: theme.spacing(.5)}}>Players</Link></Button>
+          <Button variant="outlined" size="small"><Link to='/standings' className="navBarLink" style={{ textDecoration: 'none',  margin: theme.spacing(.5)}}>Standings</Link></Button>
+          <Button variant="outlined" size="small"><Link to='/leaders' className="navBarLink" style={{ textDecoration: 'none',  margin: theme.spacing(.5)}}>Leaders</Link></Button>
           <Typography variant="h6" noWrap className={classes.title}>
-
           </Typography>
-          <Search />
+          <Search/>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -153,7 +160,6 @@ export default function Navbar() {
             onClick={handleDrawerOpen}
             className={clsx(open && classes.hide)}
           >
-            <MenuIcon />
           </IconButton>
         </Toolbar>
       </AppBar>

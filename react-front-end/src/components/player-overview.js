@@ -29,6 +29,9 @@ export default function PlayerOverview(props) {
   const theme = createMuiTheme({
     typography: {
       fontSize: 12
+    },
+    palette: {
+      type: "dark",
     }})
 
 

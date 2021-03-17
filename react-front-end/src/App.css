@@ -50,6 +50,9 @@ html {
   background-color: 'orange';
 }
 
-/* .rightColor {
+.rightColor {
   background-color: black;
-} */
+}
+.body {
+  background-color:black
+}

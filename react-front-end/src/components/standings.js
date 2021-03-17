@@ -136,6 +136,9 @@ export default function Standings(props) {
   const theme = createMuiTheme({
     typography: {
       fontSize: 12,
+    },
+    palette: {
+      type: "dark",
     }
   })
 

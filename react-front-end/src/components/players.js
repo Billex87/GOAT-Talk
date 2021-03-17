@@ -66,7 +66,9 @@ export default function Player(props) {
   const theme = createMuiTheme({
     typography: {
       fontSize: 30,
-    
+    },
+    palette: {
+      type: "dark",
     }
   })
 
