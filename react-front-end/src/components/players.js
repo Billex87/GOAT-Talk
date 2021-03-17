@@ -55,10 +55,8 @@ export default function Player(props) {
   let allPlayers
 
   if (!allPlayersSearched) {
-    // console.log("allplayers searched falsy")
     allPlayers = players.players.athlete;
   } else {
-    // console.log("allplayers searched truthy")
     allPlayers = allPlayersSearched;
   }
 
@@ -66,16 +64,29 @@ export default function Player(props) {
   const theme = createMuiTheme({
     typography: {
       fontSize: 30,
-    
-    }
+    },
+    palette: {
+      primary: {
+        light: '#757ce8',
+        main: '#3f50b5',
+        dark: '#002884',
+        contrastText: '#fff',
+      },
+      secondary: {
+        light: '#ff7961',
+        main: '#f44336',
+        dark: '#ba000d',
+        contrastText: '#000',
+      },
+    },
   })
 
   const columns = [
     { field: 'id', hide: true},
     {field: 'displayName', headerName: 'Name', width: 350, renderCell: (params) => {
-      return(<a style={{textDecoration: 'none', color: 'blue'}} href={`/player/${params.row.id}`}><img style={{verticalAlign: 'middle', width: '48px'}} src={params.row.img} alt=""/>{params.row.displayName}</a>)
+      return(<a style={{textDecoration: 'none', color: 'blue'}} href={`/player/${params.row.id}`}><img style={{verticalAlign: 'middle', width: '88px'}} src={params.row.img}/>{params.row.displayName}</a>)
     }},
-    {field: 'position', headerName: 'Position', width: 200},
+    {field: 'position', headerName: 'Position', width: 150},
     {field: 'teamShortName', headerName: 'Teams', width: 150,},
     {field: 'age', headerName: 'Age'},
     {field: 'debutYear', headerName: 'Drafted', width: 150}
@@ -99,8 +110,8 @@ export default function Player(props) {
   // console.log(rows)
 
   return (
-    <div style={{ backgroundColor: 'pink', color: 'teal', height: 750, width: '80%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px'}}>
-      <h1>Players</h1>
+    <div style={{color: 'teal', height: 750, width: '80%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px'}}>
+     <img  src={"/images/nba.png"} alt="logo" className="nbaLogo"/>
       <MuiThemeProvider theme={theme}>
         <DataGrid rows={rows} columns={columns} pageSize={20} disableColumnMenu={true} checkboxSelection={false} sortModel={[
           {

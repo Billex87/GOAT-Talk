@@ -41,20 +41,6 @@ export default function Player(props) {
     let url5 = axios.get('/api/dummy');
     let url6 = axios.get('/api/dummy');
 
-
-    if (playerID.id == '1966') {
-      console.log("HERE!");
-      url5 = axios.get('/api/shots?name=lebron');
-      url6 = axios.get('/api/videos?name=lebron');//1966
-    }
-    if (playerID.id == 3975) {
-      url5 = axios.get('/api/shots?name=curry');
-      url6 = axios.get('/api/videos?name=curry');//3975
-      console.log('HERE');
-    }
-
-
-
     Promise.all([
       Promise.resolve(url0),
       Promise.resolve(url1),
