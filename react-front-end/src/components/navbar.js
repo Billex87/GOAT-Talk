@@ -168,7 +168,8 @@ export default function Navbar() {
         })}
       >
         <Toolbar>
-          <a href={"http://localhost:3000/"}><img src={"/images/logo.png"} alt="logo" /></a>
+          <a href={"http://localhost:3000/"}><img className="goatPhoto" src={"/images/goat.png"} alt="logo" /></a>
+          <SportsBasketballIcon />
           <a href={"http://localhost:3000/"} className={classes.home}><h2></h2></a>
           <Link to='/players' className="navBarLink" style= {{ textDecoration: 'none' }}>Players</Link>
           <Link to='/standings' className="navBarLink" style={{ textDecoration: 'none' }}>Standings</Link>
@@ -177,7 +178,6 @@ export default function Navbar() {
 
           </Typography>
           <Search />
-          <Paper className={classes.paperAlt}> {currentMonth} {currentDay}, {currentYear}</Paper>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -195,56 +195,8 @@ export default function Navbar() {
         })}
       >
         <div className={classes.drawerHeader} />
-        <GameScores />
       </main>
-      <Drawer
-        anchor="right"
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        })}
-        classes={{
-          paper: clsx({
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open,
-          }),
-        }}
-      >
-        <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          <Link to='/players'>
-            <ListItem button key={'Players'}>
-              <ListItemIcon><AccountBoxIcon /></ListItemIcon>
-              <ListItemText className={classes.link} primary={'Players'} />
-            </ListItem>
-          </Link>
-          <Link to='/standings'>
-            <ListItem button key={'Standings'}>
-              <ListItemIcon><SportsBasketballIcon /></ListItemIcon>
-              <ListItemText className={classes.link} primary={'Standings'} />
-            </ListItem>
-          </Link>
-        </List>
-        <Divider />
-        <List>
-          <Link to='/leaders'>
-            <ListItem button key={'Leaders'}>
-              <ListItemIcon><EqualizerIcon /></ListItemIcon>
-              <ListItemText className={classes.link} primary={'Leaders'} />
-            </ListItem>
-          </Link>
-          {/* <ListItem button key={'Compare'}>
-              <ListItemIcon><CompareArrowsIcon /></ListItemIcon>
-              <ListItemText primary={'Compare'} />
-          </ListItem> */}
-        </List>
-      </Drawer>
+  
     </div>
   );
 }
