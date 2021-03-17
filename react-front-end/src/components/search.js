@@ -22,7 +22,7 @@ export default function Search(props) {
             }}
           />
         </div>
-        <Button variant="contained" style={{backgroundColor: '#311b92', color: 'gold', marginLeft: '10px'}}  href={`/players/${term}`}>
+        <Button variant="contained" style={{backgroundColor: 'rgb(43, 107, 177)', marginLeft: '10px'}}  href={`/players/${term}`}>
         <SearchIcon style={{fontSize: '28px'}}></SearchIcon>
         </Button>  
       </div>
