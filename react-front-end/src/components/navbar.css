@@ -26,3 +26,8 @@ span {
   max-width: 80px;
   max-height: 80px;
 }
+
+.nbaLogo{
+  display: flex;
+  justify-content: center;
+}

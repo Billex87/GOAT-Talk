@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ShotChart from './ShotChart';
-import Heatmap from './Heatmap';
 import PlayerStats from './player-stats';
 import PlayerNews from './player-news';
 import {
@@ -41,20 +39,6 @@ export default function Player(props) {
     const url4 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/stats?region=us&lang=en&contentorigin=espn&seasontype=3`);
     let url5 = axios.get('/api/dummy');
     let url6 = axios.get('/api/dummy');
-
-
-    if (playerID.id == '1966') {
-      console.log("HERE!");
-      url5 = axios.get('/api/shots?name=lebron');
-      url6 = axios.get('/api/videos?name=lebron');//1966
-    }
-    if (playerID.id == 3975) {
-      url5 = axios.get('/api/shots?name=curry');
-      url6 = axios.get('/api/videos?name=curry');//3975
-      console.log('HERE');
-    }
-
-
 
     Promise.all([
       Promise.resolve(url0),
