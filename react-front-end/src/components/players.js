@@ -111,10 +111,10 @@ export default function Player(props) {
   // console.log(rows)
 
   return (
-    <div style={{color: 'teal', height: 750, width: '80%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px'}}>
+    <div style={{height: 750, width: '80%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px'}}>
      <h1><img  src={"/images/nba.png"} alt="logo" className="nbaLogo"/></h1>
       <MuiThemeProvider theme={theme}>
-        <DataGrid rows={rows} columns={columns} pageSize={20} disableColumnMenu={true} checkboxSelection={false} sortModel={[
+        <DataGrid className="dataGrid" rows={rows} columns={columns} pageSize={20} disableColumnMenu={true} checkboxSelection={false} sortModel={[
           {
             field: 'displayName', sort: 'asc'
           }

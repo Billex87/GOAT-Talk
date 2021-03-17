@@ -1,6 +1,13 @@
 .nbaLogo{
   display: flex;
   justify-content: center;
-  max-width: 300px;
+  max-width: 400px;
   max-height: 300px;
+}
+
+.dataGrid{
+  color: aliceblue;
+}
+.MuiDataGrid-root {
+  color: blueviolet;
 }
