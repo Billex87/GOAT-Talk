@@ -8,3 +8,34 @@ p {
   -1px 1px 0 #000,
   1px 1px 0 #000; */
 }
+
+.Vs {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: auto;
+  justify-content: space-between;
+  border: dashed rgb(124, 124, 252) 2px;
+}
+.ball2 {
+  color: orange;
+}
+.ball {
+  color: orange;
+}
+.Tetris {
+  display: flex;
+  flex-direction: column;
+  font-size: larger;
+  font-weight: 600;
+  width: 100px;
+  height: 560px;
+  align-self: flex-end;
+  background-color: rgb(6, 77, 143);
+  align-items: center;
+  
+}
+.Tetris > p {
+  margin: 12px;
+padding: 5px;
+}
