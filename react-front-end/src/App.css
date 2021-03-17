@@ -18,7 +18,7 @@ html {
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: rgb(43, 107, 177);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -47,7 +47,6 @@ html {
 }
 
 *::-webkit-scrollbar-track {
-  background-color: 'orange';
 }
 
 .rightColor {
