@@ -6,6 +6,7 @@ import {
   MuiThemeProvider
 } from "@material-ui/core/styles";
 import { useParams } from 'react-router-dom';
+import './players.css'
 
 // const MyFormatter = function(props) {
 //   return <a href=
@@ -111,7 +112,7 @@ export default function Player(props) {
 
   return (
     <div style={{color: 'teal', height: 750, width: '80%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px'}}>
-     <img  src={"/images/nba.png"} alt="logo" className="nbaLogo"/>
+     <h1><img  src={"/images/nba.png"} alt="logo" className="nbaLogo"/></h1>
       <MuiThemeProvider theme={theme}>
         <DataGrid rows={rows} columns={columns} pageSize={20} disableColumnMenu={true} checkboxSelection={false} sortModel={[
           {
