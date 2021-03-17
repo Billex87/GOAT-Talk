@@ -65,16 +65,20 @@ export default function Player(props) {
 
   const theme = createMuiTheme({
     typography: {
-      fontSize: 12,
-    }})
+      fontSize: 30,
+    
+    }
+  })
 
   const columns = [
     { field: 'id', hide: true},
-    {field: 'displayName', headerName: 'Name', width: 200, renderCell: (params) => {
-      return(<a style={{textDecoration: 'none', color: 'black'}} href={`/player/${params.row.id}`}><img style={{verticalAlign: 'middle', width: '48px'}} src={params.row.img}/>{params.row.displayName}</a>)
+    {field: 'displayName', headerName: 'Name', width: 350, renderCell: (params) => {
+      return(<a style={{textDecoration: 'none', color: 'blue'}} href={`/player/${params.row.id}`}><img style={{verticalAlign: 'middle', width: '48px'}} src={params.row.img}/>{params.row.displayName}</a>)
     }},
-    {field: 'teamShortName', headerName: 'Teams'},
-    {field: 'position', headerName: 'Position', width: 200}
+    {field: 'position', headerName: 'Position', width: 200},
+    {field: 'teamShortName', headerName: 'Teams', width: 150,},
+    {field: 'age', headerName: 'Age'},
+    {field: 'debutYear', headerName: 'Drafted', width: 150}
   ]
   const rows = [
   ]
@@ -86,14 +90,16 @@ export default function Player(props) {
       img: player.athlete.headshot.href,
       displayName: player.athlete.displayName,
       teamShortName: player.athlete.teamShortName,
-      position: player.athlete.position.name
+      position: player.athlete.position.abbreviation,
+      age: player.athlete.age,
+      debutYear: player.athlete.debutYear
     }
     rows.push(playerObject)
   })
   // console.log(rows)
 
   return (
-    <div style={{ height: 750, width: '30%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px'}}>
+    <div style={{ backgroundColor: 'pink', color: 'teal', height: 750, width: '80%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px'}}>
       <h1>Players</h1>
       <MuiThemeProvider theme={theme}>
         <DataGrid rows={rows} columns={columns} pageSize={20} disableColumnMenu={true} checkboxSelection={false} sortModel={[
