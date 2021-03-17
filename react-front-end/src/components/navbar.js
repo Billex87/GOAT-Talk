@@ -35,7 +35,8 @@ const drawerWidth = 208;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    fontFamily: 'Roboto, sans-serif'
+    fontFamily: 'Roboto, sans-serif',
+    background: 'black'
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -121,6 +122,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     fontFamily: 'Roboto, sans-serif'
   },
+  
   // paperAlt: {
   //   maxWidth: 200,
   //   margin: `${theme.spacing(1)}px auto`,

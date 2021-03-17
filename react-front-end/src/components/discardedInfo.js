@@ -158,3 +158,95 @@
 //     </div>
 //   );
 // }
+
+
+//TOOK FROM BOTTOM OF NAVBAR TO REMOVE SIDEBAR
+// {/* <Drawer
+// anchor="right"
+// variant="permanent"
+// className={clsx(classes.drawer, {
+//   [classes.drawerOpen]: open,
+//   [classes.drawerClose]: !open,
+// })}
+// classes={{
+//   paper: clsx({
+//     [classes.drawerOpen]: open,
+//     [classes.drawerClose]: !open,
+//   }),
+// }}
+// >
+// <div className={classes.toolbar}>
+//   <IconButton onClick={handleDrawerClose}>
+//     {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+//   </IconButton>
+// </div>
+// <Divider />
+// <List>
+//   <Link to='/players'>
+//     <ListItem button key={'Players'}>
+//       <ListItemIcon><AccountBoxIcon /></ListItemIcon>
+//       <ListItemText className={classes.link} primary={'Players'} />
+//     </ListItem>
+//   </Link>
+//   <Link to='/standings'>
+//     <ListItem button key={'Standings'}>
+//       <ListItemIcon><SportsBasketballIcon /></ListItemIcon>
+//       <ListItemText className={classes.link} primary={'Standings'} />
+//     </ListItem>
+//   </Link>
+// </List>
+// <Divider />
+// <List>
+//   <Link to='/leaders'>
+//     <ListItem button key={'Leaders'}>
+//       <ListItemIcon><EqualizerIcon /></ListItemIcon>
+//       <ListItemText className={classes.link} primary={'Leaders'} />
+//     </ListItem>
+//   </Link>
+// </List>
+// </Drawer> */}
+
+//REVMOED THE PAPER LINE FROM NAVBAR WHICH SHOWS DATE
+//  <Toolbar>
+// <a href={"http://localhost:3000/"}><img className="goatPhoto" src={"/images/goat.png"} alt="logo" /></a>
+// <SportsBasketballIcon />
+// <a href={"http://localhost:3000/"} className={classes.home}><h2></h2></a>
+// <Link to='/players' className="navBarLink" style= {{ textDecoration: 'none' }}>Players</Link>
+// <Link to='/standings' className="navBarLink" style={{ textDecoration: 'none' }}>Standings</Link>
+// <Link to='/leaders' className="navBarLink" style={{ textDecoration: 'none' }}>Leaders</Link>
+// <Typography variant="h6" noWrap className={classes.title}>
+
+// </Typography>
+// <Search />
+// {/* <Paper className={classes.paperAlt}> {currentMonth} {currentDay}, {currentYear}</Paper> */}
+// {/* <IconButton
+//   color="inherit"
+//   aria-label="open drawer"
+//   edge="end"
+//   onClick={handleDrawerOpen}
+//   className={clsx(open && classes.hide)}
+// >
+//   <MenuIcon />
+// </IconButton>
+// </Toolbar> 
+
+
+// REMOVED THESE ROUTES FROM PLAYER.JS and the PlayerGameLog component
+
+//  <Route path={`${path}/gamelog`}>
+//           <PlayerGameLog
+//             gameLog={state.player_game_log}
+//           />
+//         </Route>
+
+//       <Route path={`${path}/shotchart`}>
+//           <ShotChart
+//            shots={state.player_shots} 
+//            videos={state.player_videos}/>
+          
+//         </Route>
+
+//         </Route>
+//           <Route path={`${path}/zonechart`}>
+//           <Heatmap shots={state.player_shots} />
+//         </Route>

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ShotChart from './ShotChart'
-import Heatmap from './Heatmap'
-import PlayerStats from './player-stats'
-import PlayerNews from './player-news'
-import PlayerGameLog from './player-game-log'
+import ShotChart from './ShotChart';
+import Heatmap from './Heatmap';
+import PlayerStats from './player-stats';
+import PlayerNews from './player-news';
 import {
   Switch,
   Route,
@@ -12,8 +11,8 @@ import {
   useParams,
   useRouteMatch
 } from "react-router-dom";
-import './player.scss'
-import PlayerOverview from './player-overview'
+import './player.scss';
+import PlayerOverview from './player-overview';
 
 
 export default function Player(props) {
@@ -31,8 +30,8 @@ export default function Player(props) {
     player_shots: [],
     player_videos: []
   });
-  const [selected, setSelected] = useState(0)
-  
+  const [selected, setSelected] = useState(0);
+
 
   useEffect(() => {
     const url0 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/overview?region=us&lang=en&contentorigin=espn`);
@@ -45,17 +44,17 @@ export default function Player(props) {
 
 
     if (playerID.id == '1966') {
-      console.log("HERE!")
+      console.log("HERE!");
       url5 = axios.get('/api/shots?name=lebron');
       url6 = axios.get('/api/videos?name=lebron');//1966
     }
     if (playerID.id == 3975) {
       url5 = axios.get('/api/shots?name=curry');
       url6 = axios.get('/api/videos?name=curry');//3975
-      console.log('HERE')
+      console.log('HERE');
     }
-    
-    
+
+
 
     Promise.all([
       Promise.resolve(url0),
@@ -76,16 +75,16 @@ export default function Player(props) {
           player_playoff_stats: all[4].data,
           player_shots: all[5].data,
           player_videos: all[6].data
-        }))
-        setLoading(false)
-      })
-  }, [])
+        }));
+        setLoading(false);
+      });
+  }, []);
 
   if (loading) {
-    return (null)
+    return (null);
   }
 
-  return(
+  return (
     <div>
       <div className="player-header">
         <img src={`${state.player_overview_all.athlete.headshot.href}`} alt={"Player Headshot"} style={{ width: '30em' }} />
@@ -123,52 +122,42 @@ export default function Player(props) {
       </div>
       <hr />
       <div className="link-row">
-        <div 
-          className='bar-button' 
-          style={ (selected === 0) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '20px', fontWeight: 'bold'} : { fontSize: '18px' } }>
-          <Link 
-            onClick={()=>setSelected(0)}
+        <div
+          className='bar-button'
+          style={(selected === 0) ? { borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '20px', fontWeight: 'bold' } : { fontSize: '18px' }}>
+          <Link
+            onClick={() => setSelected(0)}
             style={{
               textDecoration: 'none',
               color: 'black'
             }}
             to={`${url}`}>Overview</Link>
         </div>
-        <div 
+        <div
           className='bar-button'
-          style={ (selected === 1) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '15px' } }>
-          <Link 
-            onClick={()=>setSelected(1)}
+          style={(selected === 1) ? { borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold' } : { fontSize: '15px' }}>
+          <Link
+            onClick={() => setSelected(1)}
             style={{
               textDecoration: 'none',
               color: 'black'
             }}
             to={`${url}/stats`}>Stats</Link>
         </div>
-        <div 
-          className='bar-button' 
-          style={ (selected === 3) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '15px' } }>
-          <Link 
-            onClick={()=>setSelected(3)}
+        <div
+          className='bar-button'
+          style={(selected === 3) ? { borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold' } : { fontSize: '15px' }}>
+          <Link
+            onClick={() => setSelected(3)}
             style={{
               textDecoration: 'none',
               color: 'black',
               size: '18px'
-            }} 
+            }}
             to={`${url}/news`}>News</Link>
         </div>
-        <div 
-          className='bar-button' 
-          style={ (selected === 4) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '15px' } }>
-          <Link 
-            onClick={()=>setSelected(4)}
-            style={{
-              textDecoration: 'none',
-              color: 'black'
-            }} 
-            to={`${url}/shotchart`}>Shot Chart</Link>
-        </div>
-        
+      
+
       </div>
       <hr />
 
@@ -187,29 +176,14 @@ export default function Player(props) {
             playoff_stats={state.player_playoff_stats}
           />
         </Route>
-        <Route path={`${path}/gamelog`}>
-          <PlayerGameLog
-            gameLog={state.player_game_log}
-          />
-        </Route>
         <Route path={`${path}/news`}>
           <PlayerNews
             news={state.player_overview_stats.news}
           />
         </Route>
-        <Route path={`${path}/shotchart`}>
-          <ShotChart
-           shots={state.player_shots} 
-           videos={state.player_videos}/>
-          
-        </Route>
-          <Route path={`${path}/zonechart`}>
-          <Heatmap shots={state.player_shots} />
-        </Route>
-
       </Switch>
 
     </div>
-  )
+  );
 
 }
