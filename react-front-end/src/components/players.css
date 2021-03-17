@@ -5,9 +5,18 @@
   max-height: 300px;
 }
 
-.dataGrid{
-  color: aliceblue;
+.MuiDataGrid-cell {
+  color: white;
 }
-.MuiDataGrid-root {
-  color: blueviolet;
+
+.MuiDataGrid-root .MuiDataGrid-colCellTitle {
+  color: white;
+}
+
+.Mui-even, .Mui-even:hover {
+  background-color: rgb(41, 58, 111) !important;
+}
+
+.Mui-odd, .Mui-odd:hover {
+  background-color: rgb(53, 53, 53) !important;
 }

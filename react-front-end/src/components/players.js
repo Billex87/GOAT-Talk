@@ -64,31 +64,18 @@ export default function Player(props) {
 
   const theme = createMuiTheme({
     typography: {
-      fontSize: 30,
-    },
-    palette: {
-      primary: {
-        light: '#757ce8',
-        main: '#3f50b5',
-        dark: '#002884',
-        contrastText: '#fff',
-      },
-      secondary: {
-        light: '#ff7961',
-        main: '#f44336',
-        dark: '#ba000d',
-        contrastText: '#000',
-      },
+      fontSize: 20,
+      color: 'white'
     },
   })
 
   const columns = [
     { field: 'id', hide: true},
-    {field: 'displayName', headerName: 'Name', width: 350, renderCell: (params) => {
-      return(<a style={{textDecoration: 'none', color: 'blue'}} href={`/player/${params.row.id}`}><img style={{verticalAlign: 'middle', width: '88px'}} src={params.row.img}/>{params.row.displayName}</a>)
+    {field: 'displayName', headerName: 'Active NBA Players', width: 350, renderCell: (params) => {
+      return(<a style={{textDecoration: 'none', color: 'black'}} href={`/player/${params.row.id}`}><img style={{verticalAlign: 'middle', width: '88px'}} src={params.row.img}/>{params.row.displayName}</a>)
     }},
-    {field: 'position', headerName: 'Position', width: 150},
-    {field: 'teamShortName', headerName: 'Teams', width: 150,},
+    {field: 'position', headerName: 'Position', width: 120},
+    {field: 'teamShortName', headerName: 'Teams', width: 100,},
     {field: 'age', headerName: 'Age'},
     {field: 'debutYear', headerName: 'Drafted', width: 150}
   ]

@@ -156,7 +156,7 @@ export default function Navbar() {
           <Button variant="outlined" size="small"><Link to='/leaders' className="navBarLink" style={{ textDecoration: 'none',  margin: theme.spacing(.5)}}>Leaders</Link></Button>
           <Typography variant="h6" noWrap className={classes.title}>
           </Typography>
-          <Search style={{searchIcon: {color: 'gold',} }}/>
+          <Search />
         </Toolbar>
       </AppBar>
       <main

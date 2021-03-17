@@ -26,3 +26,7 @@ span {
   max-width: 80px;
   max-height: 80px;
 }
+
+.MuiOutlinedInput-input {
+  background-color: blue !important;
+}
