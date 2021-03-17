@@ -42,11 +42,11 @@ export default function PlayerOverview(props) {
               <h2 className="teamName">{props.nextGame.league.events[0].competitors[0].name}</h2>
               <p className="record">{props.nextGame.league.events[0].competitors[0].record}</p>
             </div>
-            <img style={{maxWidth: '2em 2em'}} src={`${props.nextGame.league.events[0].competitors[0].logo}`}/>
+            <img style={{maxWidth: '2em 2em'}} src={`${props.nextGame.league.events[0].competitors[0].logo}`} alt=""/>
           </div>
           <h1>  vs  </h1>
           <div className="teams">
-            <img style={{maxWidth: '2em 2em'}} src={`${props.nextGame.league.events[0].competitors[1].logo}`}/>
+            <img style={{maxWidth: '2em 2em'}} src={`${props.nextGame.league.events[0].competitors[1].logo}`} alt=""/>
             <div className="name-record">
               <h2 className="teamName">{props.nextGame.league.events[0].competitors[1].name}</h2>
               <p className="record">{props.nextGame.league.events[0].competitors[1].record}</p>

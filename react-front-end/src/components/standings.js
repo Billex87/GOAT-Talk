@@ -113,7 +113,7 @@ export default function Standings(props) {
     { field: 'id', hide: true},
     { field: 'rank', headerName: 'Rank', width: 63 },
     {field: 'img', headerName: 'Team', width: 68, renderCell: (params) => {
-      return(<img style={{verticalAlign: 'middle', width: '38px'}} src={params.row.img}/>)
+      return(<img style={{verticalAlign: 'middle', width: '38px'}} src={params.row.img} alt=""/>)
     }},
     // { field: 'img', headerName: 'Logo', width: 60},
     { field: 'name', headerName: 'Name', width: 195},

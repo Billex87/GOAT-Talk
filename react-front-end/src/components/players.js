@@ -73,7 +73,7 @@ export default function Player(props) {
   const columns = [
     { field: 'id', hide: true},
     {field: 'displayName', headerName: 'Name', width: 350, renderCell: (params) => {
-      return(<a style={{textDecoration: 'none', color: 'blue'}} href={`/player/${params.row.id}`}><img style={{verticalAlign: 'middle', width: '48px'}} src={params.row.img}/>{params.row.displayName}</a>)
+      return(<a style={{textDecoration: 'none', color: 'blue'}} href={`/player/${params.row.id}`}><img style={{verticalAlign: 'middle', width: '48px'}} src={params.row.img} alt=""/>{params.row.displayName}</a>)
     }},
     {field: 'position', headerName: 'Position', width: 200},
     {field: 'teamShortName', headerName: 'Teams', width: 150,},

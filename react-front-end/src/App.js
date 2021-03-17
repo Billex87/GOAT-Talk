@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import Navbar from './components/navbar';
-import Search from './components/search';
 import Leaders from './components/leaders';
 import {
   BrowserRouter as Router,

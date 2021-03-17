@@ -1,29 +1,14 @@
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Paper from '@material-ui/core/Paper';
-// Buttons
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
-import EqualizerIcon from '@material-ui/icons/Equalizer';
 import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
-// CSS
 import './navbar.css';
-// Game Scores Dashboard
-import GameScores from './gameScores.js';
 import Search from './search';
 import {
   Link
@@ -122,19 +107,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     fontFamily: 'Roboto, sans-serif'
   },
-  
-  // paperAlt: {
-  //   maxWidth: 200,
-  //   margin: `${theme.spacing(1)}px auto`,
-  //   padding: theme.spacing(2),
-  //   background: 'transparent',
-  //   textEmphasis: 'bold',
-  //   fontSize: 18,
-  //   marginRight: '18px',
-  //   color: 'teal'
-  // },
   link: {
-    textDecoration: 'none',
     color: 'black',
     textDecoration: 'underline'
   }
@@ -144,13 +117,6 @@ export default function Navbar() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
-  const d = new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" });
-  const months = { '1': "Jan", '2': "Feb", '3': "Mar", '4': "Apr", '5': "May", '6': "Jun", '7': "Jul", '8': "Aug", '9': "Sep", '10': "Oct", '11': "Nov", '12': "Dec", };
-  const currentDay = d.substring(2, 4);
-  const currentYear = d.substring(5, 9);
-  const monthString = d.substring(0, 1);
-  const currentMonth = months[monthString];
 
   const handleDrawerOpen = () => {
     setOpen(true);

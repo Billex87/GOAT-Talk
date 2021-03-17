@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ShotChart from './ShotChart';
-import Heatmap from './Heatmap';
 import PlayerStats from './player-stats';
 import PlayerNews from './player-news';
+import PlayerGameLog from './player-game-log'
 import {
   Switch,
   Route,
@@ -131,7 +130,7 @@ export default function Player(props) {
               textDecoration: 'none',
               color: 'black'
             }}
-            to={`${url}`}>Overview</Link>
+            to={`${url}`}>Career Stats</Link>
         </div>
         <div
           className='bar-button'
@@ -142,7 +141,7 @@ export default function Player(props) {
               textDecoration: 'none',
               color: 'black'
             }}
-            to={`${url}/stats`}>Stats</Link>
+            to={`${url}/stats`}>Stats By Season</Link>
         </div>
         <div
           className='bar-button'
@@ -155,6 +154,17 @@ export default function Player(props) {
               size: '18px'
             }}
             to={`${url}/news`}>News</Link>
+        </div>
+        <div 
+          className='bar-button' 
+          style={ (selected === 4) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '15px' } }>
+          <Link 
+            onClick={()=>setSelected(2)}
+            style={{
+              textDecoration: 'none',
+              color: 'black'
+            }}
+           to={`${url}/gamelog`}>Past Games</Link>
         </div>
       
 
@@ -179,6 +189,11 @@ export default function Player(props) {
         <Route path={`${path}/news`}>
           <PlayerNews
             news={state.player_overview_stats.news}
+          />
+        </Route>
+        <Route path={`${path}/gamelog`}>
+          <PlayerGameLog
+            gameLog={state.player_game_log}
           />
         </Route>
       </Switch>
