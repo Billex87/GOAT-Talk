@@ -206,9 +206,15 @@ export default function Compare(props) {
     }
   };
 
+  let imgSrc;
+  if(state.playerName === null){
+    imgSrc = `images/black.png`;
+  } else {
+    imgSrc = `images/${state.playerName}.png`;
+  }
   return (
     <div className="Player">
-      <img className={props.playerImage} src={`images/${state.playerName}.png`}
+      <img className={props.playerImage} src={imgSrc}
  alt="" />
       <form onSubmit={handleSubmit}>
         <SportsBasketballIcon className="ball" />
