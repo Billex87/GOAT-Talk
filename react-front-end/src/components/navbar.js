@@ -14,6 +14,7 @@ import Search from './search';
 import {
   Link
 } from "react-router-dom";
+import { getColDef } from '@material-ui/data-grid';
 
 
 const drawerWidth = 208;
@@ -118,6 +119,9 @@ const useStyles = makeStyles((theme) => ({
   extendedIcon: {
     marginRight: theme.spacing(1),
   },
+  searchIcon: {
+    color: 'gold',
+  },
 }));
 
 export default function Navbar() {
@@ -145,22 +149,14 @@ export default function Navbar() {
       >
         <Toolbar>
           <a href={"http://localhost:3000/"}><img className="goatPhoto" src={"/images/goat.png"} alt="logo" /></a>
-          <SportsBasketballIcon />
+          <h1 style={{color: 'gold'}}>Goat Talk</h1>
           <a href={"http://localhost:3000/"} className={classes.home}><h2></h2></a>
-          <Button variant="outlined" size="small"><Link to='/players' className="navBarLink" style= {{ textDecoration: 'none',  margin: theme.spacing(.5)}}>Players</Link></Button>
-          <Button variant="outlined" size="small"><Link to='/standings' className="navBarLink" style={{ textDecoration: 'none',  margin: theme.spacing(.5)}}>Standings</Link></Button>
+          <Button variant="outlined" size="small"><Link to='/players' className="navBarLink" style= {{ textDecoration: 'none',  margin: theme.spacing(.5)}}>Players</Link></Button>&emsp;
+          <Button variant="outlined" size="small"><Link to='/standings' className="navBarLink" style={{ textDecoration: 'none',  margin: theme.spacing(.5)}}>Standings</Link></Button>&emsp;
           <Button variant="outlined" size="small"><Link to='/leaders' className="navBarLink" style={{ textDecoration: 'none',  margin: theme.spacing(.5)}}>Leaders</Link></Button>
           <Typography variant="h6" noWrap className={classes.title}>
           </Typography>
-          <Search/>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="end"
-            onClick={handleDrawerOpen}
-            className={clsx(open && classes.hide)}
-          >
-          </IconButton>
+          <Search style={{searchIcon: {color: 'gold',} }}/>
         </Toolbar>
       </AppBar>
       <main

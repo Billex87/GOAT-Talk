@@ -2,3 +2,9 @@ h1 {
   display: flex;
   justify-content: center;
 }
+
+.conferenceLogo {
+  max-height: 200px;
+  max-width: 200px;
+  text-align: center;
+}

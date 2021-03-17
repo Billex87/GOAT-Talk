@@ -145,11 +145,11 @@ export default function Standings(props) {
   return (
     <div style={{ height: 750, width: '89%', paddingLeft: '65px', paddingBottom: '15px'}}>
       <h1>2020-21 Season Standings</h1>
-      <h2>Western Conference</h2>
+      <img  src={"/images/western.png"} alt="logo" className="conferenceLogo"/>
       <MuiThemeProvider theme={theme}>
         <DataGrid rows={formattedWest} columns={columns} pageSize={20} checkboxSelection disableColumnMenu={true} checkboxSelection={false} />
       </MuiThemeProvider>
-      <h2>Eastern Conference</h2>
+      <img  src={"/images/eastern.png"} alt="logo" className="conferenceLogo"/>
       <MuiThemeProvider theme={theme}>
         <DataGrid rows={formattedEast} columns={columns} pageSize={20} checkboxSelection disableColumnMenu={true} checkboxSelection={false} />
       </MuiThemeProvider>
