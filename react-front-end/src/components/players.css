@@ -10,15 +10,25 @@
 }
 
 .MuiDataGrid-root .MuiDataGrid-colCellTitle {
+  justify-content: center;
+  display: flex;
   color: white;
   font-weight: bolder;
   align-items: center;
 }
 
 .Mui-even, .Mui-even:hover {
-  background-color: rgb(43, 107, 177) !important;
+  background-color: rgb(43, 107, 177, 0.9) !important;
 }
 
 .Mui-odd, .Mui-odd:hover {
-  background-color: rgb(153, 152, 152) !important;
+  background-color: rgb(153, 152, 152, 0.9) !important;
+  
+}
+.MuiDataGrid-colCellWrapper {
+  display: flex;
+  align-items: center;
+}
+.MuiDataGrid-root .MuiDataGrid-columnSeparator {
+  display: none !important;
 }
