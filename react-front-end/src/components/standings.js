@@ -143,7 +143,7 @@ export default function Standings(props) {
   })
 
   return (
-    <div style={{ height: 750, width: '89%', paddingLeft: '65px', paddingBottom: '15px'}}>
+    <div style={{ height: 750, width: '95%', paddingLeft: '65px', paddingBottom: '15px'}}>
       <h1><img  src={"/images/western.png"} alt="logo" className="conferenceLogo"/></h1>
       <MuiThemeProvider theme={theme}>
         <DataGrid rows={formattedWest} columns={columns} pageSize={20} checkboxSelection disableColumnMenu={true} checkboxSelection={false} />
