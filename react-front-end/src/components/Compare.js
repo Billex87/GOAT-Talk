@@ -105,7 +105,7 @@ export default function Compare(props) {
   };
   const efficiency = {
     series: [{
-      data: [props.playerStats["fg_pct"], props.playerStats["fg3_pct"], props.playerStats["ft_pct"]]
+      data: [props.playerStats["fg_pct"], props.playerStats["fg3_pct"], props.playerStats["ft_pct"], props.playerStats["per"], props.playerStats["ts%"]]
     }],
     options: {
       yaxis: {
@@ -129,6 +129,7 @@ export default function Compare(props) {
         enabled: true,
         enabledOnSeries: undefined,
         formatter: function (val, opts) {
+          console.log("val ", val)
           return val;
         },
         textAnchor: 'middle',
@@ -180,7 +181,6 @@ export default function Compare(props) {
     e.preventDefault();
     props.getPlayer(state.playerName, state.season);
     // getPlayerId();
-    // hello
     // console.log(state.playerName);
   };
 
