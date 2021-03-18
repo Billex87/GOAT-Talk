@@ -110,19 +110,18 @@ export default function Player(props) {
   const columns = [
     { field: 'id', hide: true },
     {
-      field: 'displayName', headerName: 'Active NBA Players', width: 400, renderCell: (params) => {
+      field: 'displayName', headerName: 'NBA Players', width: 440, renderCell: (params) => {
         console.log('params', params)
         return (<a style={{ textDecoration: 'none', color: 'black' }} href={`/player/${params.row.id}`}><img style={{ verticalAlign: 'middle', width: '88px' }} src={params.row.img} />{params.row.displayName}</a>);
       }
     },
     //looking for the key name in the data above to make it work
-    { field: 'position', headerName: 'Position', width: 120 },
-    { field: 'teamShortName', headerName: 'Teams', width: 150 },
+    { field: 'position', headerName: 'Pos.', width: 120 },
+    { field: 'teamShortName', headerName: 'Teams', width: 160 },
     { field: 'age', headerName: 'Age', width: 120 },
-    { field: 'debutYear', headerName: 'Drafted', width: 150 },
-    { field: 'height', headerName: 'Height', width: 150 },
-    { field: 'weight', headerName: 'Weight', width: 150 },
-    { field: 'jersey', headerName: 'Jersey', width: 150 }
+    { field: 'debutYear', headerName: 'Drafted', width: 170 },
+    { field: 'height', headerName: 'Height', width: 160 },
+    { field: 'weight', headerName: 'Weight', width: 170 },
   ];
   // const rows = [
   // ];
@@ -142,7 +141,7 @@ export default function Player(props) {
   // });
  
   return (
-    <div style={{ height: 750, width: '80%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px' }}>
+    <div style={{ height: 750, width: '95%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px' }}>
       <h1><img src={"/images/nba.png"} alt="logo" className="nbaLogo" /></h1>
       <MuiThemeProvider theme={theme}>
         <DataGrid className="dataGrid" rows={players} columns={columns} pageSize={20} disableColumnMenu={true} checkboxSelection={false} sortModel={[
