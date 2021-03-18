@@ -214,6 +214,8 @@ export default function Compare(props) {
   }
   return (
     <div className="Player">
+      {props.winner && <img className="crown" src='images/crown2.png'
+ alt="" />}
       <img className={props.playerImage} src={imgSrc}
  alt="" />
       <form onSubmit={handleSubmit}>

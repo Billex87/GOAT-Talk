@@ -137,7 +137,7 @@ export default function PlayerStats(props) {
       <div className="averages" style={{ height: 750, width: '90%', paddingLeft: '15px', paddingBottom: '15px'}}>
         <MuiThemeProvider theme={theme}>
           <DataGrid
-            rows={avgRows} columns={avgColumns} 
+            rows={avgRows} columns={avgColumns}
           />
         </MuiThemeProvider>
       </div>

@@ -27,6 +27,16 @@ export default function Home(props) {
     year: null,
   });
 
+ const showWinner = () => {
+  let winner 
+  if(playerOneState.firstName !== null && playerTwoState.firstName !== null){
+    winner = playerOneState.firstName
+    //later could customize this to randomize it/add weights etc
+ }
+  return winner
+}
+
+
   const getPlayerOne = (name, season) => {
     axios.get(`https://www.balldontlie.io/api/v1/players?search=${name}`)
       .then(async res => {
@@ -104,7 +114,7 @@ export default function Home(props) {
   return (
     <div className="App">
       <div className="Vs">
-        <Compare reversed={true} playerAwards={"steph"} playerAwardsImage={"curry_awards"} playerImage={"playerImage1"} nameStyle={"name"} yearStyle={"year"} teamStyle={"team"} getPlayer={getPlayerOne} {...playerOneState} />
+        <Compare winner={showWinner() === playerOneState.firstName} reversed={true} playerAwards={"steph"} playerAwardsImage={"curry_awards"} playerImage={"playerImage1"} nameStyle={"name"} yearStyle={"year"} teamStyle={"team"} getPlayer={getPlayerOne} {...playerOneState} />
         <section className="Tetris">
           <p>PPG</p>
           <p>RPG</p>
@@ -117,8 +127,10 @@ export default function Home(props) {
           <p>3PT%</p>
           <p>FT%</p>
         </section>
-        <Compare reversed={false} playerAwards={"lebron"} playerAwardsImage={"lebron_awards"} playerImage={"playerImage2"} nameStyle={"name2"} yearStyle={"year2"} teamStyle={"team2"} getPlayer={getPlayerTwo} {...playerTwoState} />
+        <Compare reversed={false} winner={showWinner() === playerTwoState.firstName}  playerAwards={"lebron"} playerAwardsImage={"lebron_awards"} playerImage={"playerImage2"} nameStyle={"name2"} yearStyle={"year2"} teamStyle={"team2"} getPlayer={getPlayerTwo} {...playerTwoState} />
       </div>
+      {/* <img className={'steph'} src={`images/${playerOneState.firstName}_${playerOneState.lastName}_awards.png`} alt="" />
+      <img className={'lebron'} src={`images/${playerTwoState.firstName}_${playerTwoState.lastName}_awards.png`} alt="" /> */}
     </div>
   );
 

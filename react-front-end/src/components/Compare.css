@@ -50,11 +50,19 @@
 }
 
 .steph {
-  max-width: 400px;
-  max-height: 300px;
+  max-width: 410px;
+  max-height: 400px;
 }
 
 .lebron {
-  max-width: 400px;
-  max-height: 300px;
+  max-width: 410px;
+  max-height: 400px;
+}
+
+.crown {
+  max-height: 80px;
+  max-width: 80px;
+  position: absolute;
+  right: 51%;
+  transform: rotate(330deg)
 }
