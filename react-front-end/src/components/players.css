@@ -8,7 +8,15 @@
 .MuiDataGrid-cell {
   color: white;
 }
-
+.MuiTablePagination-root {
+  font-size: 1em !important;
+}
+.MuiTypography-body2 {
+  font-size: 1em  !important;
+}
+.MuiDataGrid-footer {
+  max-height: 1em !important;
+}
 .MuiDataGrid-root .MuiDataGrid-colCellTitle {
   justify-content: center;
   display: flex;
