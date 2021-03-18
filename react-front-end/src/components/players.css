@@ -32,6 +32,9 @@
 .MuiDataGrid-root .MuiDataGrid-columnSeparator {
   display: none !important;
 }
+.MuiDataGrid-root{
+font-size: 1.4em !important;
+}
 
 .player-info {
   color: white  !important;

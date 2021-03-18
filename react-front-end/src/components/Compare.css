@@ -31,13 +31,13 @@ color: rgb(43, 107, 177);
   display: flex;
   justify-content: flex-end;
   font-size: 30px;
-  color: yellow;
+  color: rgb(153, 152, 152);
 }
 .team2{
   display: flex;
   justify-content: flex-start;
   font-size: 30px;
-  color: yellow;
+  color: rgb(153, 152, 152);
 }
 .playerImage1 {
 width: 100%;

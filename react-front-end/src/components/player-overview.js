@@ -34,10 +34,19 @@ export default function PlayerOverview(props) {
       type: "dark",
     }})
 
-
-  return(
-    <div className="player-overview">
-      <div className="next-game" style={{borderRadius: '10px', boxShadow: 'inset 0 0 10px #000000'}}>
+    
+    return(
+      <div className="player-overview">
+      <br></br>
+      <div className="overview-stats" style={{ height: 250, width: '80%', paddingTop: '15px'}}>
+        <MuiThemeProvider theme={theme}>
+          <DataGrid
+            rows={rows} columns={columns} autoPageSize={true} hideFooterPagination={true} 
+          />
+        </MuiThemeProvider>
+      </div>
+      <br></br>
+      <div className="next-game" style={{borderRadius: '20px', boxShadow: 'inset 0 0 10px #000000'}}>
         <h2 className="next-game-header">{props.nextGame.displayName}</h2>
         <div className="game-display">
           <div className="teams">
@@ -45,11 +54,11 @@ export default function PlayerOverview(props) {
               <h2 className="teamName">{props.nextGame.league.events[0].competitors[0].name}</h2>
               <p className="record">{props.nextGame.league.events[0].competitors[0].record}</p>
             </div>
-            <img style={{maxWidth: '2em 2em'}} src={`${props.nextGame.league.events[0].competitors[0].logo}`} alt=""/>
+            <img style={{maxWidth: '5em 2em'}} src={`${props.nextGame.league.events[0].competitors[0].logo}`} alt=""/>
           </div>
           <h1>  vs  </h1>
           <div className="teams">
-            <img style={{maxWidth: '2em 2em'}} src={`${props.nextGame.league.events[0].competitors[1].logo}`} alt=""/>
+            <img style={{maxWidth: '5em 2em'}} src={`${props.nextGame.league.events[0].competitors[1].logo}`} alt=""/>
             <div className="name-record">
               <h2 className="teamName">{props.nextGame.league.events[0].competitors[1].name}</h2>
               <p className="record">{props.nextGame.league.events[0].competitors[1].record}</p>
@@ -58,13 +67,6 @@ export default function PlayerOverview(props) {
         </div>
       </div>
       <hr/>
-      <div className="overview-stats" style={{ height: 230, width: '85%', paddingTop: '15px'}}>
-        <MuiThemeProvider theme={theme}>
-          <DataGrid
-            rows={rows} columns={columns} autoPageSize={true} hideFooterPagination={true} 
-          />
-        </MuiThemeProvider>
-      </div>
       <div className="last_10">
 
       </div>
