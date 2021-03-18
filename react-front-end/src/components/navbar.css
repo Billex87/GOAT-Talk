@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
+.title {
+  max-width: 300px;
+  max-height: 200px;
+  
+}
 img {
   width: 30em;
   padding: 0.5em 0.1em;
@@ -34,8 +38,7 @@ span {
   color: black !important;
 }
 
-.MuiToolbar-root MuiToolbar-regular toolBar MuiToolbar-gutters{
+.MuiToolbar-root {
   display: flex;
   justify-content: space-around;
-  background-color: wheat;
 }
