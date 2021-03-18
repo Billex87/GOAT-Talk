@@ -20,7 +20,7 @@ const search = function (term, players) {
     const results = [];
     players.map((player) => {
 
-      if ((player.athlete.displayName).toLowerCase().indexOf((term).toLowerCase()) != -1) {
+      if ((player.displayName).toLowerCase().indexOf((term).toLowerCase()) != -1) {
         results.push(player);
       }
 
@@ -29,6 +29,25 @@ const search = function (term, players) {
   }
 };
 
+//OLD SEARCH FUNCTION
+
+// const search = function (term, players) {
+//   // console.log('term', term)
+//   if (!term) {
+//     return players;
+//   } else {
+//     const results = [];
+//     players.map((player) => {
+
+//       if ((player.athlete.displayName).toLowerCase().indexOf((term).toLowerCase()) != -1) {
+//         results.push(player);
+//       }
+
+//     });
+//     return results;
+//   }
+// };
+
 
 export default function Player(props) {
 
@@ -36,7 +55,7 @@ export default function Player(props) {
 
   const [players, setPlayers] = useState([]);
 
-  // let { term } = useParams();
+  let { term } = useParams();
   // console.log('term', term);
 
 
@@ -87,6 +106,17 @@ export default function Player(props) {
     return (null);
   }
 
+  const allPlayersSearched = search(term, players);
+
+  let allPlayers;
+
+  if (!allPlayersSearched) {
+    allPlayers = players;
+  } else {
+    allPlayers = allPlayersSearched;
+  }
+
+  //OLD PLAYER SEARCH
   // const allPlayersSearched = search(term, players.players.athletes);
 
   // let allPlayers;
@@ -144,7 +174,7 @@ export default function Player(props) {
     <div style={{ height: 750, width: '95%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px' }}>
       <h1><img src={"/images/nba.png"} alt="logo" className="nbaLogo" /></h1>
       <MuiThemeProvider theme={theme}>
-        <DataGrid className="dataGrid" rows={players} columns={columns} pageSize={20} disableColumnMenu={true} checkboxSelection={false} sortModel={[
+        <DataGrid className="dataGrid" rows={allPlayers} columns={columns} pageSize={20} disableColumnMenu={true} checkboxSelection={false} sortModel={[
           {
             field: 'displayName', sort: 'asc'
           }
@@ -153,3 +183,5 @@ export default function Player(props) {
     </div>
   );
 }
+
+//rows when from being players to allPlayers with the update
