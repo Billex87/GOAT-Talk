@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PlayerStats from './player-stats';
 import PlayerNews from './player-news';
-import PlayerGameLog from './player-game-log'
 import {
   Switch,
   Route,
@@ -142,19 +141,6 @@ export default function Player(props) {
             }}
             to={`${url}/news`}>News</Link>
         </div>
-        <div 
-          className='bar-button' 
-          style={ (selected === 4) ? {borderBottom: 'solid', borderBottomColor: 'rgb(43, 107, 177)', fontSize: '26px', fontWeight: 'bold'} : { fontSize: '20px' } }>
-          <Link 
-            onClick={()=>setSelected(2)}
-            style={{
-              textDecoration: 'none',
-              color: 'white'
-            }}
-           to={`${url}/gamelog`}>Past Games</Link>
-        </div>
-      
-
       </div>
       <hr />
 
@@ -176,11 +162,6 @@ export default function Player(props) {
         <Route path={`${path}/news`}>
           <PlayerNews
             news={state.player_overview_stats.news}
-          />
-        </Route>
-        <Route path={`${path}/gamelog`}>
-          <PlayerGameLog
-            gameLog={state.player_game_log}
           />
         </Route>
       </Switch>
