@@ -75,9 +75,8 @@ export default function Leaders(props) {
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ height: 750, width: '66%', paddingLeft: '15px', marginBottom: '15px'}}>
-      <h1><img src={"/images/trophy.png"} alt="logo" className="Trophy" /><br/><br/>Stat Leaders</h1>
-       
+      <div style={{ height: 750, width: '85%', paddingLeft: '15px', marginBottom: '15px'}}>
+        <h1>League Leaders</h1>
         <MuiThemeProvider theme={theme}>
           <DataGrid rows={rows} columns={columns} pageSize={12} disableColumnMenu={true} checkboxSelection={false} />
         </MuiThemeProvider>
