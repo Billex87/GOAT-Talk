@@ -24,6 +24,7 @@ export default function PlayerStats(props) {
       rowObj[avgColumns[index + 2].field] = stat;
     })
 
+    // calculates FTA, 3PTA, FGA, TFGA, TSA for TS%
     rowObj.FTA = Math.round(((rowObj.FT.split('-')[1])*(rowObj.GP))* 100) / 100;
 
     rowObj["3PTA"] = Math.round(((rowObj["3PT"].split('-')[1])*(rowObj.GP))* 100) / 100;
@@ -35,8 +36,52 @@ export default function PlayerStats(props) {
     rowObj.TSA = rowObj.TFGA + 0.44 * rowObj.FTA;
     
     rowObj["TS%"] = Math.round(((rowObj.PTS * rowObj.GP)/(rowObj.TSA * 2))*100* 100) / 100;
-    console.log("TS% ", rowObj["TS%"]);
+    console.log(rowObj);
     
+
+    // calculates PER
+
+    rowObj.PER = Math.round((1*(rowObj.MIN * rowObj.GP))* 100) / 100;
+
+      // [ FGM x 85.910
+      // Math.round(((rowObj.FGA * (rowObj["FG%"] / 100)) * 85.910)* 100) / 100
+
+      // + Steals x 53.897
+      // Math.round(((rowObj.STL * rowObj.GP) * 53.897)* 100) / 100
+
+      // + 3PTM x 51.757
+      // Math.round(((rowObj["3PTA"] * (rowObj["3P%"] / 100)) * 51.757)* 100) / 100
+
+      // + FTM x 46.845
+      // Math.round(((rowObj.FTA * (rowObj["FT%"] / 100)) * 46.845)* 100) / 100
+
+      // + Blocks x 39.190
+      // Math.round(((rowObj.BLK * rowObj.GP) * 39.190)* 100) / 100
+
+      // + Offensive_Reb x 39.190
+      // 
+
+      // + Assists x 34.677
+      // Math.round(((rowObj.AST * rowObj.GP) * 34.677)* 100) / 100
+
+      // + Defensive_Reb x 14.707
+      // 
+
+      // - Foul x 17.174
+      // Math.round(((rowObj.PF * rowObj.GP) * 17.174)* 100) / 100
+
+      // - FT_Miss x 20.091
+      // 
+
+      // - FG_Miss x 39.190
+      // 
+
+      // - TO x 53.897 ]
+      // Math.round(((rowObj.TO * rowObj.GP) * 53.897)* 100) / 100
+
+      // x (1 / Minutes)
+      // Math.round((1*(rowObj.MIN * rowObj.GP))* 100) / 100
+
     avgRows.push(rowObj);
   
   })
