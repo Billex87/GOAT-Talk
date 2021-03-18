@@ -110,13 +110,14 @@ export default function Navbar() {
         style={{ background: 'rgb(43, 107, 177)' }}
         //nav bar header color
       >
-        <Toolbar>
-          <a href={"http://localhost:3000/"}><img className="goatPhoto" src={"/images/goat.png"} alt="logo" /></a>
-          <h1 style={{color: 'rgb(153, 152, 152)'}}>Goat Talk</h1>
-          <a href={"http://localhost:3000/"} className={classes.home}><h2></h2></a>
-          <Button variant="outlined" size="small"><Link to='/players' className="navBarLink" style= {{ textDecoration: 'none',  margin: theme.spacing(.5)}}>Players</Link></Button>&emsp;
-          <Button variant="outlined" size="small"><Link to='/standings' className="navBarLink" style={{ textDecoration: 'none',  margin: theme.spacing(.5)}}>Standings</Link></Button>&emsp;
-          <Button variant="outlined" size="small"><Link to='/leaders' className="navBarLink" style={{ textDecoration: 'none',  margin: theme.spacing(.5)}}>Leaders</Link></Button>
+        <Toolbar className="toolBar">
+        <Button variant="outlined" size="small"><Link to='/players' className="navBarLink" style= {{ textDecoration: 'none',  margin: theme.spacing(.5)}}>Players</Link></Button>&emsp;
+        <Button variant="outlined" size="small"><Link to='/standings' className="navBarLink" style={{ textDecoration: 'none',  margin: theme.spacing(.5)}}>Standings</Link></Button>&emsp;
+        <Button variant="outlined" size="small"><Link to='/leaders' className="navBarLink" style={{ textDecoration: 'none',  margin: theme.spacing(.5)}}>Leaders</Link></Button>
+        <div/>
+        <a href={"http://localhost:3000/"}><img className="goatPhoto" src={"/images/goat.png"} alt="logo" /></a>
+        <h1 style={{color: 'rgb(153, 152, 152)'}}>Goat Talk</h1>
+        <a href={"http://localhost:3000/"} className={classes.home}><h2></h2></a>
           <Typography variant="h6" noWrap className={classes.title}>
           </Typography>
           <Search />
