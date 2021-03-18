@@ -14,6 +14,9 @@ export default function PlayerStats(props) {
   props.stats.categories[0].labels.map((label) => {
     avgColumns.push({ field: label, headerName: label, width: 85 })
   });
+  avgColumns.push({ field: "PER", headerName: "PER", width: 85 })
+  avgColumns.push({ field: "TS%", headerName: "TS%", width: 85 })
+
 
   const avgRows= []
   
@@ -35,9 +38,7 @@ export default function PlayerStats(props) {
 
     rowObj.TSA = rowObj.TFGA + 0.44 * rowObj.FTA;
     
-    rowObj["TS%"] = Math.round(((rowObj.PTS * rowObj.GP)/(rowObj.TSA * 2))*100* 100) / 100;
-    console.log(rowObj);
-    
+    rowObj["TS%"] = Math.round(((rowObj.PTS * rowObj.GP)/(rowObj.TSA * 2))*100* 100) / 100;    
 
     // calculates PER
     rowObj.PER = Math.round(((((rowObj.FGA * (rowObj["FG%"] / 100)) * 85.910) +((rowObj.STL * rowObj.GP) * 53.897) + ((rowObj["3PTA"] * (rowObj["3P%"] / 100)) * 51.757) + ((rowObj.FTA * (rowObj["FT%"] / 100)) * 46.845) + ((rowObj.BLK * rowObj.GP) * 39.190) + ((rowObj.OR * rowObj.GP) * 39.190) + ((rowObj.AST * rowObj.GP) * 34.677) + ((rowObj.DR * rowObj.GP) * 14.707) - ((rowObj.PF * rowObj.GP) * 17.174) - ((rowObj.FTA - (rowObj.FTA * (rowObj["FT%"] / 100))) * 20.091) - ((rowObj.FGA - (rowObj.FGA * (rowObj["FG%"] / 100))) * 39.190) - ((rowObj.TO * rowObj.GP) * 53.897)) * (1/(rowObj.MIN * rowObj.GP)))* 100) / 100;
@@ -68,6 +69,7 @@ export default function PlayerStats(props) {
     // Math.round(((rowObj.TO * rowObj.GP) * 53.897)* 100) / 100
     // x (1 / Minutes)
     // Math.round((1/(rowObj.MIN * rowObj.GP))* 100) / 100
+    console.log("avg ",rowObj);
 
     avgRows.push(rowObj);
   
@@ -81,6 +83,8 @@ export default function PlayerStats(props) {
   props.stats.categories[1].labels.map((label) => {
     totalsColumns.push({ field: label, headerName: label, width: 85 })
   });
+  totalsColumns.push({ field: "PER", headerName: "PER", width: 85 })
+  totalsColumns.push({ field: "TS%", headerName: "TS%", width: 85 })
 
   const totalsRows = []
 
@@ -89,7 +93,21 @@ export default function PlayerStats(props) {
     season.stats.map((stat, index) => {
 
       rowObj[totalsColumns[index + 2].field] = stat;
+      console.log("totalsColumns", totalsColumns)
     })
+
+    // calculates FTA, 3PTA, FGA, TFGA, TSA for TS%
+    rowObj.FTA = Math.round((rowObj.FT.split('-')[1])* 100) / 100;
+    rowObj["3PTA"] = Math.round((rowObj["3PT"].split('-')[1])* 100) / 100;
+    rowObj.FGA = Math.round((rowObj.FG.split('-')[1])* 100) / 100;
+    rowObj.TFGA = Math.round(rowObj.FGA + rowObj["3PTA"]);
+    rowObj.TSA = rowObj.TFGA + 0.44 * rowObj.FTA;
+    rowObj["TS%"] = Math.round((rowObj.PTS/(rowObj.TSA * 2))*100* 100) / 100;
+
+    // calculates PER
+    rowObj.PER = Math.round(((((rowObj.FGA * (rowObj["FG%"] / 100)) * 85.910) + (rowObj.STL * 53.897) + ((rowObj["3PTA"] * (rowObj["3P%"] / 100)) * 51.757) + ((rowObj.FTA * (rowObj["FT%"] / 100)) * 46.845) + (rowObj.BLK * 39.190) + (rowObj.OR * 39.190) + (rowObj.AST * 34.677) + (rowObj.DR * 14.707) - (rowObj.PF * 17.174) - ((rowObj.FTA - (rowObj.FTA * (rowObj["FT%"] / 100))) * 20.091) - ((rowObj.FGA - (rowObj.FGA * (rowObj["FG%"] / 100))) * 39.190) - (rowObj.TO * 53.897)) * (1/rowObj.MIN))* 100) / 100;
+    console.log("total ",rowObj);
+
     totalsRows.push(rowObj);
   })
 
@@ -127,13 +145,13 @@ export default function PlayerStats(props) {
   const gloss3 = props.stats.glossary.slice(20, 28);
 
 
-
+    console.log(avgRows)
   return(
     <div className="player-stats" style={{ display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
       <div className="season-type-switcher">
 
       </div>
-      <h2 className="tats-title">Averages</h2>
+      <h2 className="stats-title">Averages</h2>
       <div className="averages" style={{ height: 750, width: '90%', paddingLeft: '15px', paddingBottom: '15px'}}>
         <MuiThemeProvider theme={theme}>
           <DataGrid
