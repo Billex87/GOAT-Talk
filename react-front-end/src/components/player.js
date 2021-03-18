@@ -110,46 +110,46 @@ export default function Player(props) {
       <div className="link-row">
         <div
           className='bar-button'
-          style={(selected === 0) ? { borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '20px', fontWeight: 'bold' } : { fontSize: '18px' }}>
+          style={(selected === 0) ? { borderBottom: 'solid', borderBottomColor: 'rgb(43, 107, 177)', fontSize: '26px', fontWeight: 'bold' } : { fontSize: '20px' }}>
           <Link
             onClick={() => setSelected(0)}
             style={{
               textDecoration: 'none',
-              color: 'black'
+              color: 'white'
             }}
             to={`${url}`}>Career Stats</Link>
         </div>
         <div
           className='bar-button'
-          style={(selected === 1) ? { borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold' } : { fontSize: '15px' }}>
+          style={(selected === 1) ? { borderBottom: 'solid', borderBottomColor: 'rgb(43, 107, 177)', fontSize: '26px', fontWeight: 'bold' } : { fontSize: '20px' }}>
           <Link
             onClick={() => setSelected(1)}
             style={{
               textDecoration: 'none',
-              color: 'black'
+              color: 'white'
             }}
             to={`${url}/stats`}>Stats By Season</Link>
         </div>
         <div
           className='bar-button'
-          style={(selected === 3) ? { borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold' } : { fontSize: '15px' }}>
+          style={(selected === 3) ? { borderBottom: 'solid', borderBottomColor: 'rgb(43, 107, 177)', fontSize: '26px', fontWeight: 'bold' } : { fontSize: '20px' }}>
           <Link
             onClick={() => setSelected(3)}
             style={{
               textDecoration: 'none',
-              color: 'black',
+              color: 'white',
               size: '18px'
             }}
             to={`${url}/news`}>News</Link>
         </div>
         <div 
           className='bar-button' 
-          style={ (selected === 4) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '15px' } }>
+          style={ (selected === 4) ? {borderBottom: 'solid', borderBottomColor: 'rgb(43, 107, 177)', fontSize: '26px', fontWeight: 'bold'} : { fontSize: '20px' } }>
           <Link 
             onClick={()=>setSelected(2)}
             style={{
               textDecoration: 'none',
-              color: 'black'
+              color: 'white'
             }}
            to={`${url}/gamelog`}>Past Games</Link>
         </div>

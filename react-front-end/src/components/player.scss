@@ -25,6 +25,8 @@
   border-style: solid;
   padding-left: 30px;
   padding-right: 30px;
+  color: rgb(43, 107, 177);
+  size: 30px;
   img {
     width: 15em;
     height: 15em;
@@ -32,16 +34,20 @@
   h1 {
     font-weight: bold;
     size: 30px;
-    color: red;
+    color: white;
   }
 }
 .game-display {
   display: flex;
   flex-direction: row;
+  color:rgb(43, 107, 177);
 }
 .teams {
   display: flex;
   flex-direction: row;
+  color: white;
+  font-style: oblique;
+  font-size: larger;
 }
 .row {
   float: left;
@@ -86,6 +92,8 @@
   width: 200px;
 }
 
-.position {
+.record {
+  color: yellow;
+  font-weight: 900;
   
 }
