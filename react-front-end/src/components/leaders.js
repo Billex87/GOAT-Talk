@@ -5,6 +5,7 @@ import {
   MuiThemeProvider
 } from "@material-ui/core/styles";
 import axios from 'axios';
+import './leaders.css';
 
 
 export default function Leaders(props) {
@@ -75,7 +76,8 @@ export default function Leaders(props) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ height: 750, width: '66%', paddingLeft: '15px', marginBottom: '15px'}}>
-        <h1>League Leaders</h1>
+      <h1><img src={"/images/trophy.png"} alt="logo" className="Trophy" /><br/><br/>Stat Leaders</h1>
+       
         <MuiThemeProvider theme={theme}>
           <DataGrid rows={rows} columns={columns} pageSize={12} disableColumnMenu={true} checkboxSelection={false} />
         </MuiThemeProvider>
