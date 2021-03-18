@@ -3,58 +3,58 @@
   font-size: 20px;
   color: aqua;
 }
-.name{
+.name {
   display: flex;
   color: rgb(43, 107, 177);
   font-size: 45px;
   justify-content: center;
 }
-.name2{
+.name2 {
   display: flex;
   color: rgb(43, 107, 177);
   font-size: 45px;
   justify-content: center;
 }
-.year{
+.year {
   display: flex;
   justify-content: flex-end;
   font-size: 30px;
-color: rgb(43, 107, 177);
+  color: rgb(43, 107, 177);
 }
-.year2{
+.year2 {
   display: flex;
   justify-content: left;
   font-size: 30px;
-color: rgb(43, 107, 177);
+  color: rgb(43, 107, 177);
 }
-.team{
+.team {
   display: flex;
   justify-content: flex-end;
   font-size: 30px;
   color: yellow;
 }
-.team2{
+.team2 {
   display: flex;
   justify-content: flex-start;
   font-size: 30px;
   color: yellow;
 }
 .playerImage1 {
-width: 100%;
-  
+  max-width: 400px;
+  max-height: 300px;
 }
 
 .playerImage2 {
-  width: 100%;
-    
-  }
+  max-width: 400px;
+  max-height: 300px;
+}
 
-  .steph{
-    max-width: 450px;
-    max-height: 450px;
-  }
+.steph {
+  max-width: 400px;
+  max-height: 300px;
+}
 
-  .lebron{
-    max-width: 450px;
-    max-height: 450px;
-  }
+.lebron {
+  max-width: 400px;
+  max-height: 300px;
+}
