@@ -180,6 +180,7 @@ export default function Compare(props) {
     e.preventDefault();
     props.getPlayer(state.playerName, state.season);
     // getPlayerId();
+    // hello
     // console.log(state.playerName);
   };
 
