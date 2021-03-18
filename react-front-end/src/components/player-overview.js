@@ -38,7 +38,7 @@ export default function PlayerOverview(props) {
     return(
       <div className="player-overview">
       <br></br>
-      <div className="overview-stats" style={{ height: 250, width: '80%', paddingTop: '15px'}}>
+      <div className="overview-stats" style={{ height: 250, width: '82%', paddingTop: '15px'}}>
         <MuiThemeProvider theme={theme}>
           <DataGrid
             rows={rows} columns={columns} autoPageSize={true} hideFooterPagination={true} 
@@ -67,10 +67,6 @@ export default function PlayerOverview(props) {
         </div>
       </div>
       <hr/>
-      <div className="last_10">
-
-      </div>
-      
     </div>
   )
 }
