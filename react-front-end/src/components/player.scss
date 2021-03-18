@@ -3,8 +3,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color:rgb(40, 84, 142) !important;
+  font-size: larger;
+  font-weight: 900;
   .player-name {
     font-size: 6em;
+    color: white !important;
   }
 }
 .link-row {
