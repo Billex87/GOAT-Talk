@@ -8,6 +8,9 @@
 .MuiDataGrid-cell {
   color: white;
 }
+.MuiDataGrid-menuIcon {
+  display: hidden !important;
+}
 .MuiTablePagination-root {
   font-size: 1em !important;
 }
@@ -27,11 +30,11 @@
 }
 
 .Mui-even, .Mui-even:hover {
-  background-color: rgb(43, 107, 177, 0.9) !important;
+  background-color: rgb(43, 107, 177, 0.7) !important;
 }
 
 .Mui-odd, .Mui-odd:hover {
-  background-color: rgb(153, 152, 152, 0.9) !important;
+  background-color: rgb(153, 152, 152, 0.7) !important;
   
 }
 .MuiDataGrid-colCellWrapper {
