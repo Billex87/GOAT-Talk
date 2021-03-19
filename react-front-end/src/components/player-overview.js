@@ -45,9 +45,9 @@ export default function PlayerOverview(props) {
           />
         </MuiThemeProvider>
       </div>
-      <br></br>
-      <div className="next-game" style={{borderRadius: '20px', boxShadow: 'inset 0 0 10px #000000'}}>
-        <h2 className="next-game-header">{props.nextGame.displayName}</h2>
+      
+      <h1 className="next-games"> Next Game</h1>
+      <div className="next-game">
         <div className="game-display">
           <div className="teams">
           <div className="name-record">
@@ -58,10 +58,10 @@ export default function PlayerOverview(props) {
           </div>
           <h1 >  vs  </h1>
           <div className="teams">
-            <img style={{maxWidth: '5em 2em'}} src={`${props.nextGame.league.events[0].competitors[1].logo}`} alt=""/>
+            <img style={{maxWidth: '3em 2em'}} src={`${props.nextGame.league.events[0].competitors[1].logo}`} alt=""/>
             <div className="name-record">
             <h2 className="teamName">{props.nextGame.league.events[0].competitors[1].name}</h2>
-            <p className="record">{props.nextGame.league.events[0].competitors[1].record}</p>
+            <p className="record2">{props.nextGame.league.events[0].competitors[1].record}</p>
             </div>
           </div>
         </div>

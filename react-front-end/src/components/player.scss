@@ -13,13 +13,30 @@
   }
 }
 
-p.record {
+p.record  {
   display: flex;
+  color: gold;
+  font-size: larger;
+  place-content: flex-start;
+  padding-left: 0em !important;
+}
+p.record2 {
+  display: flex;
+  color: gold;
+  font-size: larger;
   place-content: flex-end;
+  padding-left: 0em !important;
 }
 .name-record {
   display: flex;
-  display: inline-table;
+  flex-direction: column;
+  padding-left: 0em !important;
+}
+.teamName {
+  display: flex;
+  font-size: xx-large;
+  flex-direction: column;
+  padding-left: 0em !important;
 }
 
 .link-row {
@@ -33,35 +50,40 @@ p.record {
   justify-content: center;
   align-items: center;
 }
+.next-games {
+display: flex;
+flex-direction: column;
+align-items: center;
+color: rgb(43, 107, 177);
+size: 30px;
+border-style: solid;
+padding-left: 30px;
+padding-right: 30px;
+}
 .next-game{
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-style: solid;
-  padding-left: 30px;
-  padding-right: 30px;
-  color: rgb(43, 107, 177);
-  size: 30px;
+  // color: rgb(43, 107, 177);
+  // size: 30px;
+  // border-style: solid;
+  // padding-left: 30px;
+  // padding-right: 30px;
   img {
-    width: 15em;
-    height: 15em;
-  }
-  h1 {
-    font-weight: bold;
-    size: 30px;
-    color: white;
+    width: 18em;
+    height: 18em;
   }
 }
 .game-display {
   display: flex;
-  flex-direction: row;
+  align-items: flex-end;
   color:rgb(43, 107, 177);
 }
 
 .teams {
   display: flex;
   flex-direction: row;
-  color: white;
+  color:rgb(255, 255, 255);
   font-style: oblique;
   font-size: larger;
 }
@@ -121,10 +143,4 @@ p.record {
   justify-content: center;
   height: 50px;
   width: 200px;
-}
-
-.record {
-  color: yellow;
-  font-weight: 900;
-  
 }

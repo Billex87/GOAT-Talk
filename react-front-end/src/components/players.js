@@ -148,14 +148,14 @@ export default function Player(props) {
       }
     },
     //looking for the key name in the data above to make it work
-    { field: 'position', headerName: 'Pos.', width: 120 },
+    { field: 'position', headerName: 'Pos.', width: 100 },
     {
       field: 'logo', headerName: 'Logo', width: 160, renderCell: (params) => {
         console.log('LOGO', params)
         return (<a style={{ textDecoration: 'none', color: 'black' }} href={`/player/${params.row.id}`}><img style={{ verticalAlign: 'middle', width: '88px' }} src={params.row.logo}/></a>);
       }
     },
-    { field: 'age', headerName: 'Age', width: 120 },
+    { field: 'age', headerName: 'Age', width: 100 },
     { field: 'debutYear', headerName: 'Drafted', width: 280 },
     { field: 'height', headerName: 'Height', width: 140 },
     { field: 'weight', headerName: 'Weight', width: 170 },
@@ -178,7 +178,7 @@ export default function Player(props) {
   // });
  
   return (
-    <div style={{ height: tableHeights(allPlayers), width: '95%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px' }}>
+    <div style={{ height: tableHeights(allPlayers.slice(0,20)), width: '95%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px' }}>
       <h1><img src={"/images/nba.png"} alt="logo" className="nbaLogo" /></h1>
       <MuiThemeProvider theme={theme}>
         <DataGrid className="dataGrid" rows={allPlayers} pageSize={20} columns={columns}  disableColumnMenu={true} checkboxSelection={false} sortModel={[
