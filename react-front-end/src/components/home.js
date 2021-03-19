@@ -38,17 +38,15 @@ export default function Home(props) {
       //   return false;
       // }
       if (playerOneState.per > playerTwoState.per) {
-        console.log("YES!")
         winner = playerOneState.firstName;
       }
       if (playerOneState.per < playerTwoState.per) {
-        console.log("YOU MADE IT!")
         winner = playerTwoState.firstName;
       }
 
       // return false;
     }
-    console.log("TRY AGAIN!")
+    console.log("TRY AGAIN!");
     return winner;
   };
 
@@ -58,13 +56,27 @@ export default function Home(props) {
       .then(async res => {
         // console.log(res.data.data)
         if (typeof res.data.data[0] === "undefined") {
-          alert("This player is either injured, doesn't exist, or hasn't played yet!");
+          alert("This player is either injured or hasn't played yet! They must not be a GOAT!");
         } else if (res.data.data.length > 1) {
-          alert("Please specify the name more!");
+          alert("Please specify the name more to find out the true GOAT!");
         } else {
           axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=${season}&player_ids[]=${res.data.data[0].id}`)
             .then(async res => {
-
+              if (typeof res.data.data[0] === "undefined") {
+                alert("This player exists but did not play this season, please pick a valid season to find out the one true GOAT");
+                setPlayerOneState((prev) => ({
+                  ...prev,
+                  playerName: null,
+                  playerStats: { "pts": 0, "reb": 0, "ast": 0, "stl": 0, "blk": 0, "fg_pct": 0, "fg3_pct": 0, "ft_pct": 0, "per": 0, "ts%": 0 },
+                  season: null,
+                  firstName: null,
+                  lastName: null,
+                  position: null,
+                  team: null,
+                  year: null,
+                  per: null,
+                }));
+              }
               // let FTA = Math.round((res.data.data[0].fta * res.data.data[0].games_played)* 100) / 100;
               // let ThreePTA = Math.round((res.data.data[0].fg3a * res.data.data[0].games_played)* 100) / 100;
               // let FGA = Math.round((res.data.data[0].fga * res.data.data[0].games_played)* 100) / 100;
@@ -151,13 +163,27 @@ export default function Home(props) {
       .then(async res => {
         // console.log(res.data.data)
         if (typeof res.data.data[0] === "undefined") {
-          alert("This player is either injured or hasn't played yet!");
+          alert("This player is either injured or hasn't played yet! They must not be a GOAT!");
         } else if (res.data.data.length > 1) {
-          alert("Pleases specify the name more!");
+          alert("Please specify the name more to find out the true GOAT!");
         } else {
           axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=${season}&player_ids[]=${res.data.data[0].id}`)
             .then(async res => {
-
+              if (typeof res.data.data[0] === "undefined") {
+                alert("This player exists but did not play this season, please pick a valid season to find out the one true GOAT");
+                setPlayerTwoState((prev) => ({
+                  ...prev,
+                  playerName: null,
+                  playerStats: { "pts": 0, "reb": 0, "ast": 0, "stl": 0, "blk": 0, "fg_pct": 0, "fg3_pct": 0, "ft_pct": 0, "per": 0, "ts%": 0 },
+                  season: null,
+                  firstName: null,
+                  lastName: null,
+                  position: null,
+                  team: null,
+                  year: null,
+                  per: null,
+                }));
+              }
               // calculates TS%
               res.data.data[0]["ts%"] = Math.round(((res.data.data[0].pts * res.data.data[0].games_played) / (((Math.round(((Math.round((res.data.data[0].fga * res.data.data[0].games_played) * 100) / 100) + (Math.round((res.data.data[0].fg3a * res.data.data[0].games_played) * 100) / 100)) * 100) / 100) + 0.44 * (Math.round((res.data.data[0].fta * res.data.data[0].games_played) * 100) / 100)) * 2)) * 100 * 100) / 100;
 
