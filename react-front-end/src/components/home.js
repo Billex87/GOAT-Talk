@@ -204,13 +204,12 @@ export default function Home(props) {
           <p>BPG</p>
           <p>   </p>
           <p>   </p>
-          <div className="advanced">
             <p>FG%</p>
             <p>3PT%</p>
             <p>FT%</p>
             <p>PER</p>
             <p>TS%</p>
-          </div>
+          
 
         </section>
         <Compare reversed={false} winner={showWinner() === playerTwoState.firstName} playerAwards={"lebron"} playerAwardsImage={"lebron_awards"} playerImage={"playerImage2"} nameStyle={"name2"} yearStyle={"year2"} teamStyle={"team2"} getPlayer={getPlayerTwo} {...playerTwoState} />
