@@ -11,6 +11,8 @@ export default function Compare(props) {
   const KNOWN_PLAYER_NAMES = ['stephen_curry', 'lebron_james', 'michael_jordan', 'kobe_bryant'];
   const UNKNOWN_PLAYER_IMG_SRC = 'images/black.png';
 
+  console.log('props', props)
+
   const [state, setState] = useState({
     playerName: null,
     season: null,
@@ -23,8 +25,9 @@ export default function Compare(props) {
     options: {
       colors: [
         function ({dataPointIndex}) {
+          console.log("PASS THE ROCK!!!")
           if (props.boolsOne[dataPointIndex]) {
-            return "#7E36AF";
+            return "#00FF00";
           } else {
             return "#D9534F";
           }
@@ -123,8 +126,9 @@ export default function Compare(props) {
     options: {
       colors: [
         function ({dataPointIndex}) {
+          console.log("DOMINATE THE PAINT!!")
           if (props.boolsTwo[dataPointIndex]) {
-            return "#7E36AF";
+            return "#00FF00";
           } else {
             return "#D9534F";
           }
@@ -271,8 +275,8 @@ export default function Compare(props) {
       <div className={props.yearStyle}>{props.year}</div>
       <div className={props.teamStyle}>{props.team} {props.position}</div>
       <br />
-      {<Chart options={stats.options} series={stats.series} type="bar" height={350} />}
-      {<Chart options={efficiency.options} series={efficiency.series} type="bar" height={350} />}
+      <Chart options={stats.options} series={stats.series} type="bar" height={350} />
+      <Chart options={efficiency.options} series={efficiency.series} type="bar" height={350} />
       {/* <img className={props.playerAwards} src={`images/${state.playerName}_awards.png`} alt="" /> */}
     </div>
   );
