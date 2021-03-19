@@ -131,6 +131,10 @@ export default function PlayerStats(props) {
     miscRows.push(miscObj);
   })
 
+  const tableHeights = (rows) => {
+    return (rows.length * 52) + 145;
+  }
+  
 
   const theme = createMuiTheme({
     typography: {
@@ -152,7 +156,7 @@ export default function PlayerStats(props) {
 
       </div>
       <h2 className="stats-title">Averages</h2>
-      <div className="averages" style={{ height: 680, width: '90%', paddingLeft: '15px', paddingBottom: '15px'}}>
+      <div className="averages" style={{ height: tableHeights(avgRows), width: '95%', paddingBottom: '15px'}}>
         <MuiThemeProvider theme={theme}>
           <DataGrid
             rows={avgRows} columns={avgColumns}
@@ -160,7 +164,7 @@ export default function PlayerStats(props) {
         </MuiThemeProvider>
       </div>
       <h2 className="stats-title">Totals</h2>
-      <div className="totals" style={{ height: 750, width: '90%', paddingLeft: '15px', paddingBottom: '15px'}}>
+      <div className="totals" style={{ height: tableHeights(totalsRows), width: '95%', paddingBottom: '15px'}}>
         <MuiThemeProvider theme={theme}>
           <DataGrid
             rows={totalsRows} columns={totalsColumns} 
