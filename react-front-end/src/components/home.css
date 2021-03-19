@@ -15,7 +15,7 @@ p {
   width: 90%;
   margin: auto;
   justify-content: space-between;
-  border: dashed rgb(124, 124, 252) 2px;
+  
 }
 .ball2 {
   color: orange;
@@ -29,7 +29,7 @@ p {
   font-size: larger;
   font-weight: 600;
   width: 100px;
-  height: 560px;
+  height: 700px;
   align-self: flex-end;
   background-color: rgb(43, 107, 177);
   align-items: center;
@@ -40,10 +40,10 @@ p {
 padding: 5px;
 }
 
-.advanced > p {
+/* .advanced > p {
   margin: 2px;
 padding: 2px;
-}
+} */
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
