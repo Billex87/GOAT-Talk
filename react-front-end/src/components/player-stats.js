@@ -152,7 +152,7 @@ export default function PlayerStats(props) {
 
       </div>
       <h2 className="stats-title">Averages</h2>
-      <div className="averages" style={{ height: 750, width: '90%', paddingLeft: '15px', paddingBottom: '15px'}}>
+      <div className="averages" style={{ height: 680, width: '90%', paddingLeft: '15px', paddingBottom: '15px'}}>
         <MuiThemeProvider theme={theme}>
           <DataGrid
             rows={avgRows} columns={avgColumns}
@@ -160,25 +160,16 @@ export default function PlayerStats(props) {
         </MuiThemeProvider>
       </div>
       <h2 className="stats-title">Totals</h2>
-      <div className="totals" style={{ height: 750, width: '80%', paddingLeft: '15px', paddingBottom: '15px'}}>
+      <div className="totals" style={{ height: 750, width: '90%', paddingLeft: '15px', paddingBottom: '15px'}}>
         <MuiThemeProvider theme={theme}>
           <DataGrid
             rows={totalsRows} columns={totalsColumns} 
           />
         </MuiThemeProvider>
       </div>
-      <h2 className="stats-title">Miscellaneous</h2>
-      <div className="misc" style={{ height: 750, width: '76%', paddingLeft: '15px', paddingBottom: '15px'}}>
-        <MuiThemeProvider theme={theme}>
-          <DataGrid
-            rows={miscRows} columns={miscColumns}
-          />
-        </MuiThemeProvider>
-      </div>
-      <div className="stats-title">Glossary</div>
       <div className="glossary">
         <div className="row">
-          <table style={{width: '90%'}} >
+          <table style={{width: '100%'}} >
             <tbody>
               {gloss1.map((term) => {
                 return (
@@ -190,7 +181,7 @@ export default function PlayerStats(props) {
           </table>
         </div>
         <div className="row">
-          <table style={{width: '90%'}} >
+          <table style={{width: '100%'}} >
             <tbody>
               {gloss2.map((term) => {
                 return (
@@ -202,7 +193,7 @@ export default function PlayerStats(props) {
           </table>
         </div>
         <div className="row">
-          <table style={{width: '90%'}} >
+          <table style={{width: '100%'}} >
             <tbody>
               {gloss3.map((term) => {
                 return (
