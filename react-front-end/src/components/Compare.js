@@ -21,6 +21,15 @@ export default function Compare(props) {
       data: [props.playerStats["pts"], props.playerStats["reb"], props.playerStats["ast"], props.playerStats["stl"], props.playerStats["blk"]]
     }],
     options: {
+      colors: [
+        function ({dataPointIndex}) {
+          if (props.boolsOne[dataPointIndex]) {
+            return "#7E36AF";
+          } else {
+            return "#D9534F";
+          }
+        }
+      ],
       yaxis: {
         max: 28,
         reversed: props.reversed,
@@ -112,6 +121,15 @@ export default function Compare(props) {
       data: [props.playerStats["fg_pct"], props.playerStats["fg3_pct"], props.playerStats["ft_pct"], props.playerStats["per"], props.playerStats["ts%"]]
     }],
     options: {
+      colors: [
+        function ({dataPointIndex}) {
+          if (props.boolsTwo[dataPointIndex]) {
+            return "#7E36AF";
+          } else {
+            return "#D9534F";
+          }
+        }
+      ],
       yaxis: {
         min: 0,
         max: 1,
