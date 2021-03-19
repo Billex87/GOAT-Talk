@@ -40,6 +40,11 @@ p {
 padding: 5px;
 }
 
+.advanced > p {
+  margin: 2px;
+padding: 2px;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
