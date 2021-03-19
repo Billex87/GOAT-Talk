@@ -148,7 +148,7 @@ export default function PlayerStats(props) {
   const gloss2 = props.stats.glossary.slice(10, 19);
   let gloss3 = props.stats.glossary.slice(20, 28);
   gloss3["8"] = {abbreviation: "PER", displayName: "Player Efficiency Rating"};
-  gloss3["8"] = {abbreviation: "TS%", displayName: "True Shooting Percentage"};
+  gloss3["9"] = {abbreviation: "TS%", displayName: "True Shooting Percentage"};
 
   return(
     <div className="player-stats" style={{ display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
