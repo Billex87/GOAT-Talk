@@ -58,7 +58,7 @@ export default function Home(props) {
       .then(async res => {
         // console.log(res.data.data)
         if (typeof res.data.data[0] === "undefined") {
-          alert("This player is either injured or hasn't played yet!");
+          alert("This player is either injured, doesn't exist, or hasn't played yet!");
         } else if (res.data.data.length > 1) {
           alert("Please specify the name more!");
         } else {

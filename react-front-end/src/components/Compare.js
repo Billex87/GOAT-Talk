@@ -204,9 +204,9 @@ export default function Compare(props) {
         ...prev,
         playerName: replace
       }));
-    } else {
-      alert("Please Type Players Name!");
-    }
+     } //else {
+    //   alert("Please Type Players Name!");
+    // }
   };
   const handleChangeSeason = (event) => {
     const replace = event.target.value.split(" ").join("_").toLowerCase();
@@ -215,9 +215,9 @@ export default function Compare(props) {
         ...prev,
         season: replace
       }));
-    } else {
-      alert("Please Type Players Name!");
-    }
+     } //else {
+    //   alert("Please Type Players Name!");
+    // }
   };
 
 
@@ -235,14 +235,17 @@ export default function Compare(props) {
             value={state.value}
             onChange={handleChange}
             required={true}
-            placeholder="Enter Player Name" />
+            placeholder="Enter Player Name"
+            />
           <TextField
             id="standard-basic"
             type="text"
             value={state.value}
             onChange={handleChangeSeason}
             required={true}
-            placeholder="Enter Season" />
+            placeholder="Enter Season"
+            />
+            
         </label>
         <Button type="submit" value="Submit" variant="contained" color="primary">Submit</Button>
       </form>
