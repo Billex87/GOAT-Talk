@@ -80,7 +80,6 @@ export default function Player(props) {
         Promise.all(promises)
           //now response is going to be an array of objects
           .then((data) => {
-            console.log(data);
             const players = data.map((d) => {
               return {
                 id: d.data.athlete.id,
