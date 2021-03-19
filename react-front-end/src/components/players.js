@@ -80,7 +80,6 @@ export default function Player(props) {
         Promise.all(promises)
           //now response is going to be an array of objects
           .then((data) => {
-            console.log(data);
             const players = data.map((d) => {
               return {
                 id: d.data.athlete.id,
@@ -89,10 +88,10 @@ export default function Player(props) {
                 teamShortName: d.data.athlete.team.name,
                 position: d.data.athlete.position.abbreviation,
                 age: d.data.athlete.age,
-                debutYear: d.data.athlete.debutYear,
+                debutYear: d.data.athlete.displayDraft,
                 height: d.data.athlete.displayHeight,
                 weight: d.data.athlete.displayWeight,
-                jersey: d.data.athlete.jersey,
+                jersey: d.data.athlete.displayDraft,
                 logo: d.data.athlete.team.logos[0].href,
               };
             });
@@ -143,7 +142,7 @@ export default function Player(props) {
   const columns = [
     { field: 'id', hide: true },
     {
-      field: 'displayName', headerName: 'NBA Players', width: 440, renderCell: (params) => {
+      field: 'displayName', headerName: 'NBA Players', width: 400, renderCell: (params) => {
         console.log('HEADSHOT', params)
         return (<a style={{ textDecoration: 'none', color: 'black' }} href={`/player/${params.row.id}`}><img style={{ verticalAlign: 'middle', width: '88px' }} src={params.row.img} />{params.row.displayName}</a>);
       }
@@ -151,14 +150,14 @@ export default function Player(props) {
     //looking for the key name in the data above to make it work
     { field: 'position', headerName: 'Pos.', width: 120 },
     {
-      field: 'logo', headerName: 'Logo', width: 150, renderCell: (params) => {
+      field: 'logo', headerName: 'Logo', width: 160, renderCell: (params) => {
         console.log('LOGO', params)
         return (<a style={{ textDecoration: 'none', color: 'black' }} href={`/player/${params.row.id}`}><img style={{ verticalAlign: 'middle', width: '88px' }} src={params.row.logo}/></a>);
       }
     },
     { field: 'age', headerName: 'Age', width: 120 },
-    { field: 'debutYear', headerName: 'Drafted', width: 170 },
-    { field: 'height', headerName: 'Height', width: 160 },
+    { field: 'debutYear', headerName: 'Drafted', width: 280 },
+    { field: 'height', headerName: 'Height', width: 140 },
     { field: 'weight', headerName: 'Weight', width: 170 },
   ];
   // const rows = [
@@ -182,7 +181,7 @@ export default function Player(props) {
     <div style={{ height: tableHeights(allPlayers), width: '95%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px' }}>
       <h1><img src={"/images/nba.png"} alt="logo" className="nbaLogo" /></h1>
       <MuiThemeProvider theme={theme}>
-        <DataGrid className="dataGrid" rows={allPlayers} columns={columns} pageSize={20} disableColumnMenu={true} checkboxSelection={false} sortModel={[
+        <DataGrid className="dataGrid" rows={allPlayers} pageSize={20} columns={columns}  disableColumnMenu={true} checkboxSelection={false} sortModel={[
           {
             field: 'displayName', sort: 'asc'
           }

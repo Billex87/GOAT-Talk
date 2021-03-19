@@ -34,16 +34,16 @@ export default function Leaders(props) {
   const columns = [
     { field: 'id', hide: true },
     {
-      field: 'displayName', headerName: 'Name', width: 200, renderCell: (params) => {
+      field: 'displayName', headerName: 'Name', width: 240, renderCell: (params) => {
         return (<a style={{ textDecoration: 'none', color: 'black' }} href={`/player/${params.row.id}`}><img style={{ verticalAlign: 'middle', width: '48px' }} src={params.row.img} />{params.row.displayName}</a>);
       }
     },
-    { field: 'TEAM', headerName: 'Team', width: 75 }
+    { field: 'TEAM', headerName: 'Team', width: 100 }
   ];
 
   headers.map((header) => {
     let headObj = {
-      field: header, headerName: header, type: 'number', width: 75
+      field: header, headerName: header, type: 'number', width: 100
     };
     columns.push(headObj);
   });
@@ -55,7 +55,8 @@ export default function Leaders(props) {
       id: player.athlete.id,
       displayName: player.athlete.displayName,
       TEAM: player.athlete.teamShortName,
-      img: player.athlete.headshot.href
+      img: player.athlete.headshot.href,
+      
     };
     headers.map((header, index2) => {
       playerObject[header] = player.categories[1].values[index2];
@@ -80,8 +81,8 @@ export default function Leaders(props) {
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ height: 750, width: '85%', paddingLeft: '15px', marginBottom: '15px' }}>
-        <h1><img src={"/images/trophy.png"} alt="logo" className="Trophy" /></h1>
+      <div style={{ height: 750, width: '95%', paddingLeft: '15px', marginBottom: '15px' }}>
+        <h1><img src={"/images/nba.png"} alt="logo" className="Trophy" /></h1>
         <h1>Stat Leaders</h1>
         <MuiThemeProvider theme={theme}>
           <DataGrid rows={rows} columns={columns} pageSize={12} disableColumnMenu={true} checkboxSelection={false} />

@@ -111,26 +111,23 @@ export default function Standings(props) {
 
   const columns = [
     { field: 'id', hide: true},
-    { field: 'rank', headerName: 'Rank', width: 63 },
-    {field: 'img', headerName: 'Team', width: 68, renderCell: (params) => {
+    { field: 'rank', headerName: '#', width: 65 },
+    {field: 'img', headerName: ' ', width: 60, renderCell: (params) => {
       return(<img style={{verticalAlign: 'middle', width: '38px'}} src={params.row.img} alt=""/>)
     }},
     // { field: 'img', headerName: 'Logo', width: 60},
-    { field: 'name', headerName: 'Name', width: 195},
+    { field: 'name', headerName: 'Team', width: 195},
     { field: 'wins', headerName: 'W', width: 60 },
     { field: 'losses', headerName: 'L', width: 60 },
-    { field: 'winpct', headerName: 'WIN %', width: 80 },
-    { field: 'gb', headerName: 'GB', width: 60 },
-    { field: 'ppg', headerName: 'PPG', width: 90 },
-    { field: 'pointsAgainst', headerName: 'Opp. PPG', width: 100 },
-    { field: 'diff', headerName: 'DIFF', width: 60 },
-    { field: 'streak', headerName: 'Streak', width: 80 },
-    { field: 'divPct', headerName: 'Div %', width: 100 },
-    { field: 'leaguePct', headerName: 'League %', width: 100 },
+    { field: 'winpct', headerName: 'WIN %', width: 120 },
+    { field: 'gb', headerName: 'GB', width: 80 },
+    { field: 'ppg', headerName: 'PPG', width: 100 },
+    { field: 'pointsAgainst', headerName: 'Opp. PPG', width: 120 },
+    { field: 'diff', headerName: 'DIFF', width: 100 },
     { field: 'road', headerName: 'ROAD', width: 100 },
-    { field: 'div', headerName: 'vs. Div', width: 120 },
-    { field: 'conf', headerName: 'vs. Conf', width: 120 },
-    { field: 'lastten', headerName: 'L10', width: 120 }
+    { field: 'div', headerName: 'Div', width: 80 },
+    { field: 'conf', headerName: 'Conf', width: 80 },
+    { field: 'lastten', headerName: 'L10', width: 100 },
   ];
 
   const theme = createMuiTheme({
@@ -142,8 +139,12 @@ export default function Standings(props) {
     }
   })
 
+  const tableHeights = (rows) => {
+    return (rows.length * 52) + 145;
+  }
+
   return (
-    <div style={{ height: 750, width: '95%', paddingLeft: '65px', paddingBottom: '15px'}}>
+    <div style={{ height: tableHeights(formattedWest), width: '96%', paddingLeft: '35px', paddingBottom: '15px'}}>
       <h1><img  src={"/images/western.png"} alt="logo" className="conferenceLogo"/></h1>
       <MuiThemeProvider theme={theme}>
         <DataGrid rows={formattedWest} columns={columns} pageSize={20} checkboxSelection disableColumnMenu={true} checkboxSelection={false} />
