@@ -7,7 +7,7 @@ const curry_shots = require('./data/curry_shots.json')
 const lebron_videos = require('./data/lebron_videos.json')
 const curry_videos = require('./data/curry_videos.json')
 const league_leaders = require('./data/league_leaders.json')
-const dummy_shots = require('./data/dummy_shots.json')
+// const dummy_shots = require('./data/dummy_shots.json')
 
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
@@ -32,9 +32,9 @@ App.get('/api/videos', (req, res) =>
 App.get('/api/leaders', (req, res) =>
   res.json(league_leaders)
 )
-App.get('/api/dummy', (req, res) =>
-  res.json(dummy_shots)
-)
+// App.get('/api/dummy', (req, res) =>
+//   res.json(dummy_shots)
+// )
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Express seems to be listening on port ${PORT} so that's pretty good 👍`);

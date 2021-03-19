@@ -228,7 +228,6 @@ export default function Compare(props) {
       <img className={props.playerImage} src={state.imgSrc}
         alt="" />
       <form onSubmit={handleSubmit}>
-        <SportsBasketballIcon className="ball" />
         <label>
           <TextField
             id="standard-basic"
@@ -252,7 +251,7 @@ export default function Compare(props) {
       <div className={props.teamStyle}>{props.team} {props.position}</div>
       <br />
       {<Chart options={stats.options} series={stats.series} type="bar" height={350} />}
-      {<Chart options={efficiency.options} series={efficiency.series} type="bar" height={210} />}
+      {<Chart options={efficiency.options} series={efficiency.series} type="bar" height={350} />}
       {/* <img className={props.playerAwards} src={`images/${state.playerName}_awards.png`} alt="" /> */}
     </div>
   );
