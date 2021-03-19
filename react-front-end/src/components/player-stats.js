@@ -146,10 +146,10 @@ export default function PlayerStats(props) {
 
   const gloss1 = props.stats.glossary.slice(0, 9);
   const gloss2 = props.stats.glossary.slice(10, 19);
-  const gloss3 = props.stats.glossary.slice(20, 28);
+  let gloss3 = props.stats.glossary.slice(20, 28);
+  gloss3["8"] = {abbreviation: "PER", displayName: "Player Efficiency Rating"};
+  gloss3["8"] = {abbreviation: "TS%", displayName: "True Shooting Percentage"};
 
-
-    console.log(avgRows)
   return(
     <div className="player-stats" style={{ display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
       <div className="season-type-switcher">
