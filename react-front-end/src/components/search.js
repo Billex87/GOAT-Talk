@@ -14,7 +14,8 @@ export default function Search(props) {
       <div style={{display: 'flex', justifyContent: 'center'}}>
         <div style={{backgroundColor: 'white', borderRadius: '10px'}}>
           <TextField
-            label="Search"
+            label="Players"
+            style={{backgroundColor: 'white', fontSize: "1em"}}
             variant="outlined"
             onChange={event => {
               const { value } = event.target;

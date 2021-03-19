@@ -3,12 +3,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color:rgb(40, 84, 142) !important;
+  color:rgb(253, 253, 253) !important;
   font-size: larger;
   font-weight: 900;
   .player-name {
     font-size: 6em;
-    color: white !important;
+    font-family: none;
+    color: rgb(255, 219, 17) !important;
   }
 }
 .link-row {
@@ -75,6 +76,9 @@
 
 .stats-title {
   color: rgb(43, 107, 177);
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 0px !important;
 }
 .image-container {
   position: relative;

@@ -127,7 +127,9 @@ export default function Player(props) {
   // } else {
   //   allPlayers = allPlayersSearched;
   // }
-
+  const tableHeights = (rows) => {
+    return (rows.length * 52) + 145;
+  }
 
   const theme = createMuiTheme({
     typography: {
@@ -177,7 +179,7 @@ export default function Player(props) {
   // });
  
   return (
-    <div style={{ height: 684, width: '95%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px' }}>
+    <div style={{ height: tableHeights(allPlayers), width: '95%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px' }}>
       <h1><img src={"/images/nba.png"} alt="logo" className="nbaLogo" /></h1>
       <MuiThemeProvider theme={theme}>
         <DataGrid className="dataGrid" rows={allPlayers} columns={columns} pageSize={20} disableColumnMenu={true} checkboxSelection={false} sortModel={[
