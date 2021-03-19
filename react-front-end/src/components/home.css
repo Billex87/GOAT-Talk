@@ -12,6 +12,7 @@ p {
 .Vs {
   display: flex;
   flex-wrap: wrap;
+  zoom: 125%;
   width: 90%;
   margin: auto;
   justify-content: space-between;
