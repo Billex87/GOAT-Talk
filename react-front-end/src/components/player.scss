@@ -9,9 +9,19 @@
   .player-name {
     font-size: 6em;
     font-family: none;
-    color: rgb(255, 219, 17) !important;
+    color: rgb(43, 107, 177) !important;
   }
 }
+
+p.record {
+  display: flex;
+  place-content: flex-end;
+}
+.name-record {
+  display: flex;
+  display: inline-table;
+}
+
 .link-row {
   display: flex;
   justify-content: space-evenly;
@@ -47,6 +57,7 @@
   flex-direction: row;
   color:rgb(43, 107, 177);
 }
+
 .teams {
   display: flex;
   flex-direction: row;
