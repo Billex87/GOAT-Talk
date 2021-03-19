@@ -17,10 +17,11 @@
 .MuiDataGrid-footer {
   max-height: 1em !important;
 }
+
 .MuiDataGrid-root .MuiDataGrid-colCellTitle {
   justify-content: center;
   display: flex;
-  color: white;
+  color: rgb(43, 107, 177);
   font-weight: bolder;
   align-items: center;
 }

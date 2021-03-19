@@ -59,10 +59,22 @@
   padding: 10px;
   height: 300px; /* Should be removed. Only for demonstration */
 }
+
+.glossary {
+  color: gold;
+  font-weight: bolder;
+  display: flex;
+  justify-content: space-between;
+  font-size: large;
+}
 .glossary:after {
   content: "";
   display: table;
   clear: both;
+}
+
+.stats-title {
+  color: rgb(43, 107, 177);
 }
 .image-container {
   position: relative;
