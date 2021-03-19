@@ -14,6 +14,7 @@ export default function Home(props) {
     position: null,
     team: null,
     year: null,
+    per: null,
   });
 
   const [playerTwoState, setPlayerTwoState] = useState({
@@ -25,14 +26,29 @@ export default function Home(props) {
     position: null,
     team: null,
     year: null,
+    per: null,
   });
 
   const showWinner = () => {
     let winner;
     if (playerOneState.firstName !== null && playerTwoState.firstName !== null) {
-      winner = playerOneState.firstName;
+      // winner = playerOneState.firstName;
       //later could customize this to randomize it/add weights etc
+      // if (playerOneState.firstName === null || playerTwoState.firstName === null) {
+      //   return false;
+      // }
+      if (playerOneState.per > playerTwoState.per) {
+        console.log("YES!")
+        winner = playerOneState.firstName;
+      }
+      if (playerOneState.per < playerTwoState.per) {
+        console.log("YOU MADE IT!")
+        winner = playerTwoState.firstName;
+      }
+
+      // return false;
     }
+    console.log("TRY AGAIN!")
     return winner;
   };
 
@@ -110,7 +126,8 @@ export default function Home(props) {
               setPlayerOneState((prev) => ({
                 ...prev,
                 playerStats: res.data.data[0],
-                year: res.data.data[0].season
+                year: res.data.data[0].season,
+                per: res.data.data[0].per
               }));
             }).catch(err => {
               console.log(err);
@@ -121,7 +138,6 @@ export default function Home(props) {
             lastName: res.data.data[0].last_name,
             position: res.data.data[0].position,
             team: res.data.data[0].team.city,
-
           }));
 
         }
@@ -168,7 +184,8 @@ export default function Home(props) {
               setPlayerTwoState((prev) => ({
                 ...prev,
                 playerStats: res.data.data[0],
-                year: res.data.data[0].season
+                year: res.data.data[0].season,
+                per: res.data.data[0].per
               }));
             }).catch(err => {
               console.log(err);
@@ -179,7 +196,6 @@ export default function Home(props) {
             lastName: res.data.data[0].last_name,
             position: res.data.data[0].position,
             team: res.data.data[0].team.city,
-
           }));
 
         }
@@ -204,12 +220,12 @@ export default function Home(props) {
           <p>BPG</p>
           <p>   </p>
           <p>   </p>
-            <p>FG%</p>
-            <p>3PT%</p>
-            <p>FT%</p>
-            <p>PER</p>
-            <p>TS%</p>
-          
+          <p>FG%</p>
+          <p>3PT%</p>
+          <p>FT%</p>
+          <p>PER</p>
+          <p>TS%</p>
+
 
         </section>
         <Compare reversed={false} winner={showWinner() === playerTwoState.firstName} playerAwards={"lebron"} playerAwardsImage={"lebron_awards"} playerImage={"playerImage2"} nameStyle={"name2"} yearStyle={"year2"} teamStyle={"team2"} getPlayer={getPlayerTwo} {...playerTwoState} />
