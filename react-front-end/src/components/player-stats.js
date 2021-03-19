@@ -164,7 +164,7 @@ export default function PlayerStats(props) {
         </MuiThemeProvider>
       </div>
       <h2 className="stats-title">Totals</h2>
-      <div className="totals" style={{ height: tableHeights(totalsRows), width: '95%', paddingBottom: '15px'}}>
+      <div className="totals" style={{ height: tableHeights(totalsRows), width: '95%', marginLeft: 'auto', marginRight: 'auto', paddingBottom: '15px'}}>
         <MuiThemeProvider theme={theme}>
           <DataGrid
             rows={totalsRows} columns={totalsColumns} 

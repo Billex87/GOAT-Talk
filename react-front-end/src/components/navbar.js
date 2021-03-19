@@ -115,7 +115,7 @@ export default function Navbar() {
         <Button variant="outlined" size="small"><Link to='/standings' className="navBarLink" style={{ textDecoration: 'none',  margin: theme.spacing(.5)}}>Standings</Link></Button>&emsp;
         <Button variant="outlined" size="small"><Link to='/leaders' className="navBarLink" style={{ textDecoration: 'none',  margin: theme.spacing(.5)}}>Leaders</Link></Button>&emsp;
         <div/>
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
         <a href={"http://localhost:3000/"}><img className="title" src={"/images/goat2.png"} alt="logo" /></a>
         <a href={"http://localhost:3000/"} className={classes.home}><h2></h2></a>
           <Typography variant="h6" noWrap className={classes.title}>
