@@ -48,3 +48,6 @@ font-size: 1.4em !important;
 .link-row {
   color: white  !important;
 }
+.MuiCssBaseline {
+  font-family: none !important;
+}
