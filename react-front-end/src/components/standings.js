@@ -144,7 +144,7 @@ export default function Standings(props) {
   }
 
   return (
-    <div style={{ height: tableHeights(formattedEast), width: '96%', paddingLeft: '35px', paddingBottom: '15px'}}>
+    <div style={{ height: 905, width: '96%', paddingLeft: '35px', paddingBottom: '15px'}}>
       <h1><img  src={"/images/western.png"} alt="logo" className="conferenceLogo"/></h1>
       <MuiThemeProvider theme={theme}>
         <DataGrid rows={formattedWest} columns={columns} pageSize={20} checkboxSelection disableColumnMenu={true} checkboxSelection={false} />

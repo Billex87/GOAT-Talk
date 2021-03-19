@@ -19,25 +19,25 @@
   display: flex;
   justify-content: flex-end;
   font-size: 30px;
-  color: rgb(43, 107, 177);
+  color: gold;
 }
 .year2 {
   display: flex;
   justify-content: left;
   font-size: 30px;
-  color: rgb(43, 107, 177);
+  color: gold;
 }
 .team {
   display: flex;
   justify-content: flex-end;
   font-size: 30px;
-  color: rgb(153, 152, 152);
+  color: rgb(43, 107, 177);
 }
 .team2 {
   display: flex;
   justify-content: flex-start;
   font-size: 30px;
-  color: rgb(153, 152, 152);
+  color: rgb(43, 107, 177);
 }
 .playerImage1 {
   max-width: 400px;
