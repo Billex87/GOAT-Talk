@@ -50,7 +50,6 @@ export default function Player(props) {
       Promise.resolve(url6)
     ])
       .then((all) => {
-        console.log(all[3].data)
         setState(prev => ({
           ...prev,
           player_overview_stats: all[0].data,
