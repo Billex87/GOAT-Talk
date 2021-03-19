@@ -8,9 +8,13 @@ import Chart from 'react-apexcharts';
 
 export default function Compare(props) {
 
+  const KNOWN_PLAYER_NAMES = ['stephen_curry', 'lebron_james', 'michael_jordan', 'kobe_bryant'];
+  const UNKNOWN_PLAYER_IMG_SRC = 'images/black.png';
+
   const [state, setState] = useState({
     playerName: null,
     season: null,
+    imgSrc: UNKNOWN_PLAYER_IMG_SRC
   });
   const stats = {
     series: [{
@@ -129,7 +133,7 @@ export default function Compare(props) {
         enabled: true,
         enabledOnSeries: undefined,
         formatter: function (val, opts) {
-          console.log("val ", val)
+          console.log("val ", val);
           return val;
         },
         textAnchor: 'middle',
@@ -179,13 +183,22 @@ export default function Compare(props) {
   // Line 37 ----- PPG', 'RPG', 'APG', 'SPG', 'BPG', 'FG%','3PT%', 'FT%' - Graph Order
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (state.playerName && state.playerName.trim().length) {
+      console.log('state.PlayerName', state.playerName)
+      const playerImageSource = KNOWN_PLAYER_NAMES.includes(state.playerName) ? `images/${state.playerName}.png` : UNKNOWN_PLAYER_IMG_SRC;
+      setState(prev =>
+      ({
+        ...prev,
+        imgSrc: playerImageSource
+      }));
+    };
     props.getPlayer(state.playerName, state.season);
     // getPlayerId();
     // console.log(state.playerName);
   };
 
   const handleChange = (event) => {
-    const replace = event.target.value.split(" ").join("_");
+    const replace = event.target.value.split(" ").join("_").toLowerCase();
     if (replace.length > 0) {
       setState((prev) => ({
         ...prev,
@@ -196,7 +209,7 @@ export default function Compare(props) {
     }
   };
   const handleChangeSeason = (event) => {
-    const replace = event.target.value.split(" ").join("_");
+    const replace = event.target.value.split(" ").join("_").toLowerCase();
     if (replace.length > 0) {
       setState((prev) => ({
         ...prev,
@@ -207,18 +220,13 @@ export default function Compare(props) {
     }
   };
 
-  let imgSrc;
-  if(state.playerName === null){
-    imgSrc = `images/black.png`;
-  } else {
-    imgSrc = `images/${state.playerName}.png`;
-  }
+
   return (
     <div className="Player">
       {props.winner && <img className="crown" src='images/crown2.png'
- alt="" />}
-      <img className={props.playerImage} src={imgSrc}
- alt="" />
+        alt="" />}
+      <img className={props.playerImage} src={state.imgSrc}
+        alt="" />
       <form onSubmit={handleSubmit}>
         <SportsBasketballIcon className="ball" />
         <label>
@@ -227,12 +235,14 @@ export default function Compare(props) {
             type="text"
             value={state.value}
             onChange={handleChange}
+            required={true}
             placeholder="Enter Player Name" />
           <TextField
             id="standard-basic"
             type="text"
             value={state.value}
             onChange={handleChangeSeason}
+            required={true}
             placeholder="Enter Season" />
         </label>
         <Button type="submit" value="Submit" variant="contained" color="primary">Submit</Button>
