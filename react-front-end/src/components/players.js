@@ -8,10 +8,6 @@ import {
 import { useParams } from 'react-router-dom';
 import './players.css';
 
-// const MyFormatter = function(props) {
-//   return <a href=
-// }
-
 const search = function (term, players) {
   // console.log('term', term)
   if (!term) {
@@ -29,44 +25,11 @@ const search = function (term, players) {
   }
 };
 
-//OLD SEARCH FUNCTION
-
-// const search = function (term, players) {
-//   // console.log('term', term)
-//   if (!term) {
-//     return players;
-//   } else {
-//     const results = [];
-//     players.map((player) => {
-
-//       if ((player.athlete.displayName).toLowerCase().indexOf((term).toLowerCase()) != -1) {
-//         results.push(player);
-//       }
-
-//     });
-//     return results;
-//   }
-// };
-
-
 export default function Player(props) {
 
   const [loading, setLoading] = useState(true);
-
   const [players, setPlayers] = useState([]);
-
   let { term } = useParams();
-  // console.log('term', term);
-
-
-  // useEffect(() => {axios.get('https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/statistics/byathlete?region=us&lang=en&contentorigin=espn&isqualified=true&page=1&limit=256&sort=general.avgMinutes%3Adesc')
-  // .then((response) => {
-  //   setPlayers(prev => ({
-  //     ...prev,
-  //     players: response.data
-  //   }))
-  //   setLoading(false)
-  // })}, [])
 
   useEffect(() => {
     axios.get('https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/statistics/byathlete?region=us&lang=en&contentorigin=espn&isqualified=true&page=1&limit=256&sort=general.avgMinutes%3Adesc')
@@ -116,16 +79,6 @@ export default function Player(props) {
     allPlayers = allPlayersSearched;
   }
 
-  //OLD PLAYER SEARCH
-  // const allPlayersSearched = search(term, players.players.athletes);
-
-  // let allPlayers;
-
-  // if (!allPlayersSearched) {
-  //   allPlayers = players.players.athlete;
-  // } else {
-  //   allPlayers = allPlayersSearched;
-  // }
   const tableHeights = (rows) => {
     return (rows.length * 52) + 145;
   }
@@ -137,21 +90,19 @@ export default function Player(props) {
     },
   });
 
-  //for simple data fields just specifying the field down below is good enough, say what the field info has, the name and the width
-  //when we want the value to be more complicated we can use renderCell through Material UI, used to configure the data rows in the table in a more complex way
   const columns = [
     { field: 'id', hide: true },
     {
       field: 'displayName', headerName: 'NBA Players', width: 400, renderCell: (params) => {
-        console.log('HEADSHOT', params)
-        return (<a style={{ textDecoration: 'none', color: 'black' }} href={`/player/${params.row.id}`}><img style={{ verticalAlign: 'middle', width: '88px' }} src={params.row.img} />{params.row.displayName}</a>);
+        // console.log('HEADSHOT', params)
+        return (<a style={{ textDecoration: 'none', color: 'black' }} href={`/player/${params.row.id}`}><img style={{ verticalAlign: 'middle', width: '98px' }} src={params.row.img} />{params.row.displayName}</a>);
       }
     },
     //looking for the key name in the data above to make it work
     { field: 'position', headerName: 'Pos.', width: 100 },
     {
       field: 'logo', headerName: 'Logo', width: 160, renderCell: (params) => {
-        console.log('LOGO', params)
+        // console.log('LOGO', params)
         return (<a style={{ textDecoration: 'none', color: 'black' }} href={`/player/${params.row.id}`}><img style={{ verticalAlign: 'middle', width: '88px' }} src={params.row.logo}/></a>);
       }
     },
@@ -160,22 +111,6 @@ export default function Player(props) {
     { field: 'height', headerName: 'Height', width: 140 },
     { field: 'weight', headerName: 'Weight', width: 170 },
   ];
-  // const rows = [
-  // ];
-
-  // allPlayers.map((player) => {
-  //   console.log(player);
-  //   const playerObject = {
-  //     id: player.athlete.id,
-  //     img: player.athlete.headshot.href,
-  //     displayName: player.athlete.displayName,
-  //     teamShortName: player.athlete.teamShortName,
-  //     position: player.athlete.position.abbreviation,
-  //     age: player.athlete.age,
-  //     debutYear: player.athlete.debutYear
-  //   };
-  //   rows.push(playerObject);
-  // });
  
   return (
     <div style={{ height: tableHeights(allPlayers.slice(0,20)), width: '95%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px' }}>
@@ -190,5 +125,3 @@ export default function Player(props) {
     </div>
   );
 }
-
-//rows when from being players to allPlayers with the update

@@ -9,21 +9,18 @@ import './leaders.css';
 
 
 export default function Leaders(props) {
-
-  // console.log('looping?')
-
   const [loading, setLoading] = useState(true);
   const [leagueLeaders, setleagueLeaders] = useState({});
 
   useEffect(() => {
     axios.get('https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/statistics/byathlete?region=us&lang=en&contentorigin=espn&isqualified=true&page=1&limit=250&sort=offensive.avgPoints%3Adesc')
-    .then((response) => {
-      setleagueLeaders(prev => ({
-        ...prev,
-        leagueLeaders: response.data
-      }));
-      setLoading(false);
-    });
+      .then((response) => {
+        setleagueLeaders(prev => ({
+          ...prev,
+          leagueLeaders: response.data
+        }));
+        setLoading(false);
+      });
   }, []);
 
   if (loading) return null;
@@ -56,11 +53,9 @@ export default function Leaders(props) {
       displayName: player.athlete.displayName,
       TEAM: player.athlete.teamShortName,
       img: player.athlete.headshot.href,
-      
     };
     headers.map((header, index2) => {
       playerObject[header] = player.categories[1].values[index2].toFixed(1);
-      console.log("Billy", player.categories[1].values[index2])
     });
     rows.push(playerObject);
   });
@@ -74,16 +69,11 @@ export default function Leaders(props) {
     }
   });
 
-  // console.log(headers)
-  // console.log(rows)
-  // console.log(columns)
-
-
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ height: 750, width: '95%', paddingLeft: '15px', marginBottom: '15px' }}>
         <h1><img src={"/images/nba.png"} alt="logo" className="Trophy" /></h1>
-        <h1>Stat Leaders</h1>
+        <h1>2021 League Leaders</h1>
         <MuiThemeProvider theme={theme}>
           <DataGrid rows={rows} columns={columns} pageSize={12} disableColumnMenu={true} checkboxSelection={false} />
         </MuiThemeProvider>

@@ -9,8 +9,6 @@ import {
   Route
 } from "react-router-dom";
 
-import ShotChart from './components/ShotChart';
-import Heatmap from './components/Heatmap';
 import Player from './components/player';
 import Standings from './components/standings';
 import Players from './components/players';
@@ -60,12 +58,12 @@ export default function App(props) {
       });
   }, []);
 
-  let curry_shots_object = state.curry_shots.shots;
-  let curry_shots_array = [];
+  // let curry_shots_object = state.curry_shots.shots;
+  // let curry_shots_array = [];
 
-  for (let s in curry_shots_object) {
-    curry_shots_array.push(curry_shots_object[s]);
-  }
+  // for (let s in curry_shots_object) {
+  //   curry_shots_array.push(curry_shots_object[s]);
+  // }
 
   if (loading) {
     return (null);
@@ -87,10 +85,6 @@ export default function App(props) {
               <Leaders
                 leaders={state.leaders}
               />
-            </Route>
-            <Route path="/shotchart">
-              <ShotChart shots={state["lebron_shots"]} />
-              <Heatmap shots={state["lebron_shots"]} />
             </Route>
             <Route path='/player/:id'>
               <Player />
