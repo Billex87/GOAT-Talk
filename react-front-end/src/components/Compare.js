@@ -24,15 +24,15 @@ export default function Compare(props) {
     }],
     options: {
       colors: [
-        function ({dataPointIndex}) {
-          console.log("PASS THE ROCK!!!")
-          if (props.boolsOne[dataPointIndex]) {
-            return "#ff7b08";  // graph color
-          } else {
-            return "#ffbe30";  //look here
-          }
-        }
-      ],
+            function ({dataPointIndex}) {
+              console.log("PASS THE ROCK!!!")
+              if (props.boolsOne[dataPointIndex]) {
+                return "#0c30cf";  // graph color
+              } else {
+                return "#00bbff";  //look here
+              }
+            }
+          ],
       yaxis: {
         max: 40,
         reversed: props.reversed,
@@ -107,6 +107,20 @@ export default function Compare(props) {
         width: 2,
         colors: ['black']
       },
+      fill: {
+        type: 'gradient',
+        gradient: {
+          shade: 'dark',
+          type: "horizontal",
+          shadeIntensity: 0.5,
+          gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
+          inverseColors: true,
+          opacityFrom: 1,
+          opacityTo: 1,
+          stops: [0, 50, 100],
+          colorStops: []
+        }
+      }
     },
   };
   // const efficiency = {
