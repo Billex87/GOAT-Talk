@@ -7,7 +7,7 @@ export default function Home(props) {
 
   const [playerOneState, setPlayerOneState] = useState({
     playerName: null,
-    playerStats: { "pts": 0, "reb": 0, "ast": 0, "stl": 0, "blk": 0, "fg_pct": 0, "fg3_pct": 0, "ft_pct": 0, "per": 0, "ts%": 0 },
+    playerStats: { "pts": 0, "reb": 0, "ast": 0, "per": 0, "ts%": 0 },
     season: null,
     firstName: null,
     lastName: null,
@@ -19,7 +19,7 @@ export default function Home(props) {
 
   const [playerTwoState, setPlayerTwoState] = useState({
     playerName: null,
-    playerStats: { "pts": 0, "reb": 0, "ast": 0, "stl": 0, "blk": 0, "fg_pct": 0, "fg3_pct": 0, "ft_pct": 0, "per": 0, "ts%": 0 },
+    playerStats: { "pts": 0, "reb": 0, "ast": 0, "per": 0, "ts%": 0 },
     season: null,
     firstName: null,
     lastName: null,
@@ -67,7 +67,7 @@ export default function Home(props) {
                 setPlayerOneState((prev) => ({
                   ...prev,
                   playerName: null,
-                  playerStats: { "pts": 0, "reb": 0, "ast": 0, "stl": 0, "blk": 0, "fg_pct": 0, "fg3_pct": 0, "ft_pct": 0, "per": 0, "ts%": 0 },
+                  playerStats: { "pts": 0, "reb": 0, "ast": 0, "per": 0, "ts%": 0 },
                   season: null,
                   firstName: null,
                   lastName: null,
@@ -234,7 +234,7 @@ export default function Home(props) {
   const playerOneChart = []
   const playerTwoChart = []
 
-  const keys = ["pts", "reb", "ast", "stl", "blk"]; //2nd one for other
+  const keys = ["pts", "reb", "ast", "per", "ts%"]; //2nd one for other
   for (const key of keys) {
     const result = playerOneState.playerStats[key] > playerTwoState.playerStats[key];
     playerOneChart.push(result);
@@ -262,14 +262,7 @@ console.log('playerTwoChartTwo', playerTwoChartTwo)
           <p>PPG</p>
           <p>RPG</p>
           <p>APG</p>
-          <p>SPG</p>
-          <p>BPG</p>
-          <p>   </p>
-          <p>   </p>
-          <p>FG%</p>
-          <p>3PT%</p>
-          <p>FT%</p>
-          <p>PER</p>
+          <p>P.E.R.</p>
           <p>TS%</p>
 
 
