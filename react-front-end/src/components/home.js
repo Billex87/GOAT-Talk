@@ -54,7 +54,7 @@ export default function Home(props) {
   const getPlayerOne = (name, season) => {    
     if(name === "andy_scalabrine"){
       
-      let stats = { ast: 100, blk: 100, dreb: 100, fg3_pct: 100, fg3a: 100, fg3m: 100, fg_pct: 100, fga: 100, fgm: 100, ft_pct: 100, fta: 100, ftm: 100, games_played: 82, min: "48:00", oreb: 0, per: 100, pf: 0, player_id: 100, pts: 100, reb: 100, season: 2020, stl: 100, "ts%": 100, turnover: 0};
+      let stats = { ast: 10, per: 50, player_id: 100, pts: 50, reb: 10, season: 2020, "ts%": 50, };
 
       setPlayerOneState((prev) => ({
         ...prev,
