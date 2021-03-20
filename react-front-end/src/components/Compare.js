@@ -20,21 +20,21 @@ export default function Compare(props) {
   });
   const stats = {
     series: [{
-      data: [props.playerStats["pts"], props.playerStats["reb"], props.playerStats["ast"], props.playerStats["stl"], props.playerStats["blk"]]
+      data: [props.playerStats["pts"], props.playerStats["reb"], props.playerStats["ast"], props.playerStats["per"], props.playerStats["ts%"]]
     }],
     options: {
       colors: [
         function ({dataPointIndex}) {
           console.log("PASS THE ROCK!!!")
           if (props.boolsOne[dataPointIndex]) {
-            return "#00FF00";
+            return "#ff7b08";  // graph color
           } else {
-            return "#D9534F";
+            return "#ffbe30";  //look here
           }
         }
       ],
       yaxis: {
-        max: 28,
+        max: 40,
         reversed: props.reversed,
         forceNiceScale: true,
         floating: false,
@@ -54,7 +54,7 @@ export default function Compare(props) {
         },
         axisBorder: {
           show: true,
-          color: '#78909C',
+          color: '#ffffff',
           offsetX: 0,
           offsetY: 0
         }
@@ -63,9 +63,6 @@ export default function Compare(props) {
         bar: {
           horizontal: true,
         }
-      },
-      dataLabels: {
-        enabled: false
       },
       xaxis: {
         categories: ['', '', '', '', '', ''],
@@ -84,123 +81,107 @@ export default function Compare(props) {
           fontSize: '14px',
           fontFamily: 'Helvetica, Arial, sans-serif',
           fontWeight: 'bold',
-          colors: undefined
+          // colors: undefined
         },
         background: {
           enabled: true,
-          foreColor: '#fff',
+          foreColor: '#000000',
           padding: 4,
           borderRadius: 2,
           borderWidth: 1,
-          borderColor: '#fff',
-          opacity: 0.9,
-          dropShadow: {
-            enabled: false,
-            top: 1,
-            left: 1,
-            blur: 1,
-            color: '#000',
-            opacity: 0.45
-          }
+          borderColor: '#000000',
+          opacity: 0.9, 
         },
-        dropShadow: {
-          enabled: false,
-          top: 1,
-          left: 1,
-          blur: 1,
-          color: '#000',
-          opacity: 0.45
-        }
       },
       stroke: {
         show: true,
-        width: 1,
-        colors: ['#fff']
+        width: 2,
+        colors: ['black']
       },
     },
   };
-  const efficiency = {
-    series: [{
-      data: [props.playerStats["fg_pct"], props.playerStats["fg3_pct"], props.playerStats["ft_pct"], props.playerStats["per"], props.playerStats["ts%"]]
-    }],
-    options: {
-      colors: [
-        function ({dataPointIndex}) {
-          console.log("DOMINATE THE PAINT!!")
-          if (props.boolsTwo[dataPointIndex]) {
-            return "#00FF00";
-          } else {
-            return "#D9534F";
-          }
-        }
-      ],
-      yaxis: {
-        min: 0,
-        max: 1,
-        reversed: props.reversed,
-        forceNiceScale: true,
-        floating: false,
-        tickAmount: 5,
-        decimalsInFloat: undefined,
-      },
-      plotOptions: {
-        bar: {
-          horizontal: true,
-        }
-      },
-      xaxis: {
-        categories: ['', '', ''],
-      },
-      dataLabels: {
-        enabled: true,
-        enabledOnSeries: undefined,
-        formatter: function (val, opts) {
-          console.log("val ", val);
-          return val;
-        },
-        textAnchor: 'middle',
-        distributed: false,
-        offsetX: 0,
-        offsetY: 0,
-        style: {
-          fontSize: '14px',
-          fontFamily: 'Helvetica, Arial, sans-serif',
-          fontWeight: 'bold',
-          colors: undefined
-        },
-        background: {
-          enabled: true,
-          foreColor: '#fff',
-          padding: 4,
-          borderRadius: 2,
-          borderWidth: 1,
-          borderColor: '#fff',
-          opacity: 0.9,
-          dropShadow: {
-            enabled: false,
-            top: 1,
-            left: 1,
-            blur: 1,
-            color: '#000',
-            opacity: 0.45
-          }
-        },
-        dropShadow: {
-          enabled: false,
-          top: 1,
-          left: 1,
-          blur: 1,
-          color: '#000',
-          opacity: 0.45
-        }
-      },
-      stroke: {
-        show: true,
-        width: 1,
-        colors: ['#fff']
-      },
-    },
-  };
+  // const efficiency = {
+  //   series: [{
+  //     data: [props.playerStats["fg_pct"], props.playerStats["fg3_pct"], props.playerStats["ft_pct"], props.playerStats["per"], props.playerStats["ts%"]]
+  //   }],
+  //   options: {
+  //     colors: [
+  //       function ({dataPointIndex}) {
+  //         console.log("DOMINATE THE PAINT!!")
+  //         if (props.boolsTwo[dataPointIndex]) {
+  //           return "#2b6cb1";
+  //         } else {
+  //           return "#989999";
+  //         }
+  //       }
+  //     ],
+  //     yaxis: {
+  //       min: 0,
+  //       max: 1,
+  //       reversed: props.reversed,
+  //       forceNiceScale: true,
+  //       floating: false,
+  //       tickAmount: 5,
+  //       decimalsInFloat: undefined,
+  //     },
+  //     plotOptions: {
+  //       bar: {
+  //         horizontal: true,
+  //       }
+  //     },
+  //     xaxis: {
+  //       categories: ['', '', ''],
+  //     },
+  //     dataLabels: {
+  //       // enabled: true,
+  //       // enabledOnSeries: undefined,
+  //       // formatter: function (val, opts) {
+  //       //   console.log("val ", val);
+  //       //   return val;
+  //       // },
+  //       // textAnchor: 'middle',
+  //       // distributed: false,
+  //       // offsetX: 0,
+  //       // offsetY: 0,
+  //       // style: {
+  //       //   fontSize: '14px',
+  //       //   fontFamily: 'Helvetica, Arial, sans-serif',
+  //       //   fontWeight: 'bold',
+  //       //   colors: undefined
+  //       // },
+  //       // background: {
+  //       //   enabled: false,
+  //       //   foreColor: '#fff',
+  //       //   padding: 4,
+  //       //   borderRadius: 2,
+  //       //   borderWidth: 1,
+  //       //   borderColor: '#fff',
+  //       //   opacity: 0.9,
+  //       //   dropShadow: {
+  //       //     enabled: false,
+  //       //     top: 1,
+  //       //     left: 1,
+  //       //     blur: 1,
+  //       //     color: '#000',
+  //       //     opacity: 0.45
+  //       //   }
+  //       // },
+  //       // dropShadow: {
+  //       //   enabled: false,
+  //       //   top: 1,
+  //       //   left: 1,
+  //       //   blur: 1,
+  //       //   color: '#000',
+  //       //   opacity: 0.45
+  //       // }
+  //     },
+  //     // stroke: {
+  //     //   show: true,
+  //     //   width: 1,
+  //     //   colors: ['#fff']
+  //     // },
+  //   },
+  // };
 
   // Line 37 ----- PPG', 'RPG', 'APG', 'SPG', 'BPG', 'FG%','3PT%', 'FT%' - Graph Order
   const handleSubmit = (e) => {
@@ -276,7 +257,6 @@ export default function Compare(props) {
       <div className={props.teamStyle}>{props.team} {props.position}</div>
       <br />
       <Chart options={stats.options} series={stats.series} type="bar" height={350} />
-      <Chart options={efficiency.options} series={efficiency.series} type="bar" height={350} />
       {/* <img className={props.playerAwards} src={`images/${state.playerName}_awards.png`} alt="" /> */}
     </div>
   );
