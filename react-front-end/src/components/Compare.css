@@ -48,6 +48,9 @@
   max-width: 400px;
   max-height: 300px;
 }
+.apexcharts-menu-icon {
+  display: none;
+}
 
 /* .steph {
   max-width: 410px;

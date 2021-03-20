@@ -42,3 +42,8 @@ span {
   display: flex;
   justify-content: space-around;
 }
+
+.MuiAppBar-colorPrimary {
+  color: #fff;
+  background-image: linear-gradient( to right, rgb(43, 107, 177), rgb(155, 155, 155),rgb(43, 107, 177) ) !important;
+}

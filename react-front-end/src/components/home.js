@@ -7,7 +7,7 @@ export default function Home(props) {
 
   const [playerOneState, setPlayerOneState] = useState({
     playerName: null,
-    playerStats: { "pts": 0, "reb": 0, "ast": 0, "stl": 0, "blk": 0, "fg_pct": 0, "fg3_pct": 0, "ft_pct": 0, "per": 0, "ts%": 0 },
+    playerStats: { "pts": 0, "reb": 0, "ast": 0, "per": 0, "ts%": 0 },
     season: null,
     firstName: null,
     lastName: null,
@@ -19,7 +19,7 @@ export default function Home(props) {
 
   const [playerTwoState, setPlayerTwoState] = useState({
     playerName: null,
-    playerStats: { "pts": 0, "reb": 0, "ast": 0, "stl": 0, "blk": 0, "fg_pct": 0, "fg3_pct": 0, "ft_pct": 0, "per": 0, "ts%": 0 },
+    playerStats: { "pts": 0, "reb": 0, "ast": 0, "per": 0, "ts%": 0 },
     season: null,
     firstName: null,
     lastName: null,
@@ -84,7 +84,7 @@ export default function Home(props) {
                 setPlayerOneState((prev) => ({
                   ...prev,
                   playerName: null,
-                  playerStats: { "pts": 0, "reb": 0, "ast": 0, "stl": 0, "blk": 0, "fg_pct": 0, "fg3_pct": 0, "ft_pct": 0, "per": 0, "ts%": 0 },
+                  playerStats: { "pts": 0, "reb": 0, "ast": 0, "per": 0, "ts%": 0 },
                   season: null,
                   firstName: null,
                   lastName: null,
@@ -248,17 +248,17 @@ export default function Home(props) {
 
   };
 
-  const playerOneChart = []
-  const playerTwoChart = []
+  const playerOneChart = [];
+  const playerTwoChart = [];
 
-  const keys = ["pts", "reb", "ast", "stl", "blk"]; //2nd one for other
+  const keys = ["pts", "reb", "ast", "per", "ts%"]; //2nd one for other
   for (const key of keys) {
     const result = playerOneState.playerStats[key] > playerTwoState.playerStats[key];
     playerOneChart.push(result);
     playerTwoChart.push(!result);
   }
-  const playerOneChartTwo = []
-  const playerTwoChartTwo = []
+  const playerOneChartTwo = [];
+  const playerTwoChartTwo = [];
 
   const keysTwo = ["fg_pct", "fg3_pct", "ft_pct", "per", "ts%"]; //2nd one for other
   for (const key of keysTwo) {
@@ -267,31 +267,26 @@ export default function Home(props) {
     playerTwoChartTwo.push(!result);
   }
 
-console.log('playerOneChartTwo', playerOneChartTwo)
-console.log('playerTwoChartTwo', playerTwoChartTwo)
+  console.log('playerOneChartTwo', playerOneChartTwo);
+  console.log('playerTwoChartTwo', playerTwoChartTwo);
 
 
   return (
     <div className="App">
       <div className="Vs">
+        <img className="vsLogo" src="images/versus3.png" alt="" />
+        {/* <h1 className="vsLogo">VS</h1> */}
         <Compare winner={showWinner() === playerOneState.firstName} boolsOne={playerOneChart} boolsTwo={playerOneChartTwo} reversed={true} playerAwards={"steph"} playerAwardsImage={"curry_awards"} playerImage={"playerImage1"} nameStyle={"name"} yearStyle={"year"} teamStyle={"team"} getPlayer={getPlayerOne} {...playerOneState} />
         <section className="Tetris">
           <p>PPG</p>
           <p>RPG</p>
           <p>APG</p>
-          <p>SPG</p>
-          <p>BPG</p>
-          <p>   </p>
-          <p>   </p>
-          <p>FG%</p>
-          <p>3PT%</p>
-          <p>FT%</p>
-          <p>PER</p>
+          <p>P.E.R.</p>
           <p>TS%</p>
 
 
         </section>
-        <Compare reversed={false} winner={showWinner() === playerTwoState.firstName} boolsOne={playerTwoChart} boolsTwo={playerTwoChartTwo}  playerAwards={"lebron"} playerAwardsImage={"lebron_awards"} playerImage={"playerImage2"} nameStyle={"name2"} yearStyle={"year2"} teamStyle={"team2"} getPlayer={getPlayerTwo} {...playerTwoState} />
+        <Compare reversed={false} winner={showWinner() === playerTwoState.firstName} boolsOne={playerTwoChart} boolsTwo={playerTwoChartTwo} playerAwards={"lebron"} playerAwardsImage={"lebron_awards"} playerImage={"playerImage2"} nameStyle={"name2"} yearStyle={"year2"} teamStyle={"team2"} getPlayer={getPlayerTwo} {...playerTwoState} />
       </div>
       {/* <img className={'steph'} src={`images/${playerOneState.firstName}_${playerOneState.lastName}_awards.png`} alt="" />
       <img className={'lebron'} src={`images/${playerTwoState.firstName}_${playerTwoState.lastName}_awards.png`} alt="" /> */}
