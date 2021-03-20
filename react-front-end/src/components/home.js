@@ -52,7 +52,7 @@ export default function Home(props) {
 
 
   const getPlayerOne = (name, season) => {    
-    if(name === "andy_scalabrine"){
+    if(name === "andy_lindsay"){
       
       let stats = { ast: 10, per: 50, player_id: 100, pts: 50, reb: 10, season: 2020, "ts%": 50, };
 
@@ -62,7 +62,7 @@ export default function Home(props) {
         year: season,
         per: stats.per,
         firstName: "Andy",
-        lastName: "Scalabrine",
+        lastName: "Lindsay",
         position: "Lecturer/Mentor",
         team: "Lighthouse Labs"
       }));
