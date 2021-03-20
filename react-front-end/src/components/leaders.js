@@ -9,7 +9,6 @@ import './leaders.css';
 
 
 export default function Leaders(props) {
-
   const [loading, setLoading] = useState(true);
   const [leagueLeaders, setleagueLeaders] = useState({});
 
@@ -54,11 +53,9 @@ export default function Leaders(props) {
       displayName: player.athlete.displayName,
       TEAM: player.athlete.teamShortName,
       img: player.athlete.headshot.href,
-
     };
     headers.map((header, index2) => {
       playerObject[header] = player.categories[1].values[index2].toFixed(1);
-      console.log("Billy", player.categories[1].values[index2])
     });
     rows.push(playerObject);
   });
@@ -72,12 +69,11 @@ export default function Leaders(props) {
     }
   });
 
-
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ height: 750, width: '95%', paddingLeft: '15px', marginBottom: '15px' }}>
         <h1><img src={"/images/nba.png"} alt="logo" className="Trophy" /></h1>
-        <h1>Stat Leaders</h1>
+        <h1>2021 League Leaders</h1>
         <MuiThemeProvider theme={theme}>
           <DataGrid rows={rows} columns={columns} pageSize={12} disableColumnMenu={true} checkboxSelection={false} />
         </MuiThemeProvider>
