@@ -27,9 +27,9 @@ export default function Compare(props) {
         function ({dataPointIndex}) {
           console.log("PASS THE ROCK!!!")
           if (props.boolsOne[dataPointIndex]) {
-            return "#2b6cb1";
+            return "#ff7b08";  // graph color
           } else {
-            return "#989999";
+            return "#ffbe30";  //look here
           }
         }
       ],
