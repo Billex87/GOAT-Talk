@@ -32,7 +32,7 @@ export default function Compare(props) {
         }
       ],
       yaxis: {
-        max: 40,
+        max: 45,
         reversed: props.reversed,
         forceNiceScale: true,
         floating: false,
@@ -83,7 +83,7 @@ export default function Compare(props) {
         },
         background: {
           enabled: true,
-          forceColor: '#000000',
+          forceColor: 'red',
           padding: 4,
           borderRadius: 2,
           borderWidth: 1,
