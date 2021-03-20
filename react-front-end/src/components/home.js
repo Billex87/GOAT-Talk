@@ -32,21 +32,13 @@ export default function Home(props) {
   const showWinner = () => {
     let winner;
     if (playerOneState.firstName !== null && playerTwoState.firstName !== null) {
-      // winner = playerOneState.firstName;
-      //later could customize this to randomize it/add weights etc
-      // if (playerOneState.firstName === null || playerTwoState.firstName === null) {
-      //   return false;
-      // }
       if (playerOneState.per > playerTwoState.per) {
         winner = playerOneState.firstName;
       }
       if (playerOneState.per < playerTwoState.per) {
         winner = playerTwoState.firstName;
       }
-
-      // return false;
     }
-    console.log("TRY AGAIN!");
     return winner;
   };
 
@@ -274,18 +266,18 @@ export default function Home(props) {
     playerOneChart.push(result);
     playerTwoChart.push(!result);
   }
-  const playerOneChartTwo = [];
-  const playerTwoChartTwo = [];
+  // const playerOneChartTwo = [];
+  // const playerTwoChartTwo = [];
 
-  const keysTwo = ["fg_pct", "fg3_pct", "ft_pct", "per", "ts%"]; //2nd one for other
-  for (const key of keysTwo) {
-    const result = playerOneState.playerStats[key] > playerTwoState.playerStats[key];
-    playerOneChartTwo.push(result);
-    playerTwoChartTwo.push(!result);
-  }
+  // const keysTwo = ["fg_pct", "fg3_pct", "ft_pct", "per", "ts%"]; //2nd one for other
+  // for (const key of keysTwo) {
+  //   const result = playerOneState.playerStats[key] > playerTwoState.playerStats[key];
+  //   playerOneChartTwo.push(result);
+  //   playerTwoChartTwo.push(!result);
+  // }
 
-  console.log('playerOneChartTwo', playerOneChartTwo);
-  console.log('playerTwoChartTwo', playerTwoChartTwo);
+  // console.log('playerOneChartTwo', playerOneChartTwo);
+  // console.log('playerTwoChartTwo', playerTwoChartTwo);
 
 
   return (
@@ -293,7 +285,7 @@ export default function Home(props) {
       <div className="Vs">
         <img className="vsLogo" src="images/versus3.png" alt="" />
         {/* <h1 className="vsLogo">VS</h1> */}
-        <Compare winner={showWinner() === playerOneState.firstName} boolsOne={playerOneChart} boolsTwo={playerOneChartTwo} reversed={true} playerAwards={"steph"} playerAwardsImage={"curry_awards"} playerImage={"playerImage1"} nameStyle={"name"} yearStyle={"year"} teamStyle={"team"} getPlayer={getPlayerOne} {...playerOneState} />
+        <Compare winner={showWinner() === playerOneState.firstName} boolsOne={playerOneChart} reversed={true} playerAwards={"steph"} playerAwardsImage={"curry_awards"} playerImage={"playerImage1"} nameStyle={"name"} yearStyle={"year"} teamStyle={"team"} getPlayer={getPlayerOne} {...playerOneState} />
         <section className="Tetris">
           <p>PPG</p>
           <p>RPG</p>
@@ -303,7 +295,7 @@ export default function Home(props) {
 
 
         </section>
-        <Compare reversed={false} winner={showWinner() === playerTwoState.firstName} boolsOne={playerTwoChart} boolsTwo={playerTwoChartTwo} playerAwards={"lebron"} playerAwardsImage={"lebron_awards"} playerImage={"playerImage2"} nameStyle={"name2"} yearStyle={"year2"} teamStyle={"team2"} getPlayer={getPlayerTwo} {...playerTwoState} />
+        <Compare reversed={false} winner={showWinner() === playerTwoState.firstName} boolsOne={playerTwoChart} playerAwards={"lebron"} playerAwardsImage={"lebron_awards"} playerImage={"playerImage2"} nameStyle={"name2"} yearStyle={"year2"} teamStyle={"team2"} getPlayer={getPlayerTwo} {...playerTwoState} />
       </div>
       {/* <img className={'steph'} src={`images/${playerOneState.firstName}_${playerOneState.lastName}_awards.png`} alt="" />
       <img className={'lebron'} src={`images/${playerTwoState.firstName}_${playerTwoState.lastName}_awards.png`} alt="" /> */}

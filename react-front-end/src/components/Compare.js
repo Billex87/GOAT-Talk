@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from "axios";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
 import './Compare.css';
 import Chart from 'react-apexcharts';
 
@@ -24,15 +23,14 @@ export default function Compare(props) {
     }],
     options: {
       colors: [
-            function ({dataPointIndex}) {
-              console.log("PASS THE ROCK!!!")
-              if (props.boolsOne[dataPointIndex]) {
-                return "#0c30cf";  // graph color
-              } else {
-                return "#00bbff";  //look here
-              }
-            }
-          ],
+        function ({ dataPointIndex }) {
+          if (props.boolsOne[dataPointIndex]) {
+            return "#0c30cf";  // graph color
+          } else {
+            return "#00bbff";  //look here
+          }
+        }
+      ],
       yaxis: {
         max: 40,
         reversed: props.reversed,
@@ -99,7 +97,7 @@ export default function Compare(props) {
           //     }
           //   }
           // ],
-          opacity: 0.9, 
+          opacity: 0.9,
         },
       },
       stroke: {
@@ -210,7 +208,6 @@ export default function Compare(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (state.playerName && state.playerName.trim().length) {
-      console.log('state.PlayerName', state.playerName)
       const playerImageSource = KNOWN_PLAYER_NAMES.includes(state.playerName) ? `images/${state.playerName}.png` : UNKNOWN_PLAYER_IMG_SRC;
       setState(prev =>
       ({
@@ -229,9 +226,7 @@ export default function Compare(props) {
         ...prev,
         playerName: replace
       }));
-     } //else {
-    //   alert("Please Type Players Name!");
-    // }
+    }
   };
   const handleChangeSeason = (event) => {
     const replace = event.target.value.split(" ").join("_").toLowerCase();
@@ -240,18 +235,25 @@ export default function Compare(props) {
         ...prev,
         season: replace
       }));
-     } //else {
-    //   alert("Please Type Players Name!");
-    // }
+    }
   };
 
+  let playerTag = null;
+  if (state.playerName === "lebron_james") {
+    playerTag = 1966;
+  }
+  else {
+    playerTag = 3975;
+  }
+
+  //1966 is href for lebron, line 246 is hardcoded to be able to link to steph is there a way to do it to be either lebron or steph based on state?
 
   return (
     <div className="Player">
       {props.winner && <img className="crown" src='images/crown2.png'
         alt="" />}
-      <img className={props.playerImage} src={state.imgSrc}
-        alt="" />
+      <a href={`/player/${playerTag}`}><img className={props.playerImage} src={state.imgSrc}
+        alt="" /></a>
       <form onSubmit={handleSubmit}>
         <label>
           <TextField
@@ -261,7 +263,7 @@ export default function Compare(props) {
             onChange={handleChange}
             required={true}
             placeholder="Enter Player Name"
-            />
+          />
           <TextField
             id="standard-basic"
             type="text"
@@ -269,8 +271,8 @@ export default function Compare(props) {
             onChange={handleChangeSeason}
             required={true}
             placeholder="Enter Season"
-            />
-            
+          />
+
         </label>
         <Button type="submit" value="Submit" variant="contained" color="primary">Submit</Button>
       </form>
