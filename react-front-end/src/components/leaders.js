@@ -10,20 +10,18 @@ import './leaders.css';
 
 export default function Leaders(props) {
 
-  // console.log('looping?')
-
   const [loading, setLoading] = useState(true);
   const [leagueLeaders, setleagueLeaders] = useState({});
 
   useEffect(() => {
     axios.get('https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/statistics/byathlete?region=us&lang=en&contentorigin=espn&isqualified=true&page=1&limit=250&sort=offensive.avgPoints%3Adesc')
-    .then((response) => {
-      setleagueLeaders(prev => ({
-        ...prev,
-        leagueLeaders: response.data
-      }));
-      setLoading(false);
-    });
+      .then((response) => {
+        setleagueLeaders(prev => ({
+          ...prev,
+          leagueLeaders: response.data
+        }));
+        setLoading(false);
+      });
   }, []);
 
   if (loading) return null;
@@ -56,7 +54,7 @@ export default function Leaders(props) {
       displayName: player.athlete.displayName,
       TEAM: player.athlete.teamShortName,
       img: player.athlete.headshot.href,
-      
+
     };
     headers.map((header, index2) => {
       playerObject[header] = player.categories[1].values[index2].toFixed(1);
@@ -73,10 +71,6 @@ export default function Leaders(props) {
       type: "dark",
     }
   });
-
-  // console.log(headers)
-  // console.log(rows)
-  // console.log(columns)
 
 
   return (
