@@ -89,16 +89,16 @@ export default function Compare(props) {
           padding: 4,
           borderRadius: 2,
           borderWidth: 1,
-          borderColor: [
-            function ({dataPointIndex}) {
-              console.log("PASS THE ROCK!!!")
-              if (props.boolsOne[dataPointIndex]) {
-                return "#ff7b08";  // graph color
-              } else {
-                return "#ffbe30";  //look here
-              }
-            }
-          ],
+          // borderColor: [
+          //   function ({dataPointIndex}) {
+          //     console.log("PASS THE ROCK!!!")
+          //     if (props.boolsOne[dataPointIndex]) {
+          //       return "#ff7b08";  // graph color
+          //     } else {
+          //       return "#ffbe30";  //look here
+          //     }
+          //   }
+          // ],
           opacity: 0.9, 
         },
       },
