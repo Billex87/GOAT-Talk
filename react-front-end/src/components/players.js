@@ -8,12 +8,7 @@ import {
 import { useParams } from 'react-router-dom';
 import './players.css';
 
-// const MyFormatter = function(props) {
-//   return <a href=
-// }
-
 const search = function (term, players) {
-  // console.log('term', term)
   if (!term) {
     return players;
   } else {
@@ -56,7 +51,6 @@ export default function Player(props) {
   const [players, setPlayers] = useState([]);
 
   let { term } = useParams();
-  // console.log('term', term);
 
 
   // useEffect(() => {axios.get('https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/statistics/byathlete?region=us&lang=en&contentorigin=espn&isqualified=true&page=1&limit=256&sort=general.avgMinutes%3Adesc')
@@ -95,9 +89,9 @@ export default function Player(props) {
                 logo: d.data.athlete.team.logos[0].href,
               };
             });
-            setPlayers(players)
-            setLoading(false)
-            console.log('players', players)
+            setPlayers(players);
+            setLoading(false);
+            console.log('players', players);
           });
       });
   }, []);
@@ -128,7 +122,7 @@ export default function Player(props) {
   // }
   const tableHeights = (rows) => {
     return (rows.length * 52) + 145;
-  }
+  };
 
   const theme = createMuiTheme({
     typography: {
@@ -143,7 +137,7 @@ export default function Player(props) {
     { field: 'id', hide: true },
     {
       field: 'displayName', headerName: 'NBA Players', width: 400, renderCell: (params) => {
-        console.log('HEADSHOT', params)
+        console.log('HEADSHOT', params);
         return (<a style={{ textDecoration: 'none', color: 'black' }} href={`/player/${params.row.id}`}><img style={{ verticalAlign: 'middle', width: '88px' }} src={params.row.img} />{params.row.displayName}</a>);
       }
     },
@@ -151,8 +145,8 @@ export default function Player(props) {
     { field: 'position', headerName: 'Pos.', width: 100 },
     {
       field: 'logo', headerName: 'Logo', width: 160, renderCell: (params) => {
-        console.log('LOGO', params)
-        return (<a style={{ textDecoration: 'none', color: 'black' }} href={`/player/${params.row.id}`}><img style={{ verticalAlign: 'middle', width: '88px' }} src={params.row.logo}/></a>);
+        console.log('LOGO', params);
+        return (<a style={{ textDecoration: 'none', color: 'black' }} href={`/player/${params.row.id}`}><img style={{ verticalAlign: 'middle', width: '88px' }} src={params.row.logo} /></a>);
       }
     },
     { field: 'age', headerName: 'Age', width: 100 },
@@ -176,12 +170,12 @@ export default function Player(props) {
   //   };
   //   rows.push(playerObject);
   // });
- 
+
   return (
-    <div style={{ height: tableHeights(allPlayers.slice(0,20)), width: '95%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px' }}>
+    <div style={{ height: tableHeights(allPlayers.slice(0, 20)), width: '95%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px' }}>
       <h1><img src={"/images/nba.png"} alt="logo" className="nbaLogo" /></h1>
       <MuiThemeProvider theme={theme}>
-        <DataGrid className="dataGrid" rows={allPlayers} pageSize={20} columns={columns}  disableColumnMenu={true} checkboxSelection={false} sortModel={[
+        <DataGrid className="dataGrid" rows={allPlayers} pageSize={20} columns={columns} disableColumnMenu={true} checkboxSelection={false} sortModel={[
           {
             field: 'displayName', sort: 'asc'
           }
