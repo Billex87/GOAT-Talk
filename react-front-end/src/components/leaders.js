@@ -59,7 +59,7 @@ export default function Leaders(props) {
       
     };
     headers.map((header, index2) => {
-      playerObject[header] = player.categories[1].values[index2];
+      playerObject[header] = player.categories[1].values[index2].toFixed(1);
       console.log("Billy", player.categories[1].values[index2])
     });
     rows.push(playerObject);
