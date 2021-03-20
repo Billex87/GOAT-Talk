@@ -11,7 +11,7 @@ export default function Compare(props) {
   const KNOWN_PLAYER_NAMES = ['stephen_curry', 'lebron_james', 'michael_jordan', 'kobe_bryant'];
   const UNKNOWN_PLAYER_IMG_SRC = 'images/black.png';
 
-  console.log('props', props)
+  // console.log('props', props)
 
   const [state, setState] = useState({
     playerName: null,
@@ -25,7 +25,6 @@ export default function Compare(props) {
     options: {
       colors: [
         function ({dataPointIndex}) {
-          console.log("PASS THE ROCK!!!")
           if (props.boolsOne[dataPointIndex]) {
             return "#00FF00";
           } else {
@@ -126,7 +125,6 @@ export default function Compare(props) {
     options: {
       colors: [
         function ({dataPointIndex}) {
-          console.log("DOMINATE THE PAINT!!")
           if (props.boolsTwo[dataPointIndex]) {
             return "#00FF00";
           } else {
@@ -155,7 +153,6 @@ export default function Compare(props) {
         enabled: true,
         enabledOnSeries: undefined,
         formatter: function (val, opts) {
-          console.log("val ", val);
           return val;
         },
         textAnchor: 'middle',
@@ -216,7 +213,6 @@ export default function Compare(props) {
     };
     props.getPlayer(state.playerName, state.season);
     // getPlayerId();
-    // console.log(state.playerName);
   };
 
   const handleChange = (event) => {

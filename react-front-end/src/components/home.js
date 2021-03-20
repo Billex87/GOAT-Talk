@@ -51,17 +51,34 @@ export default function Home(props) {
   };
 
 
-  const getPlayerOne = (name, season) => {
-    axios.get(`https://www.balldontlie.io/api/v1/players?search=${name}`)
+  const getPlayerOne = (name, season) => {    
+    if(name === "andy_scalabrine"){
+      
+      let stats = { ast: 100, blk: 100, dreb: 100, fg3_pct: 100, fg3a: 100, fg3m: 100, fg_pct: 100, fga: 100, fgm: 100, ft_pct: 100, fta: 100, ftm: 100, games_played: 82, min: "48:00", oreb: 0, per: 99999, pf: 0, player_id: 100, pts: 100, reb: 100, season: 2020, stl: 100, "ts%": 100, turnover: 0};
+
+      setPlayerOneState((prev) => ({
+        ...prev,
+        playerStats: stats,
+        year: season,
+        per: stats.per,
+        firstName: "Andy",
+        lastName: "Scalabrine",
+        position: "Lecturer/Mentor",
+        team: "Lighthouse Labs"
+      }));
+
+    }else{
+    
+      axios.get(`https://www.balldontlie.io/api/v1/players?search=${name}`)
       .then(async res => {
-        // console.log(res.data.data)
         if (typeof res.data.data[0] === "undefined") {
           alert("This player is either injured or hasn't played yet! They must not be a GOAT!");
         } else if (res.data.data.length > 1) {
           alert("Please specify the name more to find out the true GOAT!");
         } else {
           axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=${season}&player_ids[]=${res.data.data[0].id}`)
-            .then(async res => {
+          .then(async res => {
+              console.log(res.data.data[0])
               if (typeof res.data.data[0] === "undefined") {
                 alert("This player exists but did not play this season, please pick a valid season to find out the one true GOAT");
                 setPlayerOneState((prev) => ({
@@ -156,7 +173,7 @@ export default function Home(props) {
       }).catch(err => {
         console.log(err);
       });
-
+    }
   };
   const getPlayerTwo = (name, season) => {
     axios.get(`https://www.balldontlie.io/api/v1/players?search=${name}`)
