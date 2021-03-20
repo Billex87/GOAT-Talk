@@ -231,8 +231,8 @@ export default function Home(props) {
 
   };
 
-  const playerOneChart = []
-  const playerTwoChart = []
+  const playerOneChart = [];
+  const playerTwoChart = [];
 
   const keys = ["pts", "reb", "ast", "per", "ts%"]; //2nd one for other
   for (const key of keys) {
@@ -240,8 +240,8 @@ export default function Home(props) {
     playerOneChart.push(result);
     playerTwoChart.push(!result);
   }
-  const playerOneChartTwo = []
-  const playerTwoChartTwo = []
+  const playerOneChartTwo = [];
+  const playerTwoChartTwo = [];
 
   const keysTwo = ["fg_pct", "fg3_pct", "ft_pct", "per", "ts%"]; //2nd one for other
   for (const key of keysTwo) {
@@ -250,13 +250,15 @@ export default function Home(props) {
     playerTwoChartTwo.push(!result);
   }
 
-console.log('playerOneChartTwo', playerOneChartTwo)
-console.log('playerTwoChartTwo', playerTwoChartTwo)
+  console.log('playerOneChartTwo', playerOneChartTwo);
+  console.log('playerTwoChartTwo', playerTwoChartTwo);
 
 
   return (
     <div className="App">
       <div className="Vs">
+        <img className="vsLogo" src="images/versus3.png" alt="" />
+        {/* <h1 className="vsLogo">VS</h1> */}
         <Compare winner={showWinner() === playerOneState.firstName} boolsOne={playerOneChart} boolsTwo={playerOneChartTwo} reversed={true} playerAwards={"steph"} playerAwardsImage={"curry_awards"} playerImage={"playerImage1"} nameStyle={"name"} yearStyle={"year"} teamStyle={"team"} getPlayer={getPlayerOne} {...playerOneState} />
         <section className="Tetris">
           <p>PPG</p>
@@ -267,7 +269,7 @@ console.log('playerTwoChartTwo', playerTwoChartTwo)
 
 
         </section>
-        <Compare reversed={false} winner={showWinner() === playerTwoState.firstName} boolsOne={playerTwoChart} boolsTwo={playerTwoChartTwo}  playerAwards={"lebron"} playerAwardsImage={"lebron_awards"} playerImage={"playerImage2"} nameStyle={"name2"} yearStyle={"year2"} teamStyle={"team2"} getPlayer={getPlayerTwo} {...playerTwoState} />
+        <Compare reversed={false} winner={showWinner() === playerTwoState.firstName} boolsOne={playerTwoChart} boolsTwo={playerTwoChartTwo} playerAwards={"lebron"} playerAwardsImage={"lebron_awards"} playerImage={"playerImage2"} nameStyle={"name2"} yearStyle={"year2"} teamStyle={"team2"} getPlayer={getPlayerTwo} {...playerTwoState} />
       </div>
       {/* <img className={'steph'} src={`images/${playerOneState.firstName}_${playerOneState.lastName}_awards.png`} alt="" />
       <img className={'lebron'} src={`images/${playerTwoState.firstName}_${playerTwoState.lastName}_awards.png`} alt="" /> */}

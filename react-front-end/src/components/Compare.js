@@ -85,11 +85,20 @@ export default function Compare(props) {
         },
         background: {
           enabled: true,
-          foreColor: '#000000',
+          forceColor: '#000000',
           padding: 4,
           borderRadius: 2,
           borderWidth: 1,
-          borderColor: '#000000',
+          borderColor: [
+            function ({dataPointIndex}) {
+              console.log("PASS THE ROCK!!!")
+              if (props.boolsOne[dataPointIndex]) {
+                return "#ff7b08";  // graph color
+              } else {
+                return "#ffbe30";  //look here
+              }
+            }
+          ],
           opacity: 0.9, 
         },
       },
