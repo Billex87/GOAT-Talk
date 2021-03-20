@@ -19,7 +19,7 @@ export default function PlayerStats(props) {
 
 
   const avgRows= []
-  
+  let totalMins = [];
   props.stats.categories[0].statistics.map((season, index) => {
     let rowObj = { 'id': index, 'Season': season.season.displayName }
     season.stats.map((stat, index) => {
@@ -43,6 +43,7 @@ export default function PlayerStats(props) {
     // calculates PER
     rowObj.PER = Math.round(((((rowObj.FGA * (rowObj["FG%"] / 100)) * 85.910) +((rowObj.STL * rowObj.GP) * 53.897) + ((rowObj["3PTA"] * (rowObj["3P%"] / 100)) * 51.757) + ((rowObj.FTA * (rowObj["FT%"] / 100)) * 46.845) + ((rowObj.BLK * rowObj.GP) * 39.190) + ((rowObj.OR * rowObj.GP) * 39.190) + ((rowObj.AST * rowObj.GP) * 34.677) + ((rowObj.DR * rowObj.GP) * 14.707) - ((rowObj.PF * rowObj.GP) * 17.174) - ((rowObj.FTA - (rowObj.FTA * (rowObj["FT%"] / 100))) * 20.091) - ((rowObj.FGA - (rowObj.FGA * (rowObj["FG%"] / 100))) * 39.190) - ((rowObj.TO * rowObj.GP) * 53.897)) * (1/(rowObj.MIN * rowObj.GP)))* 100) / 100;
 
+    totalMins.push(rowObj.MIN * rowObj.GP);
     // [ FGM x 85.910
     // Math.round(((rowObj.FGA * (rowObj["FG%"] / 100)) * 85.910)* 100) / 100
     // + Steals x 53.897
@@ -69,7 +70,6 @@ export default function PlayerStats(props) {
     // Math.round(((rowObj.TO * rowObj.GP) * 53.897)* 100) / 100
     // x (1 / Minutes)
     // Math.round((1/(rowObj.MIN * rowObj.GP))* 100) / 100
-    console.log("avg ",rowObj);
 
     avgRows.push(rowObj);
   
@@ -85,6 +85,7 @@ export default function PlayerStats(props) {
   });
   totalsColumns.push({ field: "PER", headerName: "PER", width: 85 })
   totalsColumns.push({ field: "TS%", headerName: "TS%", width: 85 })
+  totalsColumns.push({ field: "MINS", headerName: "MINS", width: 85 })
 
   const totalsRows = []
 
@@ -93,7 +94,8 @@ export default function PlayerStats(props) {
     season.stats.map((stat, index) => {
 
       rowObj[totalsColumns[index + 2].field] = stat;
-      console.log("totalsColumns", totalsColumns)
+      rowObj.MINS = totalMins[rowObj.id];
+
     })
 
     // calculates FTA, 3PTA, FGA, TFGA, TSA for TS%
@@ -104,9 +106,22 @@ export default function PlayerStats(props) {
     rowObj.TSA = rowObj.TFGA + 0.44 * rowObj.FTA;
     rowObj["TS%"] = Math.round((rowObj.PTS/(rowObj.TSA * 2))*100* 100) / 100;
 
+    console.log(rowObj)
     // calculates PER
-    rowObj.PER = Math.round(((((rowObj.FGA * (rowObj["FG%"] / 100)) * 85.910) + (rowObj.STL * 53.897) + ((rowObj["3PTA"] * (rowObj["3P%"] / 100)) * 51.757) + ((rowObj.FTA * (rowObj["FT%"] / 100)) * 46.845) + (rowObj.BLK * 39.190) + (rowObj.OR * 39.190) + (rowObj.AST * 34.677) + (rowObj.DR * 14.707) - (rowObj.PF * 17.174) - ((rowObj.FTA - (rowObj.FTA * (rowObj["FT%"] / 100))) * 20.091) - ((rowObj.FGA - (rowObj.FGA * (rowObj["FG%"] / 100))) * 39.190) - (rowObj.TO * 53.897)) * (1/rowObj.MIN))* 100) / 100;
-    console.log("total ",rowObj);
+    rowObj.PER = Math.round((((
+      (rowObj.FG.split('-')[0]) * 85.910) + 
+      (Number(rowObj.STL) * 53.897) + 
+      ((rowObj["3PT"].split('-')[0]) * 51.757) + 
+      ((rowObj.FT.split('-')[0]) * 46.845) + 
+      (Number(rowObj.BLK) * 39.190) + 
+      (Number(rowObj.OR) * 39.190) + 
+      (Number(rowObj.AST) * 34.677) + 
+      (Number(rowObj.DR) * 14.707) - 
+      (Number(rowObj.PF) * 17.174) - 
+      ((rowObj.FT.split('-')[1] - rowObj.FT.split('-')[0]) * 20.091) - 
+      ((rowObj.FG.split('-')[1] - rowObj.FG.split('-')[0]) * 39.190) - 
+      (Number(rowObj.TO) * 53.897)) * 
+      (1/rowObj.MINS))* 100) / 100;
 
     totalsRows.push(rowObj);
   })
