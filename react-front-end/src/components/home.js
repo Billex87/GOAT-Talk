@@ -172,7 +172,7 @@ export default function Home(props) {
 
       let stats = { ast: 10, per: 50, player_id: 100, pts: 50, reb: 10, season: 2020, "ts%": 50, };
 
-      setPlayerOneState((prev) => ({
+      setPlayerTwoState((prev) => ({
         ...prev,
         playerStats: stats,
         year: season,
