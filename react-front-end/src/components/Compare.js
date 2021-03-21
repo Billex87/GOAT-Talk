@@ -10,8 +10,6 @@ export default function Compare(props) {
   const KNOWN_PLAYER_NAMES = ['stephen_curry', 'lebron_james', 'michael_jordan', 'kobe_bryant', 'andy_lindsay'];
   const UNKNOWN_PLAYER_IMG_SRC = 'images/black.png';
 
-  // console.log('props', props)
-
   const [state, setState] = useState({
     playerName: null,
     season: null,
