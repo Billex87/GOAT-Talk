@@ -245,7 +245,7 @@ export default function Compare(props) {
   else {
     playerTag = 3975;
   }
-
+  
   //1966 is href for lebron, line 246 is hardcoded to be able to link to steph is there a way to do it to be either lebron or steph based on state?
 
   return (
