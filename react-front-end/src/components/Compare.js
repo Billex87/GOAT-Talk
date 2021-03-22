@@ -7,10 +7,8 @@ import Chart from 'react-apexcharts';
 
 export default function Compare(props) {
 
-  const KNOWN_PLAYER_NAMES = ['stephen_curry', 'lebron_james', 'michael_jordan', 'kobe_bryant', 'andy_lindsay'];
+  const KNOWN_PLAYER_NAMES = ['stephen_curry', 'lebron_james', 'michael_jordan', 'kobe_bryant', 'andy_lindsay', 'bradley_beal', 'damian_lillard', 'gianis_antetokounmpo', 'james_harden', 'joel_embiid', 'kyrie_irving', 'luka_doncic', 'kawhi_leonard'];
   const UNKNOWN_PLAYER_IMG_SRC = 'images/black.png';
-
-  // console.log('props', props)
 
   const [state, setState] = useState({
     playerName: null,

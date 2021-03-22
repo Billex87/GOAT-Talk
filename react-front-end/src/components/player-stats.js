@@ -9,11 +9,16 @@ export default function PlayerStats(props) {
 
   const avgColumns = [
     { field: 'id', hide: true },
-    {field: 'Season', headerName: 'Season', width: 130 }
+    {field: 'Season', headerName: 'Season', width: 130 },
+    { field: "PTS", headerName: "PTS", width: 85 }
   ]
   props.stats.categories[0].labels.map((label) => {
-    avgColumns.push({ field: label, headerName: label, width: 85 })
+    if(label !== "PTS"){
+      avgColumns.push({ field: label, headerName: label, width: 85 })
+    }
   });
+  console.log(avgColumns)
+
   avgColumns.push({ field: "PER", headerName: "PER", width: 85 })
   avgColumns.push({ field: "TS%", headerName: "TS%", width: 85 })
 
@@ -23,9 +28,13 @@ export default function PlayerStats(props) {
   props.stats.categories[0].statistics.map((season, index) => {
     let rowObj = { 'id': index, 'Season': season.season.displayName }
     season.stats.map((stat, index) => {
-
-      rowObj[avgColumns[index + 2].field] = stat;
+      if(index === 17){
+        rowObj[avgColumns[2].field] = stat;
+      } else{
+        rowObj[avgColumns[index + 3].field] = stat;
+      }
     })
+    console.log(rowObj)
 
     // calculates FTA, 3PTA, FGA, TFGA, TSA for TS%
     rowObj.FTA = Math.round(((rowObj.FT.split('-')[1])*(rowObj.GP))* 100) / 100;
@@ -77,11 +86,14 @@ export default function PlayerStats(props) {
 
   const totalsColumns = [
     { field: 'id', hide: true },
-    {field: 'Season', headerName: 'Season', width: 130 }
+    {field: 'Season', headerName: 'Season', width: 130 },
+    { field: "PTS", headerName: "PTS", width: 85 }
   ];
 
   props.stats.categories[1].labels.map((label) => {
-    totalsColumns.push({ field: label, headerName: label, width: 85 })
+    if(label !== "PTS"){
+      totalsColumns.push({ field: label, headerName: label, width: 85 })
+    }
   });
   totalsColumns.push({ field: "PER", headerName: "PER", width: 85 })
   totalsColumns.push({ field: "TS%", headerName: "TS%", width: 85 })
@@ -93,7 +105,11 @@ export default function PlayerStats(props) {
     let rowObj = { 'id': index, 'Season': season.season.displayName }
     season.stats.map((stat, index) => {
 
-      rowObj[totalsColumns[index + 2].field] = stat;
+      if(index === 14){
+        rowObj[totalsColumns[2].field] = stat;
+      } else{
+        rowObj[totalsColumns[index + 3].field] = stat;
+      }
       rowObj.MINS = totalMins[rowObj.id];
 
     })

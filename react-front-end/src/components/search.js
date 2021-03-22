@@ -8,7 +8,6 @@ export default function Search(props) {
 
   const [term, setTerm] = useState('');
 
-
   return (
     <div className="search" style={{ paddingRight: '20px', display: 'flex', flexDirection: 'column' }}>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -23,13 +22,13 @@ export default function Search(props) {
             }}
             onKeyPress={(e) => {
               if (e.key === 'Enter') {
-                console.log('Enter key pressed');
-                // write your functionality here
+                console.log('Enter key pressed', term);
+                window.location.href = `/players/${term}`;
               }
             }
             } />
         </div>
-        <Button variant="contained" style={{ backgroundColor: 'rgb(43, 107, 177)', marginLeft: '10px' }} href={`/players/${term}`}>
+        <Button variant="contained" style={{ backgroundColor: 'rgb(43, 107, 177)', marginLeft: '10px' }} href={`/players/${term}`} >
           <SearchIcon style={{ fontSize: '28px' }}></SearchIcon>
         </Button>
       </div>
