@@ -46,7 +46,7 @@ export default function Home(props) {
   const getPlayerOne = (name, season) => {
     if (name === "andy_lindsay") {
 
-      let stats = { ast: 5, per: 45, player_id: 100, pts: 40, reb: 5, season: 2020, "ts%": 30, };
+      let stats = { ast: 5.43, per: 45.6, player_id: 100, pts: 39.8, reb: 5.67, season: 2020, "ts%": 33.3, };
 
       setPlayerOneState((prev) => ({
         ...prev,
@@ -170,7 +170,7 @@ export default function Home(props) {
   const getPlayerTwo = (name, season) => {
     if (name === "andy_lindsay") {
 
-      let stats = { ast: 5, per: 45, player_id: 100, pts: 40, reb: 5, season: 2020, "ts%": 30, };
+      let stats = { ast: 5.43, per: 45.6, player_id: 100, pts: 39.8, reb: 5.67, season: 2020, "ts%": 33.3, };
 
       setPlayerTwoState((prev) => ({
         ...prev,
