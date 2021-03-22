@@ -7,8 +7,10 @@ import Chart from 'react-apexcharts';
 
 export default function Compare(props) {
 
-  const KNOWN_PLAYER_NAMES = ['stephen_curry', 'lebron_james', 'michael_jordan', 'kobe_bryant', 'andy_lindsay', 'bradley_beal', 'damian_lillard', 'gianis_antetokounmpo', 'james_harden', 'joel_embiid', 'kyrie_irving', 'luka_doncic', 'kawhi_leonard'];
+  const KNOWN_PLAYER_NAMES = ['stephen_curry', 'lebron_james', 'michael_jordan', 'kobe_bryant', 'andy_lindsay'];
   const UNKNOWN_PLAYER_IMG_SRC = 'images/black.png';
+
+  // console.log('props', props)
 
   const [state, setState] = useState({
     playerName: null,
@@ -30,7 +32,7 @@ export default function Compare(props) {
         }
       ],
       yaxis: {
-        max: 45,
+        max: 40,
         reversed: props.reversed,
         forceNiceScale: true,
         floating: false,
@@ -81,7 +83,7 @@ export default function Compare(props) {
         },
         background: {
           enabled: true,
-          forceColor: 'red',
+          foreColor: 'black', 
           padding: 4,
           borderRadius: 2,
           borderWidth: 1,
@@ -243,7 +245,7 @@ export default function Compare(props) {
   else {
     playerTag = 3975;
   }
-  
+
   //1966 is href for lebron, line 246 is hardcoded to be able to link to steph is there a way to do it to be either lebron or steph based on state?
 
   return (
