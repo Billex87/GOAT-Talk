@@ -179,18 +179,18 @@ export default function PlayerStats(props) {
     {abbreviation: "3P%", displayName: "3-Point Field Goal Percentage"},
     {abbreviation: "3PT", displayName: "3-Point Field Goals Made-Attempted Per Game"},
     {abbreviation: "AST", displayName: "Assists Per Game"},
-    {abbreviation: "BLK", displayName: "Blocks Per Game"},
-    {abbreviation: "DR", displayName: "Defensive Rebounds Per Game"}
+    {abbreviation: "BLK", displayName: "Blocks Per Game"}
   ];
   let gloss2 = [
+    {abbreviation: "DR", displayName: "Defensive Rebounds Per Game"},
     {abbreviation: "REB", displayName: "Rebounds Per Game"},
     {abbreviation: "STL", displayName: "Steals Per Game"},
     {abbreviation: "PER", displayName: "Player Efficiency Rating"},
-    {abbreviation: "TS%", displayName: "True Shooting Percentage"}
+    {abbreviation: "TS%", displayName: "True Shooting Percentage"},
+    {abbreviation: "FG%", displayName: "Field Goal Percentage"}
   ];
   let gloss3 = [
-    {abbreviation: "FG%", displayName: "Field Goal Percentage"},
-    {abbreviation: "FT", displayName: "Free Throws Made-Attempted Per Game"},
+    {abbreviation: "FT", displayName: "Free Throws Made-Attempted"},
     {abbreviation: "FT%", displayName: "Free Throw Percentage"},
     {abbreviation: "GP", displayName: "Games Played"},
     {abbreviation: "MIN: ", displayName: "Minutes Per Game"},
