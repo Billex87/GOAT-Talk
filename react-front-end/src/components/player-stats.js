@@ -165,7 +165,6 @@ export default function PlayerStats(props) {
   const tableHeights = (rows) => {
     return (rows.length * 52) + 145;
   }
-  
 
   const theme = createMuiTheme({
     typography: {
@@ -175,11 +174,38 @@ export default function PlayerStats(props) {
       type: "dark",
     }})
 
-  const gloss1 = props.stats.glossary.slice(0, 9);
-  const gloss2 = props.stats.glossary.slice(10, 19);
-  let gloss3 = props.stats.glossary.slice(20, 28);
-  gloss3["8"] = {abbreviation: "PER", displayName: "Player Efficiency Rating"};
-  gloss3["9"] = {abbreviation: "TS%", displayName: "True Shooting Percentage"};
+  // const gloss1 = props.stats.glossary.slice(0, 9);
+  // const gloss2 = props.stats.glossary.slice(10, 19);
+  // let gloss3 = props.stats.glossary.slice(20, 28);
+  // gloss3["8"] = {abbreviation: "PER", displayName: "Player Efficiency Rating"};
+  // gloss3["9"] = {abbreviation: "TS%", displayName: "True Shooting Percentage"};
+
+  let gloss1 = [
+    {abbreviation: "PER", displayName: "Player Efficiency Rating"},
+    {abbreviation: "3P%", displayName: "3-Point Field Goal Percentage"},
+    {abbreviation: "3PT", displayName: "3-Point Field Goals Made-Attempted Per Game"},
+    {abbreviation: "AST", displayName: "Assists Per Game"},
+    {abbreviation: "BLK", displayName: "Blocks Per Game"},
+    {abbreviation: "DR", displayName: "Defensive Rebounds Per Game"}
+  ];
+  let gloss2 = [
+    {abbreviation: "REB", displayName: "Rebounds Per Game"},
+    {abbreviation: "STL", displayName: "Steals Per Game"},
+    {abbreviation: "PER", displayName: "Player Efficiency Rating"},
+    {abbreviation: "TS%", displayName: "True Shooting Percentage"}
+  ];
+  let gloss3 = [
+    {abbreviation: "FG%", displayName: "Field Goal Percentage"},
+    {abbreviation: "FT", displayName: "Free Throws Made-Attempted Per Game"},
+    {abbreviation: "FT%", displayName: "Free Throw Percentage"},
+    {abbreviation: "GP", displayName: "Games Played"},
+    {abbreviation: "MIN: ", displayName: "Minutes Per Game"},
+    {abbreviation: "OR", displayName: "Offensive Rebounds Per Game"},
+    {abbreviation: "PF", displayName: "Fouls Per Game"}
+  ];
+  // gloss3["8"] = {abbreviation: "PER", displayName: "Player Efficiency Rating"};
+  // gloss3["9"] = {abbreviation: "TS%", displayName: "True Shooting Percentage"};
+  console.log(gloss1)
 
   return(
     <div className="player-stats" style={{ display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
