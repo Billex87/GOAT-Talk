@@ -19,7 +19,7 @@ export default function PlayerOverview(props) {
   props.stats.splits.map((type, index) => {
     let typeObj = {};
     typeObj['id'] = index;
-    typeObj['stats'] = type.displayName === 'Regular Season' ? 'Regular' : type.displayName;
+    typeObj['stats'] = type.displayName === 'Regular Season' ? 'Current' : type.displayName;
     type.stats.map((stat, index) => {
       typeObj[props.stats.labels[index]] = stat;
     })
