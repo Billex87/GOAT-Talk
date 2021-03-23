@@ -71,38 +71,38 @@ export default function Player(props) {
   return (
     <div>
       <div className="player-header">
-        <img src={`${state.player_overview_all.athlete.headshot.href}`} alt={"Player Headshot"} style={{ width: '30em' }} />
-        <table className="player-info">
-          <tbody>
-            <tr>
-              <th colSpan="2" className="player-name">{state.player_overview_all.athlete.displayName}</th>
-            </tr>
-            <tr>
-              <th>Team:</th>
-              <td>{state.player_overview_all.athlete.team.displayName}</td>
-            </tr>
-            <tr>
-              <th>Number:</th>
-              <td>{state.player_overview_all.athlete.displayJersey}</td>
-            </tr>
-            <tr>
-              <th>Position:</th>
-              <td>{state.player_overview_all.athlete.position.displayName}</td>
-            </tr>
-            <tr>
-              <th>Height/Weight:</th>
-              <td>{state.player_overview_all.athlete.displayHeight}/ {state.player_overview_all.athlete.displayWeight}</td>
-            </tr>
-            <tr>
-              <th>DOB (age):</th>
-              <td>{state.player_overview_all.athlete.displayDOB} ({state.player_overview_all.athlete.age})</td>
-            </tr>
-            <tr>
-              <th>Draft Info</th>
-              <td>{state.player_overview_all.athlete.displayDraft}</td>
-            </tr>
-          </tbody>
-        </table>
+      <table className="player-info">
+      <tbody>
+      <tr>
+      <th colSpan="2" className="player-name">{state.player_overview_all.athlete.displayName}</th>
+      </tr>
+      <tr>
+      <th style={{ color: 'white', fontSize: '22px'}}>Team:</th>
+      <td style={{ color: 'gold', fontSize: '22px'}}>{state.player_overview_all.athlete.team.displayName}</td>
+      </tr>
+      <tr>
+      <th style={{ color: 'white', fontSize: '22px'}}>Number:</th>
+      <td style={{ color: 'gold', fontSize: '22px'}}>{state.player_overview_all.athlete.displayJersey}</td>
+      </tr>
+      <tr>
+      <th style={{ color: 'white', fontSize: '22px'}}>Position:</th>
+      <td style={{ color: 'gold', fontSize: '22px'}}>{state.player_overview_all.athlete.position.displayName}</td>
+      </tr>
+      <tr>
+      <th style={{ color: 'white', fontSize: '22px'}}>Height/Weight:</th>
+      <td style={{ color: 'gold', fontSize: '22px'}}>{state.player_overview_all.athlete.displayHeight}/ {state.player_overview_all.athlete.displayWeight}</td>
+      </tr>
+      <tr>
+      <th style={{ color: 'white', fontSize: '22px'}}>DOB (age):</th>
+      <td style={{ color: 'gold', fontSize: '22px'}}>{state.player_overview_all.athlete.displayDOB} ({state.player_overview_all.athlete.age})</td>
+      </tr>
+      <tr>
+      <th style={{ color: 'white', fontSize: '22px'}}>Draft Info</th>
+      <td style={{ color: 'gold', fontSize: '22px'}}>{state.player_overview_all.athlete.displayDraft}</td>
+      </tr>
+      </tbody>
+      </table>
+      <img src={`${state.player_overview_all.athlete.headshot.href}`} alt={"Player Headshot"} style={{ width: '30em' }} />
       </div>
       <hr />
       <div className="link-row">

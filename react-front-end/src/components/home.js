@@ -55,7 +55,7 @@ export default function Home(props) {
         per: stats.per,
         firstName: "Andy",
         lastName: "Lindsay",
-        position: "King",
+        position: "",
         team: "Lighthouse Labs"
       }));
 
