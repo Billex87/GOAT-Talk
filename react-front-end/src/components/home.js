@@ -70,7 +70,6 @@ export default function Home(props) {
           } else {
             axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=${season}&player_ids[]=${res.data.data[0].id}`)
               .then(async res => {
-                console.log(res.data.data[0]);
                 if (typeof res.data.data[0] === "undefined") {
                   alert("This player exists but did not play this season, please pick a valid season to find out the one true GOAT");
                   setPlayerOneState((prev) => ({
@@ -97,7 +96,7 @@ export default function Home(props) {
                 res.data.data[0]["ts%"] = Math.round(((res.data.data[0].pts * res.data.data[0].games_played) / (((Math.round(((Math.round((res.data.data[0].fga * res.data.data[0].games_played) * 100) / 100) + (Math.round((res.data.data[0].fg3a * res.data.data[0].games_played) * 100) / 100)) * 100) / 100) + 0.44 * (Math.round((res.data.data[0].fta * res.data.data[0].games_played) * 100) / 100)) * 2)) * 100 * 100) / 100;
 
                 let mins = Math.round((((Number(res.data.data[0].min.split(":")[0]) * 60) + Number(res.data.data[0].min.split(":")[1])) / 60) * 100) / 100;
-                console.log(mins);
+                console.log(res.data.data[0]);
 
                 // calculates PER
                 res.data.data[0].per = Math.round(((
@@ -115,6 +114,7 @@ export default function Home(props) {
                   ((res.data.data[0].turnover * res.data.data[0].games_played) * 53.897)) *
                   (1 / (mins * res.data.data[0].games_played))
                 ) * 100) / 100;
+
 
                 // [ FGM x 85.910
                 // Math.round((((res.data.data[0].fga * res.data.data[0].games_played) * res.data.data[0].fg_pct) * 85.910)* 100) / 100
@@ -142,8 +142,15 @@ export default function Home(props) {
                 // Math.round(((res.data.data[0].turnover * res.data.data[0].games_played) * 53.897)* 100) / 100
                 // x (1 / Minutes)
                 // Math.round((1 / (mins * res.data.data[0].games_played)))* 100) / 100
+                let ptsRounded = Math.round((res.data.data[0].pts + 0.01)*100)/100;
+                let astRounded = Math.round((res.data.data[0].ast + 0.01)*100)/100;
+                let rebRounded = Math.round((res.data.data[0].reb + 0.01)*100)/100;
+                res.data.data[0].pts = ptsRounded;
+                res.data.data[0].ast = astRounded;
+                res.data.data[0].reb = rebRounded;
 
                 console.log(res.data.data[0]);
+
                 setPlayerOneState((prev) => ({
                   ...prev,
                   playerStats: res.data.data[0],
@@ -213,7 +220,6 @@ export default function Home(props) {
                 res.data.data[0]["ts%"] = Math.round(((res.data.data[0].pts * res.data.data[0].games_played) / (((Math.round(((Math.round((res.data.data[0].fga * res.data.data[0].games_played) * 100) / 100) + (Math.round((res.data.data[0].fg3a * res.data.data[0].games_played) * 100) / 100)) * 100) / 100) + 0.44 * (Math.round((res.data.data[0].fta * res.data.data[0].games_played) * 100) / 100)) * 2)) * 100 * 100) / 100;
 
                 let mins = Math.round((((Number(res.data.data[0].min.split(":")[0]) * 60) + Number(res.data.data[0].min.split(":")[1])) / 60) * 100) / 100;
-                console.log(mins);
 
                 // calculates PER
                 res.data.data[0].per = Math.round(((
@@ -231,7 +237,13 @@ export default function Home(props) {
                   ((res.data.data[0].turnover * res.data.data[0].games_played) * 53.897)) *
                   (1 / (mins * res.data.data[0].games_played))
                 ) * 100) / 100;
-
+                
+                let ptsRounded = Math.round((res.data.data[0].pts + 0.01)*100)/100;
+                let astRounded = Math.round((res.data.data[0].ast + 0.01)*100)/100;
+                let rebRounded = Math.round((res.data.data[0].reb + 0.01)*100)/100;
+                res.data.data[0].pts = ptsRounded;
+                res.data.data[0].ast = astRounded;
+                res.data.data[0].reb = rebRounded;
                 setPlayerTwoState((prev) => ({
                   ...prev,
                   playerStats: res.data.data[0],
