@@ -174,12 +174,6 @@ export default function PlayerStats(props) {
       type: "dark",
     }})
 
-  // const gloss1 = props.stats.glossary.slice(0, 9);
-  // const gloss2 = props.stats.glossary.slice(10, 19);
-  // let gloss3 = props.stats.glossary.slice(20, 28);
-  // gloss3["8"] = {abbreviation: "PER", displayName: "Player Efficiency Rating"};
-  // gloss3["9"] = {abbreviation: "TS%", displayName: "True Shooting Percentage"};
-
   let gloss1 = [
     {abbreviation: "PER", displayName: "Player Efficiency Rating"},
     {abbreviation: "3P%", displayName: "3-Point Field Goal Percentage"},
@@ -203,9 +197,6 @@ export default function PlayerStats(props) {
     {abbreviation: "OR", displayName: "Offensive Rebounds Per Game"},
     {abbreviation: "PF", displayName: "Fouls Per Game"}
   ];
-  // gloss3["8"] = {abbreviation: "PER", displayName: "Player Efficiency Rating"};
-  // gloss3["9"] = {abbreviation: "TS%", displayName: "True Shooting Percentage"};
-  console.log(gloss1)
 
   return(
     <div className="player-stats" style={{ display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
