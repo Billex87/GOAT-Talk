@@ -7,7 +7,7 @@ import Chart from 'react-apexcharts';
 
 export default function Compare(props) {
 
-  const KNOWN_PLAYER_NAMES = ['stephen_curry', 'lebron_james', 'michael_jordan', 'kobe_bryant', 'andy_lindsay'];
+  const KNOWN_PLAYER_NAMES = ['stephen_curry', 'lebron_james', 'michael_jordan', 'kobe_bryant', 'the_king'];
   const UNKNOWN_PLAYER_IMG_SRC = 'images/black.png';
 
   // console.log('props', props)
@@ -121,88 +121,6 @@ export default function Compare(props) {
       }
     },
   };
-  // const efficiency = {
-  //   series: [{
-  //     data: [props.playerStats["fg_pct"], props.playerStats["fg3_pct"], props.playerStats["ft_pct"], props.playerStats["per"], props.playerStats["ts%"]]
-  //   }],
-  //   options: {
-  //     colors: [
-  //       function ({dataPointIndex}) {
-  //         console.log("DOMINATE THE PAINT!!")
-  //         if (props.boolsTwo[dataPointIndex]) {
-  //           return "#2b6cb1";
-  //         } else {
-  //           return "#989999";
-  //         }
-  //       }
-  //     ],
-  //     yaxis: {
-  //       min: 0,
-  //       max: 1,
-  //       reversed: props.reversed,
-  //       forceNiceScale: true,
-  //       floating: false,
-  //       tickAmount: 5,
-  //       decimalsInFloat: undefined,
-  //     },
-  //     plotOptions: {
-  //       bar: {
-  //         horizontal: true,
-  //       }
-  //     },
-  //     xaxis: {
-  //       categories: ['', '', ''],
-  //     },
-  //     dataLabels: {
-  //       // enabled: true,
-  //       // enabledOnSeries: undefined,
-  //       // formatter: function (val, opts) {
-  //       //   console.log("val ", val);
-  //       //   return val;
-  //       // },
-  //       // textAnchor: 'middle',
-  //       // distributed: false,
-  //       // offsetX: 0,
-  //       // offsetY: 0,
-  //       // style: {
-  //       //   fontSize: '14px',
-  //       //   fontFamily: 'Helvetica, Arial, sans-serif',
-  //       //   fontWeight: 'bold',
-  //       //   colors: undefined
-  //       // },
-  //       // background: {
-  //       //   enabled: false,
-  //       //   foreColor: '#fff',
-  //       //   padding: 4,
-  //       //   borderRadius: 2,
-  //       //   borderWidth: 1,
-  //       //   borderColor: '#fff',
-  //       //   opacity: 0.9,
-  //       //   dropShadow: {
-  //       //     enabled: false,
-  //       //     top: 1,
-  //       //     left: 1,
-  //       //     blur: 1,
-  //       //     color: '#000',
-  //       //     opacity: 0.45
-  //       //   }
-  //       // },
-  //       // dropShadow: {
-  //       //   enabled: false,
-  //       //   top: 1,
-  //       //   left: 1,
-  //       //   blur: 1,
-  //       //   color: '#000',
-  //       //   opacity: 0.45
-  //       // }
-  //     },
-  //     // stroke: {
-  //     //   show: true,
-  //     //   width: 1,
-  //     //   colors: ['#fff']
-  //     // },
-  //   },
-  // };
 
   // Line 37 ----- PPG', 'RPG', 'APG', 'SPG', 'BPG', 'FG%','3PT%', 'FT%' - Graph Order
   const handleSubmit = (e) => {
@@ -278,7 +196,7 @@ export default function Compare(props) {
       </form>
       <div className={props.nameStyle}>{props.firstName} {props.lastName}</div>
       <div className={props.yearStyle}>{props.year}</div>
-      <div className={props.teamStyle}>{props.team} {props.position}</div>
+      <div className={props.teamStyle}>{props.team}</div>
       <br />
       <Chart options={stats.options} series={stats.series} type="bar" height={350} />
       {/* <img className={props.playerAwards} src={`images/${state.playerName}_awards.png`} alt="" /> */}

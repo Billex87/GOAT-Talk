@@ -44,9 +44,9 @@ export default function Home(props) {
 
 
   const getPlayerOne = (name, season) => {
-    if (name === "andy_lindsay") {
+    if (name === "the_king") {
 
-      let stats = { ast: 5.43, per: 34.5, player_id: 100, pts: 39.8, reb: 5.67, season: 2020, "ts%": 45.6, };
+      let stats = { ast: 5.43, per: 35.6, player_id: 100, pts: 39.8, reb: 5.67, season: 2020, "ts%": 45.6, };
 
       setPlayerOneState((prev) => ({
         ...prev,
@@ -115,35 +115,8 @@ export default function Home(props) {
                   (1 / (mins * res.data.data[0].games_played))
                 ) * 100) / 100;
 
-
-                // [ FGM x 85.910
-                // Math.round((((res.data.data[0].fga * res.data.data[0].games_played) * res.data.data[0].fg_pct) * 85.910)* 100) / 100
-                // + Steals x 53.897
-                // Math.round((res.data.data[0].stl * res.data.data[0].games_played) * 53.897)* 100) / 100
-                // + 3PTM x 51.757
-                // Math.round((((res.data.data[0].fg3a * res.data.data[0].games_played) * res.data.data[0].fg3_pct) * 51.757)* 100) / 100
-                // + FTM x 46.845
-                // Math.round((((res.data.data[0].fta * res.data.data[0].games_played) * res.data.data[0].ft_pct) * 46.845)* 100) / 100
-                // + Blocks x 39.190
-                // Math.round(((res.data.data[0].blk * res.data.data[0].games_played) * 39.190)* 100) / 100
-                // + Offensive_Reb x 39.190
-                // Math.round(((rowObj.OR * rowObj.GP) * 39.190)* 100) / 100
-                // + Assists x 34.677
-                // Math.round(((res.data.data[0].ast * res.data.data[0].games_played) * 34.677)* 100) / 100
-                // + Defensive_Reb x 14.707
-                // Math.round(((res.data.data[0].dreb * res.data.data[0].games_played) * 14.707)* 100) / 100
-                // - Foul x 17.174
-                // Math.round(((res.data.data[0].pf * res.data.data[0].games_played) * 17.174)* 100) / 100
-                // - FT_Miss x 20.091
-                // Math.round((((res.data.data[0].fta * res.data.data[0].games_played) - (((res.data.data[0].fta * res.data.data[0].games_played) * res.data.data[0].ft_pct))) * 20.091)* 100) / 100
-                // - FG_Miss x 39.190
-                // Math.round((((res.data.data[0].fga * res.data.data[0].games_played) - (((res.data.data[0].fga * res.data.data[0].games_played) * res.data.data[0].fg_pct))) * 39.190)* 100) / 100
-                // - TO x 53.897 ]
-                // Math.round(((res.data.data[0].turnover * res.data.data[0].games_played) * 53.897)* 100) / 100
-                // x (1 / Minutes)
-                // Math.round((1 / (mins * res.data.data[0].games_played)))* 100) / 100
                 let ptsRounded = Math.round((res.data.data[0].pts + 0.01)*100)/100;
-                let astRounded = Math.round((res.data.data[0].ast + 0.01)*100)/100;
+                let astRounded = Math.round((res.data.data[0].ast - 0.01)*100)/100;
                 let rebRounded = Math.round((res.data.data[0].reb + 0.01)*100)/100;
                 res.data.data[0].pts = ptsRounded;
                 res.data.data[0].ast = astRounded;
@@ -175,9 +148,9 @@ export default function Home(props) {
     }
   };
   const getPlayerTwo = (name, season) => {
-    if (name === "andy_lindsay") {
+    if (name === "the_king") {
 
-      let stats = { ast: 5.43, per: 34.5, player_id: 100, pts: 39.8, reb: 5.67, season: 2020, "ts%": 45.6, };
+      let stats = { ast: 5.43, per: 35.6, player_id: 100, pts: 39.8, reb: 5.67, season: 2020, "ts%": 45.6, };
 
       setPlayerTwoState((prev) => ({
         ...prev,
@@ -186,7 +159,7 @@ export default function Home(props) {
         per: stats.per,
         firstName: "Andy",
         lastName: "Lindsay",
-        position: "King",
+        position: "",
         team: "Lighthouse Labs"
       }));
 
