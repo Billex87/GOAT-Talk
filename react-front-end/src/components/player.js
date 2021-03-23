@@ -37,8 +37,7 @@ export default function Player(props) {
     const url2 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/stats?region=us&lang=en&contentorigin=espn`);
     const url3 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/gamelog?region=us&lang=en&contentorigin=espn`);
     const url4 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/stats?region=us&lang=en&contentorigin=espn&seasontype=3`);
-    let url5 = axios.get('/api/dummy');
-    let url6 = axios.get('/api/dummy');
+
 
     Promise.all([
       Promise.resolve(url0),
@@ -46,8 +45,7 @@ export default function Player(props) {
       Promise.resolve(url2),
       Promise.resolve(url3),
       Promise.resolve(url4),
-      Promise.resolve(url5),
-      Promise.resolve(url6)
+
     ])
       .then((all) => {
         setState(prev => ({
@@ -56,9 +54,7 @@ export default function Player(props) {
           player_overview_all: all[1].data,
           player_stats: all[2].data,
           player_game_log: all[3].data,
-          player_playoff_stats: all[4].data,
-          player_shots: all[5].data,
-          player_videos: all[6].data
+          player_playoff_stats: all[4].data
         }));
         setLoading(false);
       });
