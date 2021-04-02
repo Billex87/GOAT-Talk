@@ -46,7 +46,7 @@ export default function Home(props) {
   const getPlayerOne = (name, season) => {
     if (name === "the_king") {
 
-      let stats = { ast: 5.43, per: 35.6, player_id: 100, pts: 39.8, reb: 5.67, season: 2020, "ts%": 45.6, };
+      let stats = { ast: 5.33, per: 35.6, player_id: 100, pts: 39.8, reb: 5.67, season: 2020, "ts%": 45.6, };
 
       setPlayerOneState((prev) => ({
         ...prev,
